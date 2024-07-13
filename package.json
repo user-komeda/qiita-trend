@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --no-cache --fix",
+    "lint": "eslint \"{src,test}/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write \"src/**/*.(ts|tsx)\" \"test/**/*.ts\"",
     "test": "jest",
     "test:watch": "jest --watch",

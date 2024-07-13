@@ -2,6 +2,6 @@
  *Home
  */
 const Home = (): JSX.Element => {
-  return <p>helloWorld2</p>
+  return <p>helloWorld</p>
 }
 export default Home
