@@ -12,6 +12,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: enable corepack
+        run: corepack enable
+      - name: yarn set v4
+        run: yarn set version stable -f
       - name: yarn install
         run: yarn install
       - name: Run eslint
