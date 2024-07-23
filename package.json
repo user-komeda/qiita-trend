@@ -44,5 +44,6 @@
     "lint-staged": "^15.2.7",
     "prettier": "^3.0.0",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "yarn@4.3.1"
 }
