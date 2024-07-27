@@ -1,8 +1,13 @@
+import Contents from './component/Contents'
+
 /**
  *Home
  */
 const Home = (): JSX.Element => {
-  console.log('aa')
-  return <p>helloWorld</p>
+  return (
+    <>
+      <Contents />
+    </>
+  )
 }
 export default Home
