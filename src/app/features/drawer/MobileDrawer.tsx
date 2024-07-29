@@ -2,7 +2,7 @@ import { Drawer } from '@mui/material'
 
 import { DRAWER_WIDTH } from '@/app/const/const'
 
-import DrawerList from './DrawerList'
+import AccordionMenu from './AccordionMenu'
 
 interface Props {
   isModalOpen: boolean
@@ -30,7 +30,7 @@ const MobileDrawerMenu = ({
         },
       }}
     >
-      {DrawerList}
+      {<AccordionMenu></AccordionMenu>}
     </Drawer>
   )
 }

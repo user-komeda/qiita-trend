@@ -2,7 +2,7 @@ import Drawer from '@mui/material/Drawer/Drawer'
 
 import { DRAWER_WIDTH } from '@/app/const/const'
 
-import DrawerList from './DrawerList'
+import AccordionMenu from '../features/drawer/AccordionMenu'
 
 /**
  *WrapDrawer
@@ -20,7 +20,7 @@ const WrapDrawer = (): JSX.Element => {
       }}
       open
     >
-      {DrawerList}
+      {<AccordionMenu></AccordionMenu>}
     </Drawer>
   )
 }
