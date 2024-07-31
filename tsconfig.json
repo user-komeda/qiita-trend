@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/features/drawer/NormalItemList.tsx"
+    "src/app/features/component/drawer/NormalItemList.tsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "types": ["@types/jest"]
 }

@@ -1,10 +1,6 @@
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material'
+import { List } from '@mui/material'
+
+import ListItemComponent from '@/app/component/ListItemComponent'
 
 const MONTH_LENGTH = 12
 const MONTH_FIRST_INDEX = 1
@@ -20,12 +16,10 @@ const NormalItemList = (): JSX.Element => {
     <List>
       {monthList.map((month) => {
         return (
-          <ListItem disablePadding key={month}>
-            <ListItemButton>
-              <ListItemIcon></ListItemIcon>
-              <ListItemText primary={`${month}月`} />
-            </ListItemButton>
-          </ListItem>
+          <ListItemComponent
+            key={month}
+            primary={`${month}月`}
+          ></ListItemComponent>
         )
       })}
     </List>

@@ -1,4 +1,5 @@
-import Contents from './component/Contents'
+import MainContent from './component/MainContent'
+import Main from './features/root/main/Main'
 
 /**
  *Home
@@ -6,7 +7,7 @@ import Contents from './component/Contents'
 const Home = (): JSX.Element => {
   return (
     <>
-      <Contents />
+      <MainContent childComponent={<Main></Main>}></MainContent>
     </>
   )
 }
