@@ -4,8 +4,8 @@ import { ReactNode } from 'react'
 
 import Header from './component/Header'
 import SideMenu from './component/SideMenu'
-import DrawerMenu from './features/drawer/DrawerMenu'
-import HeaderMenu from './features/headerMenu/HeaderMenu'
+import DrawerMenu from './features/component/drawer/DrawerMenu'
+import HeaderMenu from './features/component/headerMenu/HeaderMenu'
 
 /** metaData */
 export const metadata = {

@@ -1,6 +1,6 @@
 'use client'
 
-import WrapDrawer from '../../component/WrapDrawer'
+import WrapDrawer from '../../../component/WrapDrawer'
 
 import useDrawerStore from './drawerStore'
 import MobileDrawerMenu from './MobileDrawer'

@@ -2,7 +2,7 @@ import Drawer from '@mui/material/Drawer/Drawer'
 
 import { DRAWER_WIDTH } from '@/app/const/const'
 
-import AccordionMenu from '../features/drawer/AccordionMenu'
+import AccordionMenu from '../features/component/drawer/AccordionMenu'
 
 /**
  *WrapDrawer
