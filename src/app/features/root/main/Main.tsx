@@ -1,20 +1,29 @@
 import { List } from '@mui/material'
 
 import ListItemComponent from '@/app/component/ListItemComponent'
+import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/const'
 
 /** Main */
-const Main = (): JSX.Element => {
-  const shouldFixResponse = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '19']
+const Main = async (): Promise<JSX.Element> => {
+  const resultDataList = await (
+    await fetch(`${BASE_URL}${GET_ALL_ITEM_API_URL}`, {
+      next: { revalidate: 3600 },
+    })
+  ).json()
+
   return (
     <List>
-      {shouldFixResponse.map((key) => {
-        return (
-          <ListItemComponent
-            key={Number(key)}
-            primary="aaaaaaaaaaaaaaaaaaaaaaa"
-          ></ListItemComponent>
-        )
-      })}
+      {resultDataList.map(
+        (resultData: { id: number | string; title: string }) => {
+          return (
+            <ListItemComponent
+              key={resultData.id}
+              keyId={resultData.id}
+              primary={resultData.title}
+            ></ListItemComponent>
+          )
+        },
+      )}
     </List>
   )
 }

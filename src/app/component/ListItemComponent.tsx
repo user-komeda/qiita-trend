@@ -6,14 +6,14 @@ import {
 } from '@mui/material'
 
 interface Props {
-  key: number
+  keyId: number | string
   primary: string
 }
 
 /** ListItemComponent */
-const ListItemComponent = ({ key, primary }: Props): JSX.Element => {
+const ListItemComponent = ({ keyId, primary }: Props): JSX.Element => {
   return (
-    <ListItem disablePadding key={key}>
+    <ListItem disablePadding key={keyId}>
       <ListItemButton>
         <ListItemIcon></ListItemIcon>
         <ListItemText primary={primary} />
