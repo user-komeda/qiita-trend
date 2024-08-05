@@ -5,9 +5,10 @@ import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/const'
 
 /** Main */
 const Main = async (): Promise<JSX.Element> => {
+  console.log('aaa')
   const resultDataList = await (
     await fetch(`${BASE_URL}${GET_ALL_ITEM_API_URL}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 3600 }
     })
   ).json()
 
@@ -22,7 +23,7 @@ const Main = async (): Promise<JSX.Element> => {
               primary={resultData.title}
             ></ListItemComponent>
           )
-        },
+        }
       )}
     </List>
   )
