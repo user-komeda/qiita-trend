@@ -1196,8 +1196,8 @@ __metadata:
   linkType: hard
 
 "@mui/material-nextjs@npm:^6.0.0":
-  version: 6.1.4
-  resolution: "@mui/material-nextjs@npm:6.1.4"
+  version: 6.1.5
+  resolution: "@mui/material-nextjs@npm:6.1.5"
   dependencies:
     "@babel/runtime": "npm:^7.25.7"
   peerDependencies:
@@ -1214,7 +1214,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: 10c0/099467a93397a06208288d4abe777d61da7ff65c4701c14bfd461d4c35650fe8ef242ffa5c2966ba2ed0b86fa701576891137351f20b6c60e7640515dca82ddd
+  checksum: 10c0/8cc46d00658fa31b5d10c304d094dceadad9bd28e1681b2bc91a4f916cdf5569fb2f2aaf46816c917911140d92659b14be52e7bd506d9396fdf776f54470c862
   languageName: node
   linkType: hard
 
