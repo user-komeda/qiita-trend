@@ -399,15 +399,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.25.7":
-  version: 7.25.7
-  resolution: "@babel/runtime@npm:7.25.7"
-  dependencies:
-    regenerator-runtime: "npm:^0.14.0"
-  checksum: 10c0/86b7829d2fc9343714a9afe92757cf96c4dc799006ca61d73cda62f4b9e29bfa1ce36794955bc6cb4c188f5b10db832c949339895e1bbe81a69022d9d578ce29
-  languageName: node
-  linkType: hard
-
 "@babel/runtime@npm:^7.26.0":
   version: 7.26.0
   resolution: "@babel/runtime@npm:7.26.0"
@@ -1205,16 +1196,16 @@ __metadata:
   linkType: hard
 
 "@mui/material-nextjs@npm:^6.0.0":
-  version: 6.1.5
-  resolution: "@mui/material-nextjs@npm:6.1.5"
+  version: 6.1.6
+  resolution: "@mui/material-nextjs@npm:6.1.6"
   dependencies:
-    "@babel/runtime": "npm:^7.25.7"
+    "@babel/runtime": "npm:^7.26.0"
   peerDependencies:
     "@emotion/cache": ^11.11.0
     "@emotion/react": ^11.11.4
     "@emotion/server": ^11.11.0
     "@types/react": ^17.0.0 || ^18.0.0 || ^19.0.0
-    next: ^13.0.0 || ^14.0.0
+    next: ^13.0.0 || ^14.0.0 || ^15.0.0
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
   peerDependenciesMeta:
     "@emotion/cache":
@@ -1223,7 +1214,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: 10c0/8cc46d00658fa31b5d10c304d094dceadad9bd28e1681b2bc91a4f916cdf5569fb2f2aaf46816c917911140d92659b14be52e7bd506d9396fdf776f54470c862
+  checksum: 10c0/85be77ab61ade2c1ad3b63ae6eb6d6f9551621595d3b571b65b158f5f981ec1b52bca963a85277f85fc4de9a41885401cffabd2e28381e8a9e7e8561f5cf0e45
   languageName: node
   linkType: hard
 
