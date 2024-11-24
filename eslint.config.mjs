@@ -66,7 +66,7 @@ export default [
       parserOptions: {
         project: 'tsconfig.json',
         tsconfigRootDir:
-          'C:\\Users\\user\\Desktop\\learning\\next\\qiita-trend',
+          './',
       },
     },
 
