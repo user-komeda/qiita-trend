@@ -17,6 +17,7 @@ export default {
     return [
       `yarn lint --max-warnings=0 ${filesToLint}`,
       'yarn format',
+      'yarn test:cov',
     ]
   },
 }

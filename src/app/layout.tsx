@@ -1,4 +1,4 @@
-import { Box, CssBaseline } from '@mui/material'
+import { CssBaseline } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import { ReactNode } from 'react'
 
@@ -19,15 +19,13 @@ const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => {
     <html lang="en">
       <body>
         <AppRouterCacheProvider>
-          <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <Header
-              title={'qiitaの殿堂'}
-              childComponent={<HeaderMenu></HeaderMenu>}
-            ></Header>{' '}
-            <SideMenu childComponent={<DrawerMenu />}></SideMenu>
-            {children}
-          </Box>
+          <CssBaseline />
+          <Header
+            title={'qiitaの殿堂'}
+            childComponent={<HeaderMenu></HeaderMenu>}
+          ></Header>{' '}
+          <SideMenu childComponent={<DrawerMenu />}></SideMenu>
+          {children}
         </AppRouterCacheProvider>
       </body>
     </html>
