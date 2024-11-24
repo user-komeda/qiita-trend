@@ -13,12 +13,12 @@ jobs:
       - name: enable corepack
         run: corepack enable
       - name: yarn set v4
-        run: yarn set version stable 
+        run: yarn set version stable
       - name: yarn install
         run: yarn install
       - name: Run eslint
         run: yarn lint
       - name: Run format
         run: yarn format
-      # - name: Run test:cov
-      #   run: yarn test:cov
+      - name: Run test:cov
+        run: yarn test:cov

@@ -1,15 +1,30 @@
-module.exports = {
-  moduleFileExtensions: ['js', 'json', 'ts'],
-  rootDir: 'src',
-  testRegex: '.*\\.spec\\.ts$',
-  transform: {
-    '^.+\\.(t|j)s$': 'ts-jest',
+const nextJest = require('next/jest')
+
+const createJestConfig = nextJest({
+  // next.config.jsとテスト環境用の.envファイルが配置されたディレクトリをセット。基本は"./"で良い。
+  dir: './',
+})
+
+// Jestのカスタム設定を設置する場所。従来のプロパティはここで定義。
+const customJestConfig = {
+  moduleNameMapper: {
+    // aliasを定義 （tsconfig.jsonのcompilerOptions>pathsの定義に合わせる）
+    '^@/components/(.*)$': '<rootDir>/components/$1',
+    '^@/pages/(.*)$': '<rootDir>/pages/$1',
   },
-  collectCoverageFrom: ['**/*.(t|j)s'],
-  coverageDirectory: '../coverage',
-  testEnvironment: 'node',
-  testPathIgnorePatterns: ['src/const.ts', 'src/main.ts', 'src/types/'],
-  coveragePathIgnorePatterns: ['src/const.ts', 'src/main.ts', 'src/types/'],
+  preset: 'ts-jest',
+
+  testEnvironment: 'jest-environment-jsdom',
+  collectCoverageFrom: ['src/**/*.tsx', 'src/**/*.ts'],
+  coveragePathIgnorePatterns: [
+    'node_module',
+    'src/app/component',
+    'src/app/const/const.ts',
+    'src/app/const/const.ts',
+    'src/app/layout.tsx',
+    'src/app/page.tsx',
+    'src/app/features/component/drawer/DrawerMenu.tsx',
+  ],
   coverageThreshold: {
     global: {
       branches: 100,
@@ -19,3 +34,6 @@ module.exports = {
     },
   },
 }
+
+// createJestConfigを定義することによって、本ファイルで定義された設定がNext.jsの設定に反映されます
+module.exports = createJestConfig(customJestConfig)

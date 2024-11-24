@@ -4,6 +4,7 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Drawer,
 } from '@mui/material'
 
 import { DRAWER_WIDTH } from '@/app/const/const'
@@ -27,10 +28,13 @@ const ADD_YEAR_AND_MONTH = 1
 const AccordionMenu = (): JSX.Element => {
   const dateObject = getDateObject()
   const yearList = yearArray(dateObject)
-  const firstDateLastMonthList = monthArray(dateObject.firstDateLastMonth)
-  const endDateLastMonthList = monthArray(dateObject.EndDateLastMonth)
+  // eslint-disable-next-line no-magic-numbers
+  const firstDateLastMonthList = monthArray(9, dateObject.firstDateLastMonth)
+  // eslint-disable-next-line no-magic-numbers
+  const endDateLastMonthList = monthArray(1, dateObject.EndDateLastMonth)
   return (
     <Box sx={{ width: DRAWER_WIDTH }} role="presentation">
+      <Drawer></Drawer>
       {yearList.map((year) => {
         return (
           <Accordion key={year}>
@@ -62,9 +66,8 @@ const AccordionMenu = (): JSX.Element => {
 const getDateObject = (): DateObject => {
   const firstDate = new Date('2011/09')
   const endDate = new Date(Date.now())
-
   return {
-    firstDateLastMonth: firstDate.getMonth(),
+    firstDateLastMonth: 12,
     firstDateYear: firstDate.getFullYear(),
     EndDateLastMonth: endDate.getMonth(),
     EndDateYear: endDate.getFullYear(),
@@ -80,11 +83,10 @@ const yearArray = (dateObject: DateObject): number[] => {
     return dateObject.firstDateYear + i
   })
 }
-const monthArray = (lastMonth: number): number[] => {
-  const firstMonth = 1
-  const tmpArray = [...Array(lastMonth + ADD_YEAR_AND_MONTH)]
+const monthArray = (startMonth: number, lastMonth: number): number[] => {
+  const tmpArray = [...Array(lastMonth - startMonth + ADD_YEAR_AND_MONTH)]
   return tmpArray.map((_, i) => {
-    return firstMonth + i
+    return startMonth + i
   })
 }
 

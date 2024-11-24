@@ -28,6 +28,7 @@
     ".next/types/**/*.ts",
     "src/app/features/component/drawer/NormalItemList.tsx"
   ],
-  "exclude": ["node_modules"],
-  "types": ["@types/jest"]
+  "exclude": ["node_modules", "./jest.config.ts"],
+  "types": ["@types/jest"],
+  "jsx": "react"
 }

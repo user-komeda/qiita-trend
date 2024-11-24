@@ -1,4 +1,4 @@
-import Drawer from '@mui/material/Drawer/Drawer'
+import { Drawer } from '@mui/material/'
 
 import { DRAWER_WIDTH } from '@/app/const/const'
 
