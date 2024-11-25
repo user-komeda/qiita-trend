@@ -23,11 +23,7 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: [
-      '**/.eslintrc.js',
-      '**/*.test.{js,jsx,ts,tsx}',
-      '**/jest.config.ts',
-    ],
+    ignores: ['**/.eslintrc.js', '**/jest.config.ts'],
   },
   ...fixupConfigRules(
     compat.extends(
@@ -65,8 +61,7 @@ export default [
 
       parserOptions: {
         project: 'tsconfig.json',
-        tsconfigRootDir:
-          './',
+        tsconfigRootDir: './',
       },
     },
 
@@ -194,7 +189,7 @@ export default [
       'check-file/folder-match-with-fex': [
         'error',
         {
-          '*.test.{js,jsx,ts,tsx}': '**/tests/',
+          //   '*.test.{js,jsx,ts,tsx}': '**/tests/',
           '*.d.ts': '**/types/**/',
         },
       ],
@@ -202,15 +197,18 @@ export default [
       'check-file/filename-naming-convention': [
         'error',
         {
-          '**/!(*.d).ts': 'CAMEL_CASE',
-          '**/.d.ts': 'PASCAL_CASE',
+          'src/**/!(page.tsx|layout.tsx)': 'PASCAL_CASE',
+          'src/**/(page.tsx|layout.tsx)': 'CAMEL_CASE',
+        },
+        {
+          ignoreMiddleExtensions: true,
         },
       ],
 
       'check-file/folder-naming-convention': [
         'error',
         {
-          'src/**/': 'CAMEL_CASE',
+          'src/**/!((pages))': 'CAMEL_CASE',
         },
       ],
 
@@ -301,6 +299,13 @@ export default [
       ],
 
       'jsdoc/require-returns': ['off'],
+    },
+  },
+  {
+    files: ['**/*.test.ts', '**/*.test.tsx'],
+    rules: {
+      'no-magic-numbers': 'off',
+      'max-lines-per-function': 'off',
     },
   },
 ]

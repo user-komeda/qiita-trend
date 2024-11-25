@@ -1,7 +1,7 @@
 import { List } from '@mui/material'
 
 import ListItemComponent from '@/app/component/ListItemComponent'
-import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/const'
+import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/Const'
 import { ItemsData } from '@/app/types/ItemsData'
 
 /** Main */

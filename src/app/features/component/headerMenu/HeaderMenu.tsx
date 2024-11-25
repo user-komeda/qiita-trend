@@ -2,7 +2,7 @@
 import MenuIcon from '@mui/icons-material/Menu'
 import { IconButton } from '@mui/material'
 
-import useDrawerStore from '../drawer/drawerStore'
+import useDrawerStore from '../drawer/DrawerStore'
 
 /**
  *HeaderMenu
