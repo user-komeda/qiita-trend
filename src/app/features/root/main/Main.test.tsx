@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react'
+import fetch, { enableFetchMocks, MockParams } from 'jest-fetch-mock'
+
+import '@testing-library/jest-dom'
+import { BASE_URL, GET_ALL_ITEM_API_URL } from '../../../const/Const'
 
 import MainComponent from './Main'
 
-import '@testing-library/jest-dom'
-import { BASE_URL, GET_ALL_ITEM_API_URL } from '../../../const/const'
-
-import fetch, { enableFetchMocks, MockParams } from 'jest-fetch-mock'
 enableFetchMocks()
 
 describe('Main Component', () => {
@@ -15,14 +15,11 @@ describe('Main Component', () => {
 
   it('renders by list empty', async () => {
     const mockBody = []
-
     const mockParams = {
       status: 200,
       statusText: 'OK',
     }
-
     fetch.mockResponseOnce(JSON.stringify(mockBody), mockParams)
-
     render(await MainComponent())
     const list = screen.getByRole('list')
     expect(list).toBeInTheDocument()
@@ -38,9 +35,7 @@ describe('Main Component', () => {
       statusText: 'OK',
     }
     fetch.mockResponseOnce(JSON.stringify(mockBody), mockParams)
-
     render(await MainComponent())
-
     expect(screen.getAllByRole('listitem')).toHaveLength(3)
   })
 
@@ -55,9 +50,7 @@ describe('Main Component', () => {
       statusText: 'OK',
     }
     fetch.mockResponseOnce(JSON.stringify(mockBody), mockParams)
-
     render(await MainComponent())
-
     await waitFor(() => {
       expect(global.fetch).toHaveBeenCalledWith(
         `${BASE_URL}${GET_ALL_ITEM_API_URL}`,
