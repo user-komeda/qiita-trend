@@ -14,7 +14,7 @@ describe('DrawerMenu', () => {
     // useDrawerStore.setState({ isOpen: true })
   })
   it('should render MobileDrawerMenu and WrapDrawer components', async () => {
-    const { getByRole, getAllByRole } = render(<DrawerMenu />)
+    render(<DrawerMenu />)
     const allItem = document.querySelectorAll('li')
     expect(allItem).toHaveLength((12 * 11 + 4 + 3) * 2)
     // await userEvent.keyboard('{esc}')
