@@ -1,4 +1,4 @@
-import useDrawerStore from './drawerStore'
+import useDrawerStore from './DrawerStore'
 
 describe('useDrawerStore', () => {
   it('should initialize with isOpen as false', () => {

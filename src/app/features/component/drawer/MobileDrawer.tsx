@@ -1,7 +1,7 @@
 import { Drawer } from '@mui/material'
 import React from 'react'
 
-import { DRAWER_WIDTH } from '@/app/const/const'
+import { DRAWER_WIDTH } from '@/app/const/Const'
 
 import AccordionMenu from './AccordionMenu'
 
