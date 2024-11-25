@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import useDrawerStore from './drawerStore'
+import useDrawerStore from './DrawerStore'
 import MobileDrawerMenu from './MobileDrawer'
 import '@testing-library/jest-dom'
 
@@ -15,7 +15,7 @@ describe('DrawerMenu', () => {
   it('should render MobileDrawerMenu visible', () => {
     useDrawerStore.setState({ isOpen: true })
     const handleDrawerClose = jest.fn()
-    const { getByRole } = render(
+    render(
       <MobileDrawerMenu
         isModalOpen={true}
         handleDrawerClose={handleDrawerClose}
@@ -24,7 +24,6 @@ describe('DrawerMenu', () => {
     const rootElement = document.querySelector('div[role="presentation"]')
     expect(rootElement).toBeVisible()
     const allListItem = document.querySelectorAll('li')
-    console.log(allListItem.length)
     expect(allListItem).toHaveLength(12 * 11 + 4 + 3)
   })
 

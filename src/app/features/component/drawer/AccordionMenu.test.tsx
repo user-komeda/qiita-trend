@@ -36,7 +36,7 @@ describe('AccordionMenu', () => {
 const checkMonthText = (
   startIndex = 1,
   monthList: NodeListOf<HTMLLIElement>,
-) => {
+): void => {
   monthList.forEach((month, index) => {
     expect(month.textContent).toBe(`${startIndex + index}月`)
   })
