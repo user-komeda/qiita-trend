@@ -7,6 +7,10 @@ export interface ItemsData {
    */
   id: string
   /**
+   * body
+   */
+  body: string
+  /**
    *likesCount
    */
   likesCount: number
@@ -22,4 +26,8 @@ export interface ItemsData {
    *pageViewsCount
    */
   pageViewsCount: number
+  /**
+   *tags
+   */
+  tags: string[]
 }
