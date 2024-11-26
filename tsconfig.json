@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,8 +22,11 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
@@ -28,7 +35,12 @@
     ".next/types/**/*.ts",
     "src/app/features/component/drawer/NormalItemList.tsx"
   ],
-  "exclude": ["node_modules", "./jest.config.ts"],
-  "types": ["@types/jest"],
+  "exclude": [
+    "node_modules",
+    "./jest.config.ts"
+  ],
+  "types": [
+    "@types/jest"
+  ],
   "jsx": "react"
 }

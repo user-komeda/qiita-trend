@@ -1,5 +1,5 @@
 import MainContent from '../component/MainContent'
-import Main from '../features/root/main/Main'
+import Main from '../features/routes/main/Main'
 
 /**
  *Home

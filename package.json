@@ -14,7 +14,6 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "-": "^0.0.1",
     "@emotion/cache": "^11.13.1",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
@@ -22,10 +21,11 @@
     "@mui/icons-material": "^6.0.0",
     "@mui/material": "^6.0.0",
     "@mui/material-nextjs": "^6.0.0",
-    "expo-router": "^4.0.0",
     "next": "15.0.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0",
     "zustand": "^5.0.0"
   },
   "devDependencies": {
