@@ -2,6 +2,7 @@ import { List, Stack } from '@mui/material'
 
 import Chip from '@/app/component/Chip'
 import ListItemComponent from '@/app/component/ListItemComponent'
+import { BASE_URL_CLIENT } from '@/app/const/Const'
 
 /**
  *記事につけられているタグを表示
@@ -19,6 +20,7 @@ const TagList = ({ tagList }: { tagList: string[] }): JSX.Element => {
             key={index}
             keyId={index}
             childComponent={<Chip text={tag}></Chip>}
+            href={`${BASE_URL_CLIENT}/tags/${tag}/items`}
           />
         )
       })}

@@ -197,8 +197,10 @@ export default [
       'check-file/filename-naming-convention': [
         'error',
         {
-          'src/**/!(page.tsx|layout.tsx)': 'PASCAL_CASE',
-          'src/**/(page.tsx|layout.tsx)': 'CAMEL_CASE',
+          'src/**/!(page.tsx|layout.tsx|replaceUrlParameter.ts|replaceUrlParameter.test.ts)':
+            'PASCAL_CASE',
+          'src/**/(page.tsx|layout.tsx|replaceUrlParameter.ts|replaceUrlParameter.test.ts)':
+            'CAMEL_CASE',
         },
         {
           ignoreMiddleExtensions: true,
