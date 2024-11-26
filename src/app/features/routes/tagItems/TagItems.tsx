@@ -4,16 +4,28 @@ import ListItemComponent from '@/app/component/ListItemComponent'
 import {
   BASE_URL,
   BASE_URL_CLIENT,
-  GET_ALL_ITEM_API_URL,
+  GET_ITEMS_BY_TAG_URL,
 } from '@/app/const/Const'
 import { ItemsData } from '@/app/types/ItemsData'
+import replaceUrlParameter from '@/app/util/replaceUrlParameter'
 
-/** Main */
-const Main = async (): Promise<JSX.Element> => {
+/** TagItems */
+const TagItems = async ({
+  tagName,
+}: {
+  tagName: string
+}): Promise<JSX.Element> => {
   const resultDataList = (await (
-    await fetch(`${BASE_URL}${GET_ALL_ITEM_API_URL}`, {
-      next: { revalidate: 3600 },
-    })
+    await fetch(
+      replaceUrlParameter(
+        `${BASE_URL}${GET_ITEMS_BY_TAG_URL}`,
+        'tagName',
+        tagName,
+      ),
+      {
+        next: { revalidate: 3600 },
+      },
+    )
   ).json()) as ItemsData[]
 
   return (
@@ -31,4 +43,4 @@ const Main = async (): Promise<JSX.Element> => {
     </List>
   )
 }
-export default Main
+export default TagItems
