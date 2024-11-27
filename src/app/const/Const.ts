@@ -7,4 +7,6 @@ export const BASE_URL_CLIENT = 'http://localhost:3000'
 /** GET_ALL_ITEM_API_URL */
 export const GET_ALL_ITEM_API_URL = '/public/items/'
 /** GET_ALL_ITEM_API_URL */
+export const GET_ALL_TAG_URL = '/public/tags/'
+/** GET_ALL_ITEM_API_URL */
 export const GET_ITEMS_BY_TAG_URL = '/public/tags/:tagName/items'
