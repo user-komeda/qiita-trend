@@ -3,6 +3,7 @@ import Link from 'next/link'
 interface Props {
   href: string
   children: JSX.Element
+  isDisableMarginZero?: boolean
 }
 /**
  *NextJSLInk
@@ -11,10 +12,18 @@ interface Props {
  *
  * @returns - JSX Element
  */
-const NextLink = ({ href, children }: Props): JSX.Element => {
+const NextLink = ({
+  href,
+  children,
+  isDisableMarginZero,
+}: Props): JSX.Element => {
+  const sx =
+    isDisableMarginZero !== undefined && isDisableMarginZero
+      ? { marginLeft: '15px !important' }
+      : { marginLeft: '0 !important' }
   return (
     <Link href={href} passHref legacyBehavior>
-      <MuiLink underline="none" sx={{ marginLeft: '0 !important' }}>
+      <MuiLink underline="none" sx={sx}>
         {children}
       </MuiLink>
     </Link>
