@@ -2,7 +2,7 @@ import { List, Stack } from '@mui/material'
 
 import Chip from '@/app/component/Chip'
 import ListItemComponent from '@/app/component/ListItemComponent'
-import { BASE_URL_CLIENT } from '@/app/const/Const'
+import { BASE_URL_CLIENT } from '@/app/const/const'
 
 /**
  *記事につけられているタグを表示

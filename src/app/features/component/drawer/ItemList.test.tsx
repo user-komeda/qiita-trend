@@ -1,17 +1,17 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import FirstYearListItem from './FirstYearListItem'
+import ItemList from './ItemList'
 
-describe('FirstYearListItem', () => {
+describe('LastYearListItem', () => {
   it('renders a list of months', () => {
-    const firstDateLastMonthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    const monthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     const { getAllByRole } = render(
-      <FirstYearListItem firstDateLastMonthList={firstDateLastMonthList} />,
+      <ItemList monthList={monthList} year={2023} date={new Date('2023/11')} />,
     )
 
     const listItem = getAllByRole('listitem')
-    expect(listItem).toHaveLength(12)
+    expect(listItem).toHaveLength(11)
 
     listItem.forEach((item, index) => {
       expect(item.textContent).toBe(`${index + 1}月`)
@@ -19,9 +19,9 @@ describe('FirstYearListItem', () => {
   })
 
   it('renders an empty list when endDateLastMonthList is empty', () => {
-    const firstDateLastMonthList: number[] = []
+    const monthList: number[] = []
     const { container } = render(
-      <FirstYearListItem firstDateLastMonthList={firstDateLastMonthList} />,
+      <ItemList monthList={monthList} year={2023} date={new Date('2023/11')} />,
     )
 
     expect(container.querySelector('ul')?.children.length).toBe(0)

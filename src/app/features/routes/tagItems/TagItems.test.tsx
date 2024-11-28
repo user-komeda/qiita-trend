@@ -4,7 +4,7 @@ import fetch, { enableFetchMocks, MockParams } from 'jest-fetch-mock'
 import '@testing-library/jest-dom'
 import replaceUrlParameter from '@/app/util/replaceUrlParameter'
 
-import { BASE_URL, GET_ITEMS_BY_TAG_URL } from '../../../const/Const'
+import { BASE_URL, GET_ITEMS_BY_TAG_URL } from '../../../const/const'
 
 import TagItems from './TagItems'
 

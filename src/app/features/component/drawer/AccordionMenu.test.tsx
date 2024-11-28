@@ -5,7 +5,8 @@ import AccordionMenu from './AccordionMenu'
 
 describe('AccordionMenu', () => {
   test('renders without crashing', () => {
-    const mockDate = new Date(2023, 3, 1).getTime()
+    // 基準日が0なので月は-1
+    const mockDate = new Date(2023, 10, 28).getTime()
     Date.now = jest.fn(() => {
       return mockDate
     })
@@ -25,7 +26,7 @@ describe('AccordionMenu', () => {
     expect(firstYearMonthList).toHaveLength(4)
     checkMonthText(9, firstYearMonthList)
     expect(endYear?.textContent).toBe('2023')
-    expect(endYearMonthList).toHaveLength(3)
+    expect(endYearMonthList).toHaveLength(11)
     checkMonthText(1, endYearMonthList)
     expect(otherYear?.textContent).toBe('2012')
     expect(otherYearMonthList).toHaveLength(12)

@@ -7,6 +7,8 @@ interface Props {
   primary?: string
   childComponent?: JSX.Element
   href?: string
+  dateString?: string
+  endDateString?: string
 }
 
 /** ListItemComponent */

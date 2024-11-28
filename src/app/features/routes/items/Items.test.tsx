@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
 import '@testing-library/jest-dom'
-import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/Const'
+import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/const'
 import { ItemsData } from '@/app/types/ItemsData'
 
 import Items from './Items'
