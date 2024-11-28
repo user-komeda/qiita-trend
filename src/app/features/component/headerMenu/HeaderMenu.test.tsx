@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import React from 'react'
 
-import useDrawerStore from '../drawer/DrawerStore'
+import useDrawerStore from '../../../store/drawerStore'
 
 import HeaderMenu from './HeaderMenu'
 

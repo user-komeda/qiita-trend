@@ -1,13 +1,14 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import useDrawerStore from './DrawerStore'
+import useDrawerStore from '../../../store/drawerStore'
+
 import MobileDrawerMenu from './MobileDrawer'
 import '@testing-library/jest-dom'
 
 describe('DrawerMenu', () => {
   beforeEach(() => {
-    const mockDate = new Date(2023, 3, 1).getTime()
+    const mockDate = new Date(2023, 10, 28).getTime()
     Date.now = jest.fn(() => {
       return mockDate
     })
@@ -24,7 +25,7 @@ describe('DrawerMenu', () => {
     const rootElement = document.querySelector('div[role="presentation"]')
     expect(rootElement).toBeVisible()
     const allListItem = document.querySelectorAll('li')
-    expect(allListItem).toHaveLength(12 * 11 + 4 + 3)
+    expect(allListItem).toHaveLength(12 * 11 + 4 + 11)
   })
 
   it('should render MobileDrawerMenu not visible', () => {

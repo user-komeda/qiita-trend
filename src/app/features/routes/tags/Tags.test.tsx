@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import fetch, { enableFetchMocks, MockParams } from 'jest-fetch-mock'
 
 import '@testing-library/jest-dom'
-import { BASE_URL, GET_ALL_TAG_URL } from '../../../const/Const'
+import { BASE_URL, GET_ALL_TAG_URL } from '../../../const/const'
 
 import Tags from './Tags'
 

@@ -5,7 +5,7 @@ import {
   BASE_URL,
   BASE_URL_CLIENT,
   GET_ITEMS_BY_TAG_URL,
-} from '@/app/const/Const'
+} from '@/app/const/const'
 import { ItemsData } from '@/app/types/ItemsData'
 import replaceUrlParameter from '@/app/util/replaceUrlParameter'
 

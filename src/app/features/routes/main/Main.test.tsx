@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import fetch, { enableFetchMocks, MockParams } from 'jest-fetch-mock'
 
 import '@testing-library/jest-dom'
-import { BASE_URL, GET_ALL_ITEM_API_URL } from '../../../const/Const'
+import { BASE_URL, GET_ALL_ITEM_API_URL } from '../../../const/const'
 
 import MainComponent from './Main'
 
@@ -20,7 +20,9 @@ describe('Main Component', () => {
       statusText: 'OK',
     }
     fetch.mockResponseOnce(JSON.stringify(mockBody), mockParams)
-    render(await MainComponent())
+    render(
+      await MainComponent({ startDate: '2023-01-01', endDate: '2023-01-31' }),
+    )
     const list = screen.getByRole('list')
     expect(list).toBeInTheDocument()
   })
@@ -35,7 +37,9 @@ describe('Main Component', () => {
       statusText: 'OK',
     }
     fetch.mockResponseOnce(JSON.stringify(mockBody), mockParams)
-    render(await MainComponent())
+    render(
+      await MainComponent({ startDate: '2023-01-01', endDate: '2023-01-31' }),
+    )
     expect(screen.getAllByRole('listitem')).toHaveLength(3)
   })
 
@@ -50,10 +54,12 @@ describe('Main Component', () => {
       statusText: 'OK',
     }
     fetch.mockResponseOnce(JSON.stringify(mockBody), mockParams)
-    render(await MainComponent())
+    render(
+      await MainComponent({ startDate: '2023-01-01', endDate: '2023-01-31' }),
+    )
     await waitFor(() => {
       expect(global.fetch).toHaveBeenCalledWith(
-        `${BASE_URL}${GET_ALL_ITEM_API_URL}`,
+        `${BASE_URL}${GET_ALL_ITEM_API_URL}?startDate=2023-01-01&endDate=2023-01-31`,
         {
           next: { revalidate: 3600 },
         },

@@ -4,14 +4,11 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Drawer,
 } from '@mui/material'
 
-import { DRAWER_WIDTH } from '@/app/const/Const'
+import { DRAWER_WIDTH } from '@/app/const/const'
 
-import FirstYearListItem from './FirstYearListItem'
-import LastYearListItem from './LastYearListItem'
-import NormalItemList from './NormalItemList'
+import ItemList from './ItemList'
 
 interface DateObject {
   firstDateLastMonth: number
@@ -23,18 +20,21 @@ interface DateObject {
 const ARRAY_FIRST_INDEX = 0
 const ARRAY_LAST_INDEX_MINUS = 1
 const ADD_YEAR_AND_MONTH = 1
+const MONTH_OFFSET = 1
 
 /** AccordionMenu */
 const AccordionMenu = (): JSX.Element => {
+  const date = new Date()
   const dateObject = getDateObject()
   const yearList = yearArray(dateObject)
+  // eslint-disable-next-line no-magic-numbers
+  const monthList = monthArray(1, dateObject.firstDateLastMonth)
   // eslint-disable-next-line no-magic-numbers
   const firstDateLastMonthList = monthArray(9, dateObject.firstDateLastMonth)
   // eslint-disable-next-line no-magic-numbers
   const endDateLastMonthList = monthArray(1, dateObject.EndDateLastMonth)
   return (
     <Box sx={{ width: DRAWER_WIDTH }} role="presentation">
-      <Drawer></Drawer>
       {yearList.map((year) => {
         return (
           <Accordion key={year}>
@@ -42,17 +42,17 @@ const AccordionMenu = (): JSX.Element => {
             <AccordionDetails>
               <nav aria-label="main mailbox folders">
                 <List>
-                  {isNormalYear(yearList, year) ? (
-                    <NormalItemList></NormalItemList>
-                  ) : isLastYear(yearList, year) ? (
-                    <LastYearListItem
-                      endDateLastMonthList={endDateLastMonthList}
-                    ></LastYearListItem>
-                  ) : (
-                    <FirstYearListItem
-                      firstDateLastMonthList={firstDateLastMonthList}
-                    ></FirstYearListItem>
-                  )}
+                  <ItemList
+                    date={date}
+                    year={year}
+                    monthList={
+                      isNormalYear(yearList, year)
+                        ? monthList
+                        : isLastYear(yearList, year)
+                          ? endDateLastMonthList
+                          : firstDateLastMonthList
+                    }
+                  ></ItemList>
                 </List>
               </nav>
             </AccordionDetails>
@@ -69,7 +69,7 @@ const getDateObject = (): DateObject => {
   return {
     firstDateLastMonth: 12,
     firstDateYear: firstDate.getFullYear(),
-    EndDateLastMonth: endDate.getMonth(),
+    EndDateLastMonth: endDate.getMonth() + MONTH_OFFSET,
     EndDateYear: endDate.getFullYear(),
   }
 }

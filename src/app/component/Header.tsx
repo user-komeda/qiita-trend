@@ -8,7 +8,7 @@ import {
 } from '@mui/material'
 import React, { ReactNode } from 'react'
 
-import { DRAWER_WIDTH } from '../const/Const'
+import { DRAWER_WIDTH } from '../const/const'
 
 interface Props {
   title: string
