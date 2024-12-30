@@ -60,9 +60,6 @@ describe('Main Component', () => {
     await waitFor(() => {
       expect(global.fetch).toHaveBeenCalledWith(
         `${BASE_URL}${GET_ALL_ITEM_API_URL}?startDate=2023-01-01&endDate=2023-01-31`,
-        {
-          next: { revalidate: 3600 },
-        },
       )
     })
   })

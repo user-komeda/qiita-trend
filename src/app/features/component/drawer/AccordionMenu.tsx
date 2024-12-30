@@ -24,7 +24,6 @@ const MONTH_OFFSET = 1
 
 /** AccordionMenu */
 const AccordionMenu = (): JSX.Element => {
-  const date = new Date()
   const dateObject = getDateObject()
   const yearList = yearArray(dateObject)
   // eslint-disable-next-line no-magic-numbers
@@ -43,7 +42,6 @@ const AccordionMenu = (): JSX.Element => {
               <nav aria-label="main mailbox folders">
                 <List>
                   <ItemList
-                    date={date}
                     year={year}
                     monthList={
                       isNormalYear(yearList, year)
