@@ -20,6 +20,7 @@ const customJestConfig = {
     'node_module',
     'page.tsx$',
     'src/app/component',
+    'src/app/api',
     'src/app/const/Const.ts',
     'src/app/layout.tsx',
     'src/app/features/component/drawer/DrawerMenu.tsx',

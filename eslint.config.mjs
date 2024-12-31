@@ -117,7 +117,7 @@ export default [
       '@typescript-eslint/no-unnecessary-condition': 'error',
       '@typescript-eslint/no-unsafe-unary-minus': 'error',
       '@typescript-eslint/no-useless-empty-export': 'error',
-      '@typescript-eslint/no-useless-template-literals': 'error',
+      '@typescript-eslint/no-unnecessary-template-expression': 'error',
       '@typescript-eslint/prefer-includes': 'error',
       '@typescript-eslint/require-array-sort-compare': 'error',
       '@typescript-eslint/sort-type-constituents': 'error',
