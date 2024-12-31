@@ -14,12 +14,12 @@ describe('AccordionMenu', () => {
 
     const div = getByRole('presentation')
     const list = div.children
-    const firstYear = list[0].querySelector('div')
+    const firstYear = list[0].querySelector('button')
     const firstYearMonthList = list[0].children[1].querySelectorAll('li')
-    const endYear = list[list.length - 1].querySelector('div')
+    const endYear = list[list.length - 1].querySelector('button')
     const endYearMonthList =
       list[list.length - 1].children[1].querySelectorAll('li')
-    const otherYear = list[1].querySelector('div')
+    const otherYear = list[1].querySelector('button')
     const otherYearMonthList = list[1].children[1].querySelectorAll('li')
 
     expect(firstYear?.textContent).toBe('2011')

@@ -10,6 +10,8 @@ import React, { ReactNode } from 'react'
 
 import { DRAWER_WIDTH } from '../const/const'
 
+import NextLink from './NextLink'
+
 interface Props {
   title: string
   childComponent: ReactNode
@@ -36,7 +38,11 @@ const Header = ({ title, childComponent }: Props): JSX.Element => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               {title}
             </Typography>
-            <Button color="inherit">Login</Button>
+            <NextLink
+              href={`https://qiita.com/api/v2/oauth/authorize?client_id=${process.env.CLIENT_ID}&scope=read_qiita+write_qiita`}
+            >
+              <Button color="inherit">Login</Button>
+            </NextLink>
           </Toolbar>
         </AppBar>
       </Box>
