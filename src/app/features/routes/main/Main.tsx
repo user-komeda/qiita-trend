@@ -20,12 +20,7 @@ const Main = async ({
   startDate && searchParams.append('startDate', startDate)
   endDate && searchParams.append('endDate', endDate)
   const resultDataList = (await (
-    await fetch(
-      `${BASE_URL}${GET_ALL_ITEM_API_URL}?${searchParams.toString()}`,
-      {
-        next: { revalidate: 3600 },
-      },
-    )
+    await fetch(`${BASE_URL}${GET_ALL_ITEM_API_URL}?${searchParams.toString()}`)
   ).json()) as ItemsData[]
 
   return (

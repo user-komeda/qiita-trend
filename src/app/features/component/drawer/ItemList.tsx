@@ -4,25 +4,22 @@ import ListItemComponent from '@/app/component/ListItemComponent'
 import { BASE_URL_CLIENT } from '@/app/const/const'
 import getLastDate from '@/app/util/getLastDate'
 
-const MONTH_OFFSET = 1
-
 interface Props {
   monthList: number[]
-  date: Date
   year: number
 }
 
 /**
  *LastYearListItem
  */
-const ItemList = ({ monthList, date, year }: Props): JSX.Element => {
+const ItemList = ({ monthList, year }: Props): JSX.Element => {
   return (
     <List>
       {monthList.map((month) => {
-        date.setFullYear(year, month - MONTH_OFFSET)
-        const dateString = `${date.getFullYear()}-${date.getMonth() + MONTH_OFFSET}-01`
+        const date = new Date(year, month)
+        const dateString = `${date.getFullYear()}-${date.getMonth()}-01`
 
-        const endDateString = `${date.getFullYear()}-${date.getMonth() + MONTH_OFFSET}-${getLastDate(date.getFullYear(), date.getMonth() + MONTH_OFFSET)}`
+        const endDateString = `${date.getFullYear()}-${date.getMonth()}-${getLastDate(date.getFullYear(), date.getMonth())}`
         return (
           <ListItemComponent
             key={month}
