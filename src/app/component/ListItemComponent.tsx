@@ -1,3 +1,4 @@
+/* eslint  @typescript-eslint/strict-boolean-expressions: 0 */
 import { ListItem, ListItemButton, ListItemText } from '@mui/material'
 
 import NextLink from './NextLink'
