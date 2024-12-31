@@ -13,12 +13,15 @@ const Main = async ({
   startDate,
   endDate,
 }: {
-  startDate: string
-  endDate: string
+  startDate?: string
+  endDate?: string
 }): Promise<JSX.Element> => {
   const searchParams = new URLSearchParams()
-  startDate && searchParams.append('startDate', startDate)
-  endDate && searchParams.append('endDate', endDate)
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+  if (startDate && endDate) {
+    searchParams.append('startDate', startDate)
+    searchParams.append('endDate', endDate)
+  }
   const resultDataList = (await (
     await fetch(`${BASE_URL}${GET_ALL_ITEM_API_URL}?${searchParams.toString()}`)
   ).json()) as ItemsData[]
