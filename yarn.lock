@@ -3874,12 +3874,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prefer-arrow-functions@npm:3.4.1":
-  version: 3.4.1
-  resolution: "eslint-plugin-prefer-arrow-functions@npm:3.4.1"
+"eslint-plugin-prefer-arrow-functions@npm:3.4.2":
+  version: 3.4.2
+  resolution: "eslint-plugin-prefer-arrow-functions@npm:3.4.2"
   peerDependencies:
     eslint: ">=8.0.0"
-  checksum: 10c0/c8f55de8442a52d845693c25c877c745aada94ba92145f2373ef95ff5fb176ea5afa989a193db21ae9b6bed0ff668fabddf60a3416da3dd1d273631cd6fa9e26
+  checksum: 10c0/c9a4bad832e3eb7d5120c043aa30131ca967f153a562319a9e0b995c9fbfecef06f9fa9a13cd345a8efa7dcc4d92965fecda8b21ece479e0e85b2927616bd871
   languageName: node
   linkType: hard
 
@@ -7611,7 +7611,7 @@ __metadata:
     eslint-plugin-import: "npm:2.31.0"
     eslint-plugin-jest: "npm:28.10.0"
     eslint-plugin-jsdoc: "npm:50.6.1"
-    eslint-plugin-prefer-arrow-functions: "npm:3.4.1"
+    eslint-plugin-prefer-arrow-functions: "npm:3.4.2"
     eslint-plugin-prettier: "npm:5.2.1"
     eslint-plugin-unused-imports: "npm:4.1.4"
     husky: "npm:9.1.7"
