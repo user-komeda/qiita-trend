@@ -3875,15 +3875,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prefer-arrow-functions@npm:3.6.0":
-  version: 3.6.0
-  resolution: "eslint-plugin-prefer-arrow-functions@npm:3.6.0"
+"eslint-plugin-prefer-arrow-functions@npm:3.6.1":
+  version: 3.6.1
+  resolution: "eslint-plugin-prefer-arrow-functions@npm:3.6.1"
   dependencies:
     "@typescript-eslint/types": "npm:8.19.1"
     "@typescript-eslint/utils": "npm:8.19.1"
   peerDependencies:
-    eslint: 9.17.0
-  checksum: 10c0/e4709dc0eda172cd335a9b071e96d43a9633dc42798bf68d93073995dde4a0c85dd901bdb6cc181a4a3b8def49932f731f77ee2be9b44a1f1e41cea545bb8266
+    eslint: ">=9.17.0"
+  checksum: 10c0/4f487269f7a553e9339b705ea1ed04262fbe0324b4b6698e8e48649eed2946589e92f12a5a50b89fa027685021f6f4d85f8795a85fd8c12eefcd9a2559b5650f
   languageName: node
   linkType: hard
 
@@ -7615,7 +7615,7 @@ __metadata:
     eslint-plugin-import: "npm:2.31.0"
     eslint-plugin-jest: "npm:28.10.0"
     eslint-plugin-jsdoc: "npm:50.6.1"
-    eslint-plugin-prefer-arrow-functions: "npm:3.6.0"
+    eslint-plugin-prefer-arrow-functions: "npm:3.6.1"
     eslint-plugin-prettier: "npm:5.2.1"
     eslint-plugin-unused-imports: "npm:4.1.4"
     husky: "npm:9.1.7"
