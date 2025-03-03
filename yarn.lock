@@ -7819,8 +7819,8 @@ __metadata:
   linkType: hard
 
 "react-markdown@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "react-markdown@npm:10.0.0"
+  version: 10.0.1
+  resolution: "react-markdown@npm:10.0.1"
   dependencies:
     "@types/hast": "npm:^3.0.0"
     "@types/mdast": "npm:^4.0.0"
@@ -7836,7 +7836,7 @@ __metadata:
   peerDependencies:
     "@types/react": ">=18"
     react: ">=18"
-  checksum: 10c0/9846efb451f5c9a47371458c81117c03bc75d51e11917a8ae2a43b3902624aa29534124edd635b81f421111ab4c7978a904ad49199d010d2bbd50c42674eeae6
+  checksum: 10c0/969d7335350ea913da7cac725e744b8fe2eb18ceeed978f0dd25cf9b5b2f9e6f4ec17c61421aeef954b3439cf9f31d8e6acc5654a217417c2af04b7c74982c9e
   languageName: node
   linkType: hard
 
