@@ -14,7 +14,7 @@ describe('Main Component', () => {
   })
 
   it('renders by list empty', async () => {
-    const mockBody = []
+    const mockBody: unknown = []
     const mockParams = {
       status: 200,
       statusText: 'OK',
