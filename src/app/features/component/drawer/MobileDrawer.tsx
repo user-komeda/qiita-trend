@@ -11,10 +11,7 @@ interface Props {
 }
 
 /** MobileDrawerMenu */
-const MobileDrawerMenu = ({
-  isModalOpen,
-  handleDrawerClose,
-}: Props): JSX.Element => {
+const MobileDrawerMenu = ({ isModalOpen, handleDrawerClose }: Props) => {
   return (
     <Drawer
       variant="temporary"

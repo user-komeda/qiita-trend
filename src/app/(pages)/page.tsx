@@ -1,5 +1,3 @@
-import { ReadonlyURLSearchParams } from 'next/navigation'
-
 import MainContent from '../component/MainContent'
 import Main from '../features/routes/main/Main'
 
@@ -9,14 +7,18 @@ import Main from '../features/routes/main/Main'
 const Home = async ({
   searchParams,
 }: {
-  searchParams: Promise<ReadonlyURLSearchParams>
-}): Promise<JSX.Element> => {
+  searchParams: Promise<Record<string, string[] | string | undefined>>
+}) => {
   const params = await searchParams
+
   return (
     <>
       <MainContent
         childComponent={
-          <Main startDate={params.startDate} endDate={params.endDate}></Main>
+          <Main
+            startDate={(params.startDate ?? '') as string}
+            endDate={(params.endDate ?? '') as string}
+          ></Main>
         }
       ></MainContent>
     </>

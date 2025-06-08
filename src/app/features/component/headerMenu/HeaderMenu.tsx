@@ -7,7 +7,7 @@ import useDrawerStore from '../../../store/drawerStore'
 /**
  *HeaderMenu
  */
-const HeaderMenu = (): JSX.Element => {
+const HeaderMenu = () => {
   const changeIsOpen = useDrawerStore((state) => {
     return state.changeIsOpen
   })

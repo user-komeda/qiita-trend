@@ -6,7 +6,7 @@ import NextLink from './NextLink'
 /**
  * StackRow
  */
-const StackRow = ({ tagList }: { tagList: TagsData[] }): JSX.Element => {
+const StackRow = ({ tagList }: { tagList: TagsData[] }) => {
   return (
     <Stack
       direction={'row'}

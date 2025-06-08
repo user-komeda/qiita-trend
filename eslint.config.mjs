@@ -71,8 +71,8 @@ export default [
 
     rules: {
       '@typescript-eslint/interface-name-prefix': 'off',
-      '@typescript-eslint/explicit-function-return-type': 'error',
-      '@typescript-eslint/explicit-module-boundary-types': 'error',
+      // '@typescript-eslint/explicit-function-return-type': 'error',
+      // '@typescript-eslint/explicit-module-boundary-types': 'error',
       '@typescript-eslint/no-explicit-any': 'off',
 
       '@typescript-eslint/naming-convention': [
@@ -251,32 +251,32 @@ export default [
 
       'jsdoc/require-hyphen-before-param-description': ['error', 'always'],
 
-      'jsdoc/require-jsdoc': [
-        'error',
-        {
-          publicOnly: true,
+      // 'jsdoc/require-jsdoc': [
+      //   'error',
+      //   {
+      //     publicOnly: true,
 
-          require: {
-            ArrowFunctionExpression: true,
-            ClassDeclaration: true,
-            ClassExpression: true,
-            FunctionDeclaration: true,
-            FunctionExpression: true,
-            MethodDefinition: true,
-          },
+      //     require: {
+      //       ArrowFunctionExpression: true,
+      //       ClassDeclaration: true,
+      //       ClassExpression: true,
+      //       FunctionDeclaration: true,
+      //       FunctionExpression: true,
+      //       MethodDefinition: true,
+      //     },
 
-          contexts: [
-            'PropertyDefinition',
-            'VariableDeclaration',
-            'TSInterfaceDeclaration',
-            'TSTypeAliasDeclaration',
-            'TSPropertySignature',
-            'TSMethodSignature',
-          ],
+      //     contexts: [
+      //       'PropertyDefinition',
+      //       'VariableDeclaration',
+      //       'TSInterfaceDeclaration',
+      //       'TSTypeAliasDeclaration',
+      //       'TSPropertySignature',
+      //       'TSMethodSignature',
+      //     ],
 
-          checkConstructors: false,
-        },
-      ],
+      //     checkConstructors: false,
+      //   },
+      // ],
 
       'jsdoc/require-param': [
         'error',

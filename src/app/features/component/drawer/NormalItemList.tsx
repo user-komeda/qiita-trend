@@ -8,7 +8,7 @@ const MONTH_FIRST_INDEX = 1
 /**
  *NormalItemList
  */
-const NormalItemList = (): JSX.Element => {
+const NormalItemList = () => {
   const monthList = [...Array(MONTH_LENGTH)].map((_, i) => {
     return i + MONTH_FIRST_INDEX
   })
@@ -18,6 +18,7 @@ const NormalItemList = (): JSX.Element => {
         return (
           <ListItemComponent
             key={month}
+            keyId={month}
             primary={`${month}月`}
           ></ListItemComponent>
         )

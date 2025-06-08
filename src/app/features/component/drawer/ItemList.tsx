@@ -12,7 +12,7 @@ interface Props {
 /**
  *LastYearListItem
  */
-const ItemList = ({ monthList, year }: Props): JSX.Element => {
+const ItemList = ({ monthList, year }: Props) => {
   return (
     <List>
       {monthList.map((month) => {
@@ -23,6 +23,7 @@ const ItemList = ({ monthList, year }: Props): JSX.Element => {
         return (
           <ListItemComponent
             key={month}
+            keyId={month}
             primary={`${month}月`}
             href={`${BASE_URL_CLIENT}/?startDate=${dateString}&endDate=${endDateString}`}
           ></ListItemComponent>

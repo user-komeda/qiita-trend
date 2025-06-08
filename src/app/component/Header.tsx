@@ -20,7 +20,7 @@ interface Props {
 /**
  *Header
  */
-const Header = ({ title, childComponent }: Props): JSX.Element => {
+const Header = ({ title, childComponent }: Props) => {
   return (
     <header>
       <Box sx={{ flexGrow: 1 }}>

@@ -9,11 +9,7 @@ import remarkGfm from 'remark-gfm'
  *
  * @returns - React Element
  */
-const MarkDownComponent = ({
-  markDownText,
-}: {
-  markDownText: string
-}): JSX.Element => {
+const MarkDownComponent = ({ markDownText }: { markDownText: string }) => {
   return (
     <ReactMarkdown remarkPlugins={[remarkGfm]}>{markDownText}</ReactMarkdown>
   )

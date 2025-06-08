@@ -13,7 +13,7 @@ import TagList from './TagList'
  *
  * @returns - React Element
  */
-const Items = async ({ id }: { id: string }): Promise<JSX.Element> => {
+const Items = async ({ id }: { id: string }) => {
   const resultData = (await (
     await fetch(`${BASE_URL}${GET_ALL_ITEM_API_URL}${id}`, {
       next: { revalidate: 3600 },
