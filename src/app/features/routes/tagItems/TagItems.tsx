@@ -10,11 +10,7 @@ import { ItemsData } from '@/app/types/ItemsData'
 import replaceUrlParameter from '@/app/util/replaceUrlParameter'
 
 /** TagItems */
-const TagItems = async ({
-  tagName,
-}: {
-  tagName: string
-}): Promise<JSX.Element> => {
+const TagItems = async ({ tagName }: { tagName: string }) => {
   const resultDataList = (await (
     await fetch(
       replaceUrlParameter(

@@ -1,6 +1,6 @@
 import { CssBaseline } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
-import { ReactNode } from 'react'
+import { ReactNode, Suspense } from 'react'
 
 import Header from './component/Header'
 import SideMenu from './component/SideMenu'
@@ -14,7 +14,7 @@ export const metadata = {
 }
 
 /** rootLayout */
-const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => {
+const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="en">
       <body>
@@ -25,7 +25,7 @@ const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => {
             childComponent={<HeaderMenu></HeaderMenu>}
           ></Header>{' '}
           <SideMenu childComponent={<DrawerMenu />}></SideMenu>
-          {children}
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         </AppRouterCacheProvider>
       </body>
     </html>

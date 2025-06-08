@@ -21,7 +21,7 @@ global.fetch = jest.fn(() => {
 jest.mock('react-markdown', () => {
   return {
     __esModule: true,
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+
     default: (props: any) => {
       return props.children
     },
@@ -31,7 +31,7 @@ jest.mock('react-markdown', () => {
 jest.mock('remark-gfm', () => {
   return {
     __esModule: true,
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+
     default: () => {},
   }
 })

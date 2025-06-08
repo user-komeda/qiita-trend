@@ -7,7 +7,7 @@ import AccordionMenu from '../features/component/drawer/AccordionMenu'
 /**
  *WrapDrawer
  */
-const WrapDrawer = (): JSX.Element => {
+const WrapDrawer = () => {
   return (
     <Drawer
       variant="permanent"

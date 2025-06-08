@@ -11,7 +11,7 @@ import { BASE_URL_CLIENT } from '@/app/const/const'
  *
  * @returns - JSX Element
  */
-const TagList = ({ tagList }: { tagList: string[] }): JSX.Element => {
+const TagList = ({ tagList }: { tagList: string[] }) => {
   return (
     <List component={Stack} direction={'row'} spacing={3}>
       {tagList.map((tag, index) => {

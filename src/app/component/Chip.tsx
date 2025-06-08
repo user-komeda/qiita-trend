@@ -7,7 +7,7 @@ import { Chip as _Chip, Avatar } from '@mui/material'
  *
  * @returns - JSX Element
  */
-const Chip = ({ text }: { text: string }): JSX.Element => {
+const Chip = ({ text }: { text: string }) => {
   return <_Chip label={text} />
 }
 
@@ -20,7 +20,7 @@ export const AvatarChip = ({
 }: {
   text: string
   avatarText: string
-}): JSX.Element => {
+}) => {
   return (
     <_Chip
       label={text}

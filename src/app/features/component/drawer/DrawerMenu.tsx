@@ -7,7 +7,7 @@ import useDrawerStore from '../../../store/drawerStore'
 import MobileDrawerMenu from './MobileDrawer'
 
 /** Drawer */
-const DrawerMenu = (): JSX.Element => {
+const DrawerMenu = () => {
   const isModalOpen = useDrawerStore((state) => {
     return state.isOpen
   })

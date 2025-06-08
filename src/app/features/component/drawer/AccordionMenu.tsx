@@ -23,7 +23,7 @@ const ADD_YEAR_AND_MONTH = 1
 const MONTH_OFFSET = 1
 
 /** AccordionMenu */
-const AccordionMenu = (): JSX.Element => {
+const AccordionMenu = () => {
   const dateObject = getDateObject()
   const yearList = yearArray(dateObject)
   // eslint-disable-next-line no-magic-numbers

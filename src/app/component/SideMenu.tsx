@@ -8,7 +8,7 @@ interface Props {
 }
 
 /** SideMenu */
-const SideMenu = ({ childComponent }: Props): JSX.Element => {
+const SideMenu = ({ childComponent }: Props) => {
   return (
     <Box
       component="nav"
