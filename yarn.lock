@@ -6299,7 +6299,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lefthook@npm:^1.11.13":
+"lefthook@npm:1.11.13":
   version: 1.11.13
   resolution: "lefthook@npm:1.11.13"
   dependencies:
@@ -7898,7 +7898,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     jest-fetch-mock: "npm:3.0.3"
-    lefthook: "npm:^1.11.13"
+    lefthook: "npm:1.11.13"
     next: "npm:15.3.3"
     prettier: "npm:3.5.3"
     react: "npm:^19.0.0"
