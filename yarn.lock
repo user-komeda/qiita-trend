@@ -4065,15 +4065,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-check-file@npm:3.2.0":
-  version: 3.2.0
-  resolution: "eslint-plugin-check-file@npm:3.2.0"
+"eslint-plugin-check-file@npm:3.3.0":
+  version: 3.3.0
+  resolution: "eslint-plugin-check-file@npm:3.3.0"
   dependencies:
     is-glob: "npm:^4.0.3"
     micromatch: "npm:^4.0.8"
   peerDependencies:
     eslint: ">=9.0.0"
-  checksum: 10c0/047f9c17048ebade3f80efb1e0512196bb9dd82e830c1ea2f9e997d6a8b73686dd1c4b4928478f15e6f08da3bf92d3d2599d4770092df74e581b6d17a8c3975c
+  checksum: 10c0/0a3d1ec546c81d671b58ef3b3c95c1abf7eaf21b15ee54482fb9edde473ba98f84f77d16de5c94b152ed8d73e678cba82bc5b636d863025c4ef6872f02468786
   languageName: node
   linkType: hard
 
@@ -7888,7 +7888,7 @@ __metadata:
     eslint-config-next: "npm:15.3.3"
     eslint-config-prettier: "npm:10.1.5"
     eslint-import-resolver-typescript: "npm:4.4.3"
-    eslint-plugin-check-file: "npm:3.2.0"
+    eslint-plugin-check-file: "npm:3.3.0"
     eslint-plugin-import: "npm:2.31.0"
     eslint-plugin-jest: "npm:28.13.0"
     eslint-plugin-jsdoc: "npm:50.7.1"
