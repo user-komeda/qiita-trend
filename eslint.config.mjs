@@ -2,9 +2,7 @@ import { fixupConfigRules, fixupPluginRules } from '@eslint/compat'
 import typescriptEslintEslintPlugin from '@typescript-eslint/eslint-plugin'
 import _import from 'eslint-plugin-import'
 import unusedImports from 'eslint-plugin-unused-imports'
-import jest from 'eslint-plugin-jest'
 import checkFile from 'eslint-plugin-check-file'
-import jsdoc from 'eslint-plugin-jsdoc'
 import preferArrowFunctions from 'eslint-plugin-prefer-arrow-functions'
 import globals from 'globals'
 import tsParser from '@typescript-eslint/parser'
@@ -30,12 +28,9 @@ export default [
       'eslint:recommended',
       'plugin:@typescript-eslint/recommended',
       'plugin:prettier/recommended',
-      'plugin:jsdoc/recommended-typescript-error',
       'plugin:@typescript-eslint/stylistic',
       'plugin:import/recommended',
       'plugin:import/typescript',
-      'plugin:jest/recommended',
-      'plugin:jest/style',
       'next/core-web-vitals',
     ),
   ),
@@ -44,7 +39,6 @@ export default [
       '@typescript-eslint': fixupPluginRules(typescriptEslintEslintPlugin),
       import: fixupPluginRules(_import),
       'unused-imports': unusedImports,
-      jest: fixupPluginRules(jest),
       'check-file': checkFile,
       'prefer-arrow-functions': preferArrowFunctions,
     },
@@ -215,41 +209,41 @@ export default [
         },
       ],
 
-      'jsdoc/check-param-names': [
-        'error',
-        {
-          checkDestructured: false,
-        },
-      ],
+      // 'jsdoc/check-param-names': [
+      //   'error',
+      //   {
+      //     checkDestructured: false,
+      //   },
+      // ],
 
-      'jsdoc/check-tag-names': [
-        'error',
-        {
-          definedTags: ['remarks', 'typeParam'],
-        },
-      ],
+      // 'jsdoc/check-tag-names': [
+      //   'error',
+      //   {
+      //     definedTags: ['remarks', 'typeParam'],
+      //   },
+      // ],
 
-      'jsdoc/require-description': [
-        'error',
-        {
-          contexts: [
-            'ArrowFunctionExpression',
-            'ClassDeclaration',
-            'ClassExpression',
-            'FunctionDeclaration',
-            'FunctionExpression',
-            'MethodDefinition',
-            'PropertyDefinition',
-            'VariableDeclaration',
-            'TSInterfaceDeclaration',
-            'TSTypeAliasDeclaration',
-            'TSPropertySignature',
-            'TSMethodSignature',
-          ],
-        },
-      ],
+      // 'jsdoc/require-description': [
+      //   'error',
+      //   {
+      //     contexts: [
+      //       'ArrowFunctionExpression',
+      //       'ClassDeclaration',
+      //       'ClassExpression',
+      //       'FunctionDeclaration',
+      //       'FunctionExpression',
+      //       'MethodDefinition',
+      //       'PropertyDefinition',
+      //       'VariableDeclaration',
+      //       'TSInterfaceDeclaration',
+      //       'TSTypeAliasDeclaration',
+      //       'TSPropertySignature',
+      //       'TSMethodSignature',
+      //     ],
+      //   },
+      // ],
 
-      'jsdoc/require-hyphen-before-param-description': ['error', 'always'],
+      // 'jsdoc/require-hyphen-before-param-description': ['error', 'always'],
 
       // 'jsdoc/require-jsdoc': [
       //   'error',
@@ -278,30 +272,30 @@ export default [
       //   },
       // ],
 
-      'jsdoc/require-param': [
-        'error',
-        {
-          checkDestructuredRoots: false,
-        },
-      ],
+      // 'jsdoc/require-param': [
+      //   'error',
+      //   {
+      //     checkDestructuredRoots: false,
+      //   },
+      // ],
 
-      'jsdoc/tag-lines': [
-        'error',
-        'always',
-        {
-          startLines: 1,
-          applyToEndTag: false,
-        },
-      ],
+      // 'jsdoc/tag-lines': [
+      //   'error',
+      //   'always',
+      //   {
+      //     startLines: 1,
+      //     applyToEndTag: false,
+      //   },
+      // ],
 
-      'jsdoc/sort-tags': [
-        'error',
-        {
-          reportIntraTagGroupSpacing: false,
-        },
-      ],
+      // 'jsdoc/sort-tags': [
+      //   'error',
+      //   {
+      //     reportIntraTagGroupSpacing: false,
+      //   },
+      // ],
 
-      'jsdoc/require-returns': ['off'],
+      // 'jsdoc/require-returns': ['off'],
     },
   },
   {
