@@ -7,8 +7,7 @@ import {
 } from '@mui/material'
 
 import { DRAWER_WIDTH } from '@/app/const/const'
-
-import ItemList from './ItemList'
+import ItemList from '@/app/features/component/drawer/ItemList'
 
 interface DateObject {
   firstDateLastMonth: number
@@ -26,11 +25,11 @@ const MONTH_OFFSET = 1
 const AccordionMenu = () => {
   const dateObject = getDateObject()
   const yearList = yearArray(dateObject)
-  // eslint-disable-next-line no-magic-numbers
+
   const monthList = monthArray(1, dateObject.firstDateLastMonth)
-  // eslint-disable-next-line no-magic-numbers
+
   const firstDateLastMonthList = monthArray(9, dateObject.firstDateLastMonth)
-  // eslint-disable-next-line no-magic-numbers
+
   const endDateLastMonthList = monthArray(1, dateObject.EndDateLastMonth)
   return (
     <Box sx={{ width: DRAWER_WIDTH }} role="presentation">
@@ -72,17 +71,19 @@ const getDateObject = (): DateObject => {
   }
 }
 const yearArray = (dateObject: DateObject): number[] => {
-  const tmpArray = [
-    ...Array(
+  const tmpArray: unknown[] = Array.from({
+    length:
       dateObject.EndDateYear - dateObject.firstDateYear + ADD_YEAR_AND_MONTH,
-    ),
-  ]
+  })
+
   return tmpArray.map((_, i) => {
     return dateObject.firstDateYear + i
   })
 }
 const monthArray = (startMonth: number, lastMonth: number): number[] => {
-  const tmpArray = [...Array(lastMonth - startMonth + ADD_YEAR_AND_MONTH)]
+  const tmpArray: unknown[] = Array.from({
+    length: lastMonth - startMonth + ADD_YEAR_AND_MONTH,
+  })
   return tmpArray.map((_, i) => {
     return startMonth + i
   })

@@ -2,7 +2,7 @@
 import MenuIcon from '@mui/icons-material/Menu'
 import { IconButton } from '@mui/material'
 
-import useDrawerStore from '../../../store/drawerStore'
+import useDrawerStore from '@/app/store/drawerStore'
 
 /**
  *HeaderMenu
@@ -21,7 +21,7 @@ const HeaderMenu = () => {
         aria-label="menu"
         sx={{ mr: 2, display: { sm: 'none' } }}
         onClick={() => {
-          return changeIsOpen(true)
+          changeIsOpen(true)
         }}
       >
         <MenuIcon />

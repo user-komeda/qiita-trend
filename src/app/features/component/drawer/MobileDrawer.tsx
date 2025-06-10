@@ -2,8 +2,7 @@ import { Drawer } from '@mui/material'
 import React from 'react'
 
 import { DRAWER_WIDTH } from '@/app/const/const'
-
-import AccordionMenu from './AccordionMenu'
+import AccordionMenu from '@/app/features/component/drawer/AccordionMenu'
 
 interface Props {
   isModalOpen: boolean
