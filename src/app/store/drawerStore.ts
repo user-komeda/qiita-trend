@@ -9,7 +9,7 @@ const useDrawerStore: UseBoundStore<StoreApi<Store>> = create<Store>((set) => {
   return {
     isOpen: false,
     changeIsOpen: (flag): void => {
-      return set(() => {
+      set(() => {
         return { isOpen: flag }
       })
     },

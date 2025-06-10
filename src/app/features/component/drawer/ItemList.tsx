@@ -17,14 +17,14 @@ const ItemList = ({ monthList, year }: Props) => {
     <List>
       {monthList.map((month) => {
         const date = new Date(year, month)
-        const dateString = `${date.getFullYear()}-${date.getMonth()}-01`
+        const dateString = `${date.getFullYear().toLocaleString()}-${date.getMonth().toLocaleString()}-01`
 
-        const endDateString = `${date.getFullYear()}-${date.getMonth()}-${getLastDate(date.getFullYear(), date.getMonth())}`
+        const endDateString = `${date.getFullYear().toLocaleString()}-${date.getMonth().toLocaleString()}-${getLastDate(date.getFullYear(), date.getMonth()).toLocaleString()}`
         return (
           <ListItemComponent
             key={month}
             keyId={month}
-            primary={`${month}月`}
+            primary={`${month.toString()}月`}
             href={`${BASE_URL_CLIENT}/?startDate=${dateString}&endDate=${endDateString}`}
           ></ListItemComponent>
         )

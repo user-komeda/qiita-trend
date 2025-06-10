@@ -2,7 +2,7 @@
 import { ListItem, ListItemButton, ListItemText } from '@mui/material'
 import { ReactNode } from 'react'
 
-import NextLink from './NextLink'
+import NextLink from '@/app/component/NextLink'
 
 interface Props {
   keyId: number | string
@@ -19,7 +19,7 @@ const ListItemComponent = ({ keyId, primary, childComponent, href }: Props) => {
     <NextLink href={href ?? ''}>
       <ListItem disablePadding key={keyId}>
         <ListItemButton>
-          {childComponent ? childComponent : <ListItemText primary={primary} />}
+          {childComponent ?? <ListItemText primary={primary} />}
         </ListItemButton>
       </ListItem>
     </NextLink>

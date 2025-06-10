@@ -1,11 +1,13 @@
+/* eslint  react-refresh/only-export-components: 0 */
+
 import { CssBaseline } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import { ReactNode, Suspense } from 'react'
 
-import Header from './component/Header'
-import SideMenu from './component/SideMenu'
-import DrawerMenu from './features/component/drawer/DrawerMenu'
-import HeaderMenu from './features/component/headerMenu/HeaderMenu'
+import Header from '@/app/component/Header'
+import SideMenu from '@/app/component/SideMenu'
+import DrawerMenu from '@/app/features/component/drawer/DrawerMenu'
+import HeaderMenu from '@/app/features/component/headerMenu/HeaderMenu'
 
 /** metaData */
 export const metadata = {

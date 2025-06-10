@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import { ReactNode } from 'react'
 
-import { DRAWER_WIDTH } from '../const/const'
+import { DRAWER_WIDTH } from '@/app/const/const'
 
 interface Props {
   childComponent: ReactNode

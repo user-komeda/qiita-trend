@@ -17,7 +17,7 @@ const Main = async ({
   endDate?: string
 }) => {
   const searchParams = new URLSearchParams()
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+
   if (startDate && endDate) {
     searchParams.append('startDate', startDate)
     searchParams.append('endDate', endDate)

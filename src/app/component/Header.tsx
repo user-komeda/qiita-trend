@@ -8,9 +8,8 @@ import {
 } from '@mui/material'
 import React, { ReactNode } from 'react'
 
-import { DRAWER_WIDTH } from '../const/const'
-
-import NextLink from './NextLink'
+import NextLink from '@/app/component/NextLink'
+import { DRAWER_WIDTH } from '@/app/const/const'
 
 interface Props {
   title: string
@@ -28,8 +27,8 @@ const Header = ({ title, childComponent }: Props) => {
         <AppBar
           position="fixed"
           sx={{
-            width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
-            ml: { sm: `${DRAWER_WIDTH}px` },
+            width: { sm: `calc(100% - ${DRAWER_WIDTH.toString()}px)` },
+            ml: { sm: `${DRAWER_WIDTH.toString()}px` },
           }}
         >
           {' '}
@@ -39,7 +38,7 @@ const Header = ({ title, childComponent }: Props) => {
               {title}
             </Typography>
             <NextLink
-              href={`https://qiita.com/api/v2/oauth/authorize?client_id=${process.env.CLIENT_ID}&scope=read_qiita+write_qiita`}
+              href={`https://qiita.com/api/v2/oauth/authorize?client_id=${process.env.CLIENT_ID ?? ''}&scope=read_qiita+write_qiita`}
             >
               <Button color="inherit">Login</Button>
             </NextLink>

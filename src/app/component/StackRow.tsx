@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack'
 
-import { AvatarChip } from './Chip'
-import NextLink from './NextLink'
+import { AvatarChip } from '@/app/component/Chip'
+import NextLink from '@/app/component/NextLink'
 
 /**
  * StackRow

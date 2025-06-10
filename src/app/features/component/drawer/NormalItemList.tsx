@@ -9,7 +9,7 @@ const MONTH_FIRST_INDEX = 1
  *NormalItemList
  */
 const NormalItemList = () => {
-  const monthList = [...Array(MONTH_LENGTH)].map((_, i) => {
+  const monthList = Array.from({ length: MONTH_LENGTH }).map((_, i) => {
     return i + MONTH_FIRST_INDEX
   })
   return (
@@ -19,7 +19,7 @@ const NormalItemList = () => {
           <ListItemComponent
             key={month}
             keyId={month}
-            primary={`${month}月`}
+            primary={`${month.toString()}月`}
           ></ListItemComponent>
         )
       })}

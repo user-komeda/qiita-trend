@@ -2,9 +2,8 @@ import { Typography } from '@mui/material'
 
 import MarkDownComponent from '@/app/component/MarkDownComponent'
 import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/const'
+import TagList from '@/app/features/routes/items/TagList'
 import { ItemsData } from '@/app/types/ItemsData'
-
-import TagList from './TagList'
 
 /**
  *取得した記事詳細を表示
