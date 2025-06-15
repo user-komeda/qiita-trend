@@ -2425,9 +2425,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/eslint-plugin@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@vitest/eslint-plugin@npm:1.2.2"
+"@vitest/eslint-plugin@npm:1.2.5":
+  version: 1.2.5
+  resolution: "@vitest/eslint-plugin@npm:1.2.5"
   dependencies:
     "@typescript-eslint/utils": "npm:^8.24.0"
   peerDependencies:
@@ -2439,7 +2439,7 @@ __metadata:
       optional: true
     vitest:
       optional: true
-  checksum: 10c0/dba56aaca33a1617c1d3b53ab665d7d716fa76dd17fafeea2dac3fffe9ec76cac1da6947b0b364365c5b61a919a1ee86844d4888a95c9b8cc50d247b09c384a6
+  checksum: 10c0/d1aef835ef786d2897669b64a8e2e828ab8c7d012d566d5738a36345828fb338a8dc6da1e671055469b1676885631fbd8eda502e6038a56037e8123380f8370c
   languageName: node
   linkType: hard
 
@@ -6896,7 +6896,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:8.34.0"
     "@vitejs/plugin-react-swc": "npm:^3.10.1"
     "@vitest/coverage-v8": "npm:3.2.3"
-    "@vitest/eslint-plugin": "npm:1.2.2"
+    "@vitest/eslint-plugin": "npm:1.2.5"
     eslint: "npm:9.28.0"
     eslint-config-next: "npm:15.3.3"
     eslint-config-prettier: "npm:10.1.5"
