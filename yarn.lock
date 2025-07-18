@@ -4332,9 +4332,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:5.5.1":
-  version: 5.5.1
-  resolution: "eslint-plugin-prettier@npm:5.5.1"
+"eslint-plugin-prettier@npm:5.5.2":
+  version: 5.5.2
+  resolution: "eslint-plugin-prettier@npm:5.5.2"
   dependencies:
     prettier-linter-helpers: "npm:^1.0.0"
     synckit: "npm:^0.11.7"
@@ -4348,7 +4348,7 @@ __metadata:
       optional: true
     eslint-config-prettier:
       optional: true
-  checksum: 10c0/6ed93faa7d885af2a987d732f7e716e7aaba55e2da2b091e1b16bacf68425bffe91d784803597bd3f3e6201499fabb89ae28a51ac3986659a46e55e729ed2d55
+  checksum: 10c0/eb5b177e4dd237ef32de758fe7d180bb4ba8185f151abb686c7c949e9b112f5034418fb24bfeb35a88aaa74f6f44e8fe6def3588c9520edce2828e78017438eb
   languageName: node
   linkType: hard
 
@@ -7279,7 +7279,7 @@ __metadata:
     eslint-plugin-jsdoc: "npm:51.4.1"
     eslint-plugin-no-relative-import-paths: "npm:1.6.1"
     eslint-plugin-prefer-arrow-functions: "npm:3.6.2"
-    eslint-plugin-prettier: "npm:5.5.1"
+    eslint-plugin-prettier: "npm:5.5.2"
     eslint-plugin-react: "npm:7.37.5"
     eslint-plugin-react-compiler: "npm:19.1.0-rc.2"
     eslint-plugin-react-refresh: "npm:0.4.20"
