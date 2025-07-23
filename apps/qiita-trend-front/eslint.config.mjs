@@ -105,6 +105,7 @@ export default tseslint.config(
           allow: ['beforeEach'],
         },
       ],
+      'vitest/prefer-importing-vitest-globals': 'off',
       'max-lines-per-function': ['error', 100],
       'max-params': ['error', 4],
     },

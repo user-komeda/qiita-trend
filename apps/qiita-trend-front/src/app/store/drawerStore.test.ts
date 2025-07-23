@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest'
 
 import useDrawerStore from '@/app/store/drawerStore'
 
-describe('useDrawerStore', () => {
+describe(useDrawerStore, () => {
   test('should initialize with isOpen as false', () => {
     expect.hasAssertions()
 
