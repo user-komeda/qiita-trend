@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "outDir": "./dist",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "ESNext",
+    "paths": {
+      "@/app/*": ["./src/app/*"],
+      "@/admin/*": ["./src/app/admin/*"],
+      "@/form/*": ["./src/app/form/*"],
+      "@/public/*": ["./src/app/public/*"],
+      "@/utils/*": ["./src/app/utils/*"],
+      "@/schema/*": ["./src/app/schema/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/const": ["./src/const"]
+    }
+  }
+}

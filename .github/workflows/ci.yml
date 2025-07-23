@@ -1,9 +1,9 @@
 on:
   push:
 
-name: lint
+name: ci
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -16,9 +16,5 @@ jobs:
         run: yarn set version stable
       - name: yarn install
         run: yarn install
-      - name: Run eslint
-        run: yarn lint
-      - name: Run format
-        run: yarn format
-      - name: Run test:cov
-        run: yarn test:cov
+      - name: Run check
+        run: yarn check

@@ -1,0 +1,8 @@
+/** DEFAULT_PORT */
+export const DEFAULT_PORT = 3200
+/** VALIDATION_ERROR_FIRST_INDEX */
+export const CURRENT_VALIDATION_ERROR = 0
+/** ZERO */
+export const ZERO = 0
+/** QIITA_ITEM_ID_LENGTH */
+export const QIITA_ITEM_ID_LENGTH = 20
