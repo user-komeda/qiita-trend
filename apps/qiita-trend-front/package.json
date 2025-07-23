@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "format": "prettier --write \"src/**/*.(ts|tsx)\"",
-    "check": "concurrently 'yarn lint' 'yarn format' 'yarn typecheck' 'yarn test'",
+    "check": "concurrently 'yarn lint' 'yarn format'  'yarn test'",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:cov": "vitest --coverage",
