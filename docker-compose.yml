@@ -1,0 +1,17 @@
+services:
+  qiita-trend-front:
+    container_name: qiita-trend-front
+    build:
+      context: .
+      dockerfile: ./apps/qiita-trend-front/Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+  qiita-trend-backend:
+    container_name: qiita-trend-backend
+    build:
+      context: .
+      dockerfile: ./apps/qiita-trend-backend/Dockerfile
+    restart: always
+    ports:
+      - 3200:3200

@@ -1,13 +1,4 @@
 pre-commit:
-  parallel: true
   commands:
-    typecheck:
-      run: yarn typecheck
-    lint:
-      run: yarn lint
-      stage_fixed: true
-    format:
-      run: yarn format
-      stage_fixed: true
-    test:
-      run: yarn test:cov
+    check:
+      run: yarn check
