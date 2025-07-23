@@ -1,4 +1,5 @@
 /* eslint testing-library/no-node-access: 0 */
+/* vitest/prefer-importing-vitest-globals: 0 */
 
 import { render, screen } from '@testing-library/react'
 import React from 'react'
