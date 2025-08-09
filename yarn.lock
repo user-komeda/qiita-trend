@@ -878,18 +878,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/compat@npm:^1.3.1":
-  version: 1.3.1
-  resolution: "@eslint/compat@npm:1.3.1"
-  peerDependencies:
-    eslint: ^8.40 || 9
-  peerDependenciesMeta:
-    eslint:
-      optional: true
-  checksum: 10c0/8dfcea5ecb854111f9c0acc23a469e0a25cdaddceb5fb40c47988c247d6e32ec199bcd00f1b8ba9ed779228526552703c4b74948169e78b78b5fd814e04b042b
-  languageName: node
-  linkType: hard
-
 "@eslint/config-array@npm:^0.21.0":
   version: 0.21.0
   resolution: "@eslint/config-array@npm:0.21.0"
@@ -941,7 +929,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/migrate-config@npm:1.5.3":
+"@eslint/migrate-config@npm:1.5.3, @eslint/migrate-config@npm:^1.3.0":
   version: 1.5.3
   resolution: "@eslint/migrate-config@npm:1.5.3"
   dependencies:
@@ -953,21 +941,6 @@ __metadata:
   bin:
     eslint-migrate-config: src/migrate-config-cli.js
   checksum: 10c0/eef5b6b0f8e7dd9da90302aad9fd51792d786f1b5d2dab860b8f7da5e30eacc8443fd2868f9736f2f54e612fd532a1f74ab3ed76164e235b90aca93e5eed8e5d
-  languageName: node
-  linkType: hard
-
-"@eslint/migrate-config@npm:^1.3.0":
-  version: 1.5.2
-  resolution: "@eslint/migrate-config@npm:1.5.2"
-  dependencies:
-    "@eslint/compat": "npm:^1.3.1"
-    "@eslint/eslintrc": "npm:^3.1.0"
-    camelcase: "npm:^8.0.0"
-    espree: "npm:^10.3.0"
-    recast: "npm:^0.23.7"
-  bin:
-    eslint-migrate-config: src/migrate-config-cli.js
-  checksum: 10c0/7bf5db7a99ebfc7bddbacc9497c246b0cd47a087f77fe178a4a658e62cc4a49ca934efadc0f7980fc795d803f05dbb1f73cbf9fe14eac422a4d0ab2f4f972d72
   languageName: node
   linkType: hard
 
