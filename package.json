@@ -10,7 +10,7 @@
     "check": "turbo run check"
   },
   "devDependencies": {
-    "lefthook": "1.12.2",
+    "lefthook": "1.12.3",
     "turbo": "2.5.5"
   }
 }
