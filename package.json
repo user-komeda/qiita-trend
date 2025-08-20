@@ -1,6 +1,6 @@
 {
   "name": "qiita-trend",
-  "packageManager": "yarn@4.9.2",
+  "packageManager": "yarn@4.9.3",
   "workspaces": [
     "apps/*"
   ],
@@ -10,7 +10,7 @@
     "check": "turbo run check"
   },
   "devDependencies": {
-    "lefthook": "1.12.2",
-    "turbo": "2.5.5"
+    "lefthook": "1.12.3",
+    "turbo": "2.5.6"
   }
 }
