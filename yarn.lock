@@ -9995,7 +9995,7 @@ __metadata:
     tsconfig-paths: "npm:4.2.0"
     typescript: "npm:5.9.2"
     typescript-eslint: "npm:8.40.0"
-    unplugin-swc: "npm:1.5.6"
+    unplugin-swc: "npm:1.5.7"
     valibot: "npm:1.1.0"
     vite-tsconfig-paths: "npm:5.1.4"
     vitest: "npm:3.2.4"
@@ -12228,28 +12228,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unplugin-swc@npm:1.5.6":
-  version: 1.5.6
-  resolution: "unplugin-swc@npm:1.5.6"
+"unplugin-swc@npm:1.5.7":
+  version: 1.5.7
+  resolution: "unplugin-swc@npm:1.5.7"
   dependencies:
     "@rollup/pluginutils": "npm:^5.2.0"
     load-tsconfig: "npm:^0.2.5"
-    unplugin: "npm:^2.3.6"
+    unplugin: "npm:^2.3.8"
   peerDependencies:
     "@swc/core": ^1.2.108
-  checksum: 10c0/7503e9d21415a0a570b2c533b23996bd63a544e55e0d224dcd21880987d33195d53b00266fa885b6cd5d44419c38b0f55f22765294b47d4f80ff17142590b354
+  checksum: 10c0/82eba8e3e125223395e4621d4ff17f4e2dc260e458e7e8a035a1fc46231426085ce68d04d06a9283457a4fe94f4202bcf12609dec28546fde3e92ee01bed2102
   languageName: node
   linkType: hard
 
-"unplugin@npm:^2.3.6":
-  version: 2.3.6
-  resolution: "unplugin@npm:2.3.6"
+"unplugin@npm:^2.3.8":
+  version: 2.3.8
+  resolution: "unplugin@npm:2.3.8"
   dependencies:
     "@jridgewell/remapping": "npm:^2.3.5"
     acorn: "npm:^8.15.0"
     picomatch: "npm:^4.0.3"
     webpack-virtual-modules: "npm:^0.6.2"
-  checksum: 10c0/61d92cc02dfa2a0c80a48cb8ca66cd68c09a59c95c89360eba2b1206011897dbd0f68909b389ae6901fdb218ec3a6c3e67702d9d8acd270abb4b899a3e5723ec
+  checksum: 10c0/fc00a30a9b8e2a3167d694232f490fdb8f14aff11cda429f36798e06598b659e5ca9c156a8af8fd17e23711fd95a04e0323f29db4ed4aefd737559d83b2b82d8
   languageName: node
   linkType: hard
 
