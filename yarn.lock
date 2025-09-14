@@ -4666,13 +4666,13 @@ __metadata:
   linkType: hard
 
 "axios@npm:^1.7.2":
-  version: 1.12.0
-  resolution: "axios@npm:1.12.0"
+  version: 1.12.2
+  resolution: "axios@npm:1.12.2"
   dependencies:
     follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.4"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10c0/44a1e4cfb69a2d59aa12bbc441a336e5c18e87c02b904c509fd33607d94e8cb8cc221c17e9d53f67841a4efe13abf1aa1497c85df390cdb8681ee723998d11b0
+  checksum: 10c0/80b063e318cf05cd33a4d991cea0162f3573481946f9129efb7766f38fde4c061c34f41a93a9f9521f02b7c9565ccbc197c099b0186543ac84a24580017adfed
   languageName: node
   linkType: hard
 
@@ -6414,15 +6414,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-testing-library@npm:7.6.8":
-  version: 7.6.8
-  resolution: "eslint-plugin-testing-library@npm:7.6.8"
+"eslint-plugin-testing-library@npm:7.7.0":
+  version: 7.7.0
+  resolution: "eslint-plugin-testing-library@npm:7.7.0"
   dependencies:
     "@typescript-eslint/scope-manager": "npm:^8.15.0"
     "@typescript-eslint/utils": "npm:^8.15.0"
   peerDependencies:
     eslint: ^8.57.0 || ^9.0.0
-  checksum: 10c0/aed46f94236f984b5a172a233d91b7c13a1b13258da816a4c0d0698b0103c6d98135081146c79d7d4cb9195ccd49baa26812893622c9e577f548fe7f9dcd91a9
+  checksum: 10c0/76f4ef33cbf1ed2335e274df25b7caf63f0d78bb9f876245cde5319d65f084baa752a853529dc5994aa97cebf2bf4dd596c2f71862c7c5327f33d5fab5c10f4d
   languageName: node
   linkType: hard
 
@@ -10231,7 +10231,7 @@ __metadata:
     eslint-plugin-react: "npm:7.37.5"
     eslint-plugin-react-compiler: "npm:19.1.0-rc.2"
     eslint-plugin-react-refresh: "npm:0.4.20"
-    eslint-plugin-testing-library: "npm:7.6.8"
+    eslint-plugin-testing-library: "npm:7.7.0"
     eslint-plugin-unused-imports: "npm:4.2.0"
     globals: "npm:16.4.0"
     jsdom: "npm:^27.0.0"
