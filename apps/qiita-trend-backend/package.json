@@ -39,7 +39,7 @@
     "@eslint/compat": "1.4.0",
     "@eslint/eslintrc": "3.3.1",
     "@eslint/js": "9.36.0",
-    "@eslint/migrate-config": "1.5.3",
+    "@eslint/migrate-config": "1.6.0",
     "@nestjs/cli": "11.0.10",
     "@nestjs/schematics": "11.0.7",
     "@nestjs/testing": "11.1.6",
