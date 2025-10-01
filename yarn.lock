@@ -681,16 +681,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@es-joy/jsdoccomment@npm:~0.62.0":
-  version: 0.62.0
-  resolution: "@es-joy/jsdoccomment@npm:0.62.0"
+"@es-joy/jsdoccomment@npm:~0.64.0":
+  version: 0.64.0
+  resolution: "@es-joy/jsdoccomment@npm:0.64.0"
   dependencies:
     "@types/estree": "npm:^1.0.8"
     "@typescript-eslint/types": "npm:^8.44.1"
     comment-parser: "npm:1.4.1"
     esquery: "npm:^1.6.0"
-    jsdoc-type-pratt-parser: "npm:~5.9.0"
-  checksum: 10c0/4bc9d8374cf5b9cbfdbed242477e12f46bc740c0419eb3c9db44990ce25c54c0d033c112e9df3e107c163f1f5f5e77c06cb436c3dce4903d374b3c8090220782
+    jsdoc-type-pratt-parser: "npm:~6.0.0"
+  checksum: 10c0/b11adbc7cfa8ef064693943afd0ed76a5e568ea7a8bf47d9e46ae4c2a83b8e2994161e3b4c860518aa860126892ae8efd7eab294cd00ef80bcae93e2ca740a70
   languageName: node
   linkType: hard
 
@@ -3153,12 +3153,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:22.18.7":
-  version: 22.18.7
-  resolution: "@types/node@npm:22.18.7"
+"@types/node@npm:22.18.8":
+  version: 22.18.8
+  resolution: "@types/node@npm:22.18.8"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10c0/b07204aa5ffc4ba74512d945eb97200ced52e0dcec3ccce4e09aeebba84fd0dcac9ff9b45140998b74520a9e648020fe0efecb7df4c93ab256bcbd869f444a74
+  checksum: 10c0/54473730e7417b923fec427f62ed3204259acbd8e450a7593bad8ae02a75effcfcc864b34bf02c108eeb9c04a404791687f42b801bafa5264a8761f4df9122fd
   languageName: node
   linkType: hard
 
@@ -6303,11 +6303,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsdoc@npm:60.5.0":
-  version: 60.5.0
-  resolution: "eslint-plugin-jsdoc@npm:60.5.0"
+"eslint-plugin-jsdoc@npm:60.6.0":
+  version: 60.6.0
+  resolution: "eslint-plugin-jsdoc@npm:60.6.0"
   dependencies:
-    "@es-joy/jsdoccomment": "npm:~0.62.0"
+    "@es-joy/jsdoccomment": "npm:~0.64.0"
     are-docs-informative: "npm:^0.0.2"
     comment-parser: "npm:1.4.1"
     debug: "npm:^4.4.3"
@@ -6321,7 +6321,7 @@ __metadata:
     spdx-expression-parse: "npm:^4.0.0"
   peerDependencies:
     eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
-  checksum: 10c0/8fe765ecfdb9ff6a3b7c7a1f715bb6735caafd9c26d139e8cbccce9fd94b7e379b02d7998810c250886e0d8656688d8bd21b129c7b3b926770f716b9970df2c2
+  checksum: 10c0/085375c6300a3c884c40c9ceca7bf384c519914b0dfaa885f0f6305bec65a5bbf7012d734f7ad5af2501b6cab787108b2bba31a563c9195a34242f19ee7df92a
   languageName: node
   linkType: hard
 
@@ -8156,10 +8156,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsdoc-type-pratt-parser@npm:~5.9.0":
-  version: 5.9.0
-  resolution: "jsdoc-type-pratt-parser@npm:5.9.0"
-  checksum: 10c0/50157429ecfa72b6e38ebd307ed7d49ffd19af9bd7c0a62ed1f6aa4c0554406060e8e930f66b6d23646050dfe5d0ccef3cdf39d7b11cfa434d6695b07b132fa5
+"jsdoc-type-pratt-parser@npm:~6.0.0":
+  version: 6.0.1
+  resolution: "jsdoc-type-pratt-parser@npm:6.0.1"
+  checksum: 10c0/c69d1dea3f38d4bf134d913b0cba7ac1daa7163441db842dffc439be592fb4547e37480f948eab0531281d137e26883cbf730619ba458cd7e880468b46a5e966
   languageName: node
   linkType: hard
 
@@ -10198,7 +10198,7 @@ __metadata:
     "@swc/core": "npm:1.13.20"
     "@types/cookie-parser": "npm:1.4.9"
     "@types/express": "npm:5.0.3"
-    "@types/node": "npm:22.18.7"
+    "@types/node": "npm:22.18.8"
     "@types/supertest": "npm:6.0.3"
     "@typescript-eslint/eslint-plugin": "npm:8.45.0"
     "@typescript-eslint/parser": "npm:8.45.0"
@@ -10214,7 +10214,7 @@ __metadata:
     eslint-import-resolver-typescript: "npm:4.4.4"
     eslint-plugin-check-file: "npm:3.3.0"
     eslint-plugin-import: "npm:2.32.0"
-    eslint-plugin-jsdoc: "npm:60.5.0"
+    eslint-plugin-jsdoc: "npm:60.6.0"
     eslint-plugin-prettier: "npm:5.5.4"
     eslint-plugin-unused-imports: "npm:4.2.0"
     globals: "npm:16.4.0"
@@ -10253,7 +10253,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:6.9.0"
     "@testing-library/react": "npm:16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
-    "@types/node": "npm:22.18.7"
+    "@types/node": "npm:22.18.8"
     "@types/react": "npm:19.1.16"
     "@types/react-dom": "npm:19.1.9"
     "@typescript-eslint/eslint-plugin": "npm:8.45.0"
