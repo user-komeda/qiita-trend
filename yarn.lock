@@ -6319,9 +6319,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsdoc@npm:61.1.2":
-  version: 61.1.2
-  resolution: "eslint-plugin-jsdoc@npm:61.1.2"
+"eslint-plugin-jsdoc@npm:61.1.3":
+  version: 61.1.3
+  resolution: "eslint-plugin-jsdoc@npm:61.1.3"
   dependencies:
     "@es-joy/jsdoccomment": "npm:~0.76.0"
     are-docs-informative: "npm:^0.0.2"
@@ -6337,7 +6337,7 @@ __metadata:
     spdx-expression-parse: "npm:^4.0.0"
   peerDependencies:
     eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
-  checksum: 10c0/b3e58ed057f7280564f6ec846d898000c6940730b0558fc37d7998a2730dd4c42658fa7d2862f70adaaac0e234eca3ed13f823a824a5496db3c971a98bc1333b
+  checksum: 10c0/e8a8bcb0f382c7e76175034a44936f847f1fd52157c8b0125e4dee792b4b5c0a2bc0230ff5050bdfb2e6f837c33df5cdc48a1516a9fa6bc1be0b4591c15081fa
   languageName: node
   linkType: hard
 
@@ -10230,7 +10230,7 @@ __metadata:
     eslint-import-resolver-typescript: "npm:4.4.4"
     eslint-plugin-check-file: "npm:3.3.0"
     eslint-plugin-import: "npm:2.32.0"
-    eslint-plugin-jsdoc: "npm:61.1.2"
+    eslint-plugin-jsdoc: "npm:61.1.3"
     eslint-plugin-prettier: "npm:5.5.4"
     eslint-plugin-unused-imports: "npm:4.2.0"
     globals: "npm:16.4.0"
