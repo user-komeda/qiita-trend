@@ -2377,9 +2377,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/pluginutils@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "@rollup/pluginutils@npm:5.2.0"
+"@rollup/pluginutils@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@rollup/pluginutils@npm:5.3.0"
   dependencies:
     "@types/estree": "npm:^1.0.0"
     estree-walker: "npm:^2.0.2"
@@ -2389,7 +2389,7 @@ __metadata:
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: 10c0/794890d512751451bcc06aa112366ef47ea8f9125dac49b1abf72ff8b079518b09359de9c60a013b33266541634e765ae61839c749fae0edb59a463418665c55
+  checksum: 10c0/001834bf62d7cf5bac424d2617c113f7f7d3b2bf3c1778cbcccb72cdc957b68989f8e7747c782c2b911f1dde8257f56f8ac1e779e29e74e638e3f1e2cac2bcd0
   languageName: node
   linkType: hard
 
@@ -10260,7 +10260,7 @@ __metadata:
     tsconfig-paths: "npm:4.2.0"
     typescript: "npm:5.9.3"
     typescript-eslint: "npm:8.46.1"
-    unplugin-swc: "npm:1.5.7"
+    unplugin-swc: "npm:1.5.8"
     valibot: "npm:1.1.0"
     vite-tsconfig-paths: "npm:5.1.4"
     vitest: "npm:3.2.4"
@@ -12535,28 +12535,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unplugin-swc@npm:1.5.7":
-  version: 1.5.7
-  resolution: "unplugin-swc@npm:1.5.7"
+"unplugin-swc@npm:1.5.8":
+  version: 1.5.8
+  resolution: "unplugin-swc@npm:1.5.8"
   dependencies:
-    "@rollup/pluginutils": "npm:^5.2.0"
+    "@rollup/pluginutils": "npm:^5.3.0"
     load-tsconfig: "npm:^0.2.5"
-    unplugin: "npm:^2.3.8"
+    unplugin: "npm:^2.3.10"
   peerDependencies:
     "@swc/core": ^1.2.108
-  checksum: 10c0/82eba8e3e125223395e4621d4ff17f4e2dc260e458e7e8a035a1fc46231426085ce68d04d06a9283457a4fe94f4202bcf12609dec28546fde3e92ee01bed2102
+  checksum: 10c0/928053acb2a1016321578475574ac83f7d166ff54e56331b283f99caa600f07331664f1e97cc68e7aeabbfd7637b65333043a4e194aa3414d20a6def648ff7c5
   languageName: node
   linkType: hard
 
-"unplugin@npm:^2.3.8":
-  version: 2.3.8
-  resolution: "unplugin@npm:2.3.8"
+"unplugin@npm:^2.3.10":
+  version: 2.3.10
+  resolution: "unplugin@npm:2.3.10"
   dependencies:
     "@jridgewell/remapping": "npm:^2.3.5"
     acorn: "npm:^8.15.0"
     picomatch: "npm:^4.0.3"
     webpack-virtual-modules: "npm:^0.6.2"
-  checksum: 10c0/fc00a30a9b8e2a3167d694232f490fdb8f14aff11cda429f36798e06598b659e5ca9c156a8af8fd17e23711fd95a04e0323f29db4ed4aefd737559d83b2b82d8
+  checksum: 10c0/29dcd738772aeff91c6f0154f156c95c58a37a4674fcb7cc34d6868af763834f0f447a1c3af074818c0c5602baead49bd3b9399a13f0425d69a00a527e58ddda
   languageName: node
   linkType: hard
 
