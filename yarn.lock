@@ -1044,14 +1044,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fetch-mock/vitest@npm:0.2.15":
-  version: 0.2.15
-  resolution: "@fetch-mock/vitest@npm:0.2.15"
+"@fetch-mock/vitest@npm:0.2.16":
+  version: 0.2.16
+  resolution: "@fetch-mock/vitest@npm:0.2.16"
   dependencies:
-    fetch-mock: "npm:^12.5.4"
+    fetch-mock: "npm:^12.5.5"
   peerDependencies:
     vitest: "*"
-  checksum: 10c0/ce167330bb2867d1f7638715a23d1adabc0eef6aa8819ff1a380724c7f6867e71c0ab62377ee099fdb42a96c0ece8a7f7ebb35237ad147b4fc996b47280a14b4
+  checksum: 10c0/1dd32cee4c086ac43b78cd6bc7035b522299f2996abf6311395590bbd037939045ff28e3956870cbdbd8f65125ba6ef9c6ef860cab4996eec7112d6c5d698cba
   languageName: node
   linkType: hard
 
@@ -6960,15 +6960,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fetch-mock@npm:^12.5.4":
-  version: 12.5.4
-  resolution: "fetch-mock@npm:12.5.4"
+"fetch-mock@npm:^12.5.5":
+  version: 12.5.5
+  resolution: "fetch-mock@npm:12.5.5"
   dependencies:
     "@types/glob-to-regexp": "npm:^0.4.4"
     dequal: "npm:^2.0.3"
     glob-to-regexp: "npm:^0.4.1"
     regexparam: "npm:^3.0.0"
-  checksum: 10c0/367fedcd16bed92ac96c6c75a18a54db59f36471086e7fcbee9fe485970eb37a2defc97bec2a854ebbe092e184c1e9d349942cbcebbfd44c19490488c1fa25fa
+  checksum: 10c0/67bb47b5191133e8843409c232f901339edf562582817ba079e91fc55067567de30479b416b179c2be8851307cd8f5e3a28d03dd744fb3ca5f7b0ed8e667c6a7
   languageName: node
   linkType: hard
 
@@ -10372,7 +10372,7 @@ __metadata:
     "@emotion/react": "npm:^11.13.0"
     "@emotion/styled": "npm:^11.13.0"
     "@eslint/migrate-config": "npm:^1.3.0"
-    "@fetch-mock/vitest": "npm:0.2.15"
+    "@fetch-mock/vitest": "npm:0.2.16"
     "@mui/icons-material": "npm:^7.0.0"
     "@mui/material": "npm:^7.0.0"
     "@mui/material-nextjs": "npm:^7.0.0"
