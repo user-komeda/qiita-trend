@@ -47,7 +47,7 @@
     "@swc/core": "1.13.21",
     "@types/cookie-parser": "1.4.10",
     "@types/express": "5.0.5",
-    "@types/node": "22.18.12",
+    "@types/node": "22.18.13",
     "@types/supertest": "6.0.3",
     "@typescript-eslint/eslint-plugin": "8.46.2",
     "@typescript-eslint/parser": "8.46.2",
