@@ -4013,9 +4013,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/eslint-plugin@npm:1.4.1":
-  version: 1.4.1
-  resolution: "@vitest/eslint-plugin@npm:1.4.1"
+"@vitest/eslint-plugin@npm:1.6.4":
+  version: 1.6.4
+  resolution: "@vitest/eslint-plugin@npm:1.6.4"
   dependencies:
     "@typescript-eslint/scope-manager": "npm:^8.46.1"
     "@typescript-eslint/utils": "npm:^8.46.1"
@@ -4028,7 +4028,7 @@ __metadata:
       optional: true
     vitest:
       optional: true
-  checksum: 10c0/93906a6ff8a8da192803a7ecb16c7abba13749537e0d20016e58b9cdb5ee79697fdb33a8027e70935159a54be23acbd1b37de93e00bee78d2ec5b4b62dd30008
+  checksum: 10c0/2f450083588c7e296a8ad6c116fb4d24a205377b2bbc414dfe476a655064505f487e641608c03db29a7b66b7d51d9f8f26ae2da21a017d614b7c3964f3343c95
   languageName: node
   linkType: hard
 
@@ -10347,7 +10347,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:8.46.3"
     "@typescript-eslint/parser": "npm:8.46.3"
     "@vitest/coverage-v8": "npm:4.0.7"
-    "@vitest/eslint-plugin": "npm:1.4.1"
+    "@vitest/eslint-plugin": "npm:1.6.4"
     axios: "npm:^1.7.2"
     class-transformer: "npm:^0.5.1"
     class-validator: "npm:^0.14.1"
@@ -10404,7 +10404,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:8.46.3"
     "@vitejs/plugin-react-swc": "npm:^4.0.0"
     "@vitest/coverage-v8": "npm:4.0.7"
-    "@vitest/eslint-plugin": "npm:1.4.1"
+    "@vitest/eslint-plugin": "npm:1.6.4"
     concurrently: "npm:9.2.1"
     eslint: "npm:9.39.1"
     eslint-config-next: "npm:15.5.6"
