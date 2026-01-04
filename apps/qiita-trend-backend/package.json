@@ -37,7 +37,7 @@
   "devDependencies": {
     "@darraghor/eslint-plugin-nestjs-typed": "6.9.3",
     "@eslint/compat": "1.4.1",
-    "@eslint/eslintrc": "3.3.1",
+    "@eslint/eslintrc": "3.3.3",
     "@eslint/js": "9.39.1",
     "@eslint/migrate-config": "1.6.1",
     "@nestjs/cli": "11.0.10",
