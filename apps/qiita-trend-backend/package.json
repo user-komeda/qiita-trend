@@ -23,7 +23,7 @@
   "dependencies": {
     "@nestjs/axios": "^4.0.0",
     "@nestjs/common": "^11.0.0",
-    "@nestjs/config": "4.0.2",
+    "@nestjs/config": "4.0.3",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
     "axios": "^1.7.2",
@@ -42,7 +42,7 @@
     "@eslint/migrate-config": "1.6.1",
     "@nestjs/cli": "11.0.16",
     "@nestjs/schematics": "11.0.9",
-    "@nestjs/testing": "11.1.12",
+    "@nestjs/testing": "11.1.14",
     "@swc/cli": "0.7.10",
     "@swc/core": "1.15.11",
     "@types/cookie-parser": "1.4.10",
