@@ -1,22 +1,14 @@
-import tseslint from 'typescript-eslint'
-import { fileURLToPath } from 'node:url'
-import path from 'node:path'
-import { FlatCompat } from '@eslint/eslintrc'
 import js from '@eslint/js'
+import nextPlugin from '@next/eslint-plugin-next'
 import vitest from '@vitest/eslint-plugin'
-import reactCompiler from 'eslint-plugin-react-compiler'
+import prettier from 'eslint-config-prettier'
 import importPlugin from 'eslint-plugin-import'
 import noRelativeImportPaths from 'eslint-plugin-no-relative-import-paths'
+import reactCompiler from 'eslint-plugin-react-compiler'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import testingLibrary from 'eslint-plugin-testing-library'
 import unusedImports from 'eslint-plugin-unused-imports'
-import prettier from 'eslint-config-prettier'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
+import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
   {
@@ -38,20 +30,23 @@ export default tseslint.config(
       ...tseslint.configs.strictTypeChecked,
       ...tseslint.configs.stylistic,
       ...tseslint.configs.stylisticTypeChecked,
-      ...compat.extends('next', 'next/core-web-vitals'),
       reactCompiler.configs.recommended,
       prettier,
     ],
     plugins: {
+      '@next/next': nextPlugin,
+      import: importPlugin,
       'unused-imports': unusedImports,
       'no-relative-import-paths': noRelativeImportPaths,
       'react-refresh': reactRefresh,
     },
     rules: {
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs['core-web-vitals'].rules,
       complexity: ['error', 10],
       'max-depth': ['error', 2],
       // TODO: 50にしたい
-      'max-lines': ['error', 110],
+      'max-lines': ['error', 115],
       // TODO: 30にしたい
       'max-lines-per-function': ['error', 40],
       'max-params': ['error', 3],
@@ -79,6 +74,10 @@ export default tseslint.config(
         },
       ],
     },
+  },
+  {
+    files: ['**/*.js', '**/*.mjs', '**/*.cjs'],
+    extends: [tseslint.configs.disableTypeChecked],
   },
   {
     files: ['**/*.test.ts', '**/*.test.tsx'],

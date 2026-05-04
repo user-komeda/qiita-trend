@@ -1,11 +1,11 @@
-import { List, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 
 import Chip from '@/app/component/Chip'
 import ListItemComponent from '@/app/component/ListItemComponent'
 import { BASE_URL_CLIENT } from '@/app/const/const'
 
 /**
- *記事につけられているタグを表示
+ * 記事につけられているタグを表示
  *
  * @param tagList - tagList
  *
@@ -13,7 +13,7 @@ import { BASE_URL_CLIENT } from '@/app/const/const'
  */
 const TagList = ({ tagList }: { tagList: string[] }) => {
   return (
-    <List component={Stack} direction={'row'} spacing={3}>
+    <Stack direction={'row'} spacing={3}>
       {tagList.map((tag, index) => {
         return (
           <ListItemComponent
@@ -24,7 +24,7 @@ const TagList = ({ tagList }: { tagList: string[] }) => {
           />
         )
       })}
-    </List>
+    </Stack>
   )
 }
 export default TagList

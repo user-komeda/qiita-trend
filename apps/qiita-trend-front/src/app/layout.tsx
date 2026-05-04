@@ -1,6 +1,6 @@
 /* eslint  react-refresh/only-export-components: 0 */
 
-import { CssBaseline } from '@mui/material'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import { ReactNode, Suspense } from 'react'
 
@@ -8,6 +8,7 @@ import Header from '@/app/component/Header'
 import SideMenu from '@/app/component/SideMenu'
 import DrawerMenu from '@/app/features/component/drawer/DrawerMenu'
 import HeaderMenu from '@/app/features/component/headerMenu/HeaderMenu'
+import { theme } from '@/app/theme'
 
 /** metaData */
 export const metadata = {
@@ -21,13 +22,15 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     <html lang="en">
       <body>
         <AppRouterCacheProvider>
-          <CssBaseline />
-          <Header
-            title={'qiitaの殿堂'}
-            childComponent={<HeaderMenu></HeaderMenu>}
-          ></Header>{' '}
-          <SideMenu childComponent={<DrawerMenu />}></SideMenu>
-          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Header
+              title={'qiitaの殿堂'}
+              childComponent={<HeaderMenu></HeaderMenu>}
+            ></Header>{' '}
+            <SideMenu childComponent={<DrawerMenu />}></SideMenu>
+            <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

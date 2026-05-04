@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -10,7 +14,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -18,7 +22,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "target": "ES2017"
   },
@@ -27,8 +33,14 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/features/component/drawer/NormalItemList.tsx"
+    "src/app/features/component/drawer/NormalItemList.tsx",
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "./vitest.config.mts"],
-  "types": ["vitest/globals"]
+  "exclude": [
+    "node_modules",
+    "./vitest.config.mts"
+  ],
+  "types": [
+    "vitest/globals"
+  ]
 }

@@ -5,6 +5,12 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig({
   test: {
     globals: true,
+    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/.turbo/**',
+    ],
     coverage: {
       include: ['src/app/**'],
       exclude: ['src/app/public/login/**'],
