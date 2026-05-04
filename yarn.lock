@@ -2393,7 +2393,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:16.2.4, @next/eslint-plugin-next@npm:^16.2.4":
+"@next/eslint-plugin-next@npm:16.2.4":
   version: 16.2.4
   resolution: "@next/eslint-plugin-next@npm:16.2.4"
   dependencies:
@@ -10681,7 +10681,7 @@ __metadata:
     "@mui/material": "npm:^9.0.0"
     "@mui/material-nextjs": "npm:^9.0.0"
     "@next/env": "npm:^16.2.4"
-    "@next/eslint-plugin-next": "npm:^16.2.4"
+    "@next/eslint-plugin-next": "npm:16.2.4"
     "@testing-library/dom": "npm:10.4.1"
     "@testing-library/jest-dom": "npm:6.9.1"
     "@testing-library/react": "npm:16.3.2"
