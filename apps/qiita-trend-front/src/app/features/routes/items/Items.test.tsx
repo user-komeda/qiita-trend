@@ -12,7 +12,7 @@ import Items from '@/app/features/routes/items/Items'
 
 const mockFetch = vi.spyOn(global, 'fetch')
 
-vi.mock('react-markdown', () => {
+vi.mock(import('react-markdown'), () => {
   return {
     __esModule: true,
 
@@ -22,7 +22,7 @@ vi.mock('react-markdown', () => {
   }
 })
 
-vi.mock('remark-gfm', () => {
+vi.mock(import('remark-gfm'), () => {
   return {
     __esModule: true,
 
