@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "lefthook": "2.1.6",
-    "turbo": "2.9.8"
+    "turbo": "2.9.9"
   }
 }
