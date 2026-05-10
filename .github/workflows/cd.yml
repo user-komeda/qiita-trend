@@ -54,13 +54,17 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }} # 前ステップで設定したタグを参照する
           labels: ${{ steps.meta.outputs.labels }} # 前ステップで設定したラベルを参照する
           ssh: |
-            default=${{ env.SSH_AUTH_SOCK }}
+            default
   build-backend:
     runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
     steps:
+      - name: Install SSH Key
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - name: "docker buildxが使えるようにする"
         uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4
@@ -91,5 +95,5 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }} # 前ステップで設定したタグを参照する
           labels: ${{ steps.meta.outputs.labels }} # 前ステップで設定したラベルを参照する
           ssh: |
-            default=${{ env.SSH_AUTH_SOCK }}
+            default
 
