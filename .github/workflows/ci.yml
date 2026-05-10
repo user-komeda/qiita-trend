@@ -2,28 +2,41 @@ on:
   push:
 
 name: ci
+
 jobs:
   ci:
+    runs-on: ubuntu-latest
     env:
       CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
       CLIENT_ID: ${{ secrets.CLIENT_ID }}
       PROJECT_ID: ${{ secrets.PROJECT_ID }}
-    runs-on: ubuntu-latest
     steps:
+      - name: Debug env exists
+        run: |
+          test -n "$CLIENT_ID" && echo "CLIENT_ID exists" || echo "CLIENT_ID missing"
+          test -n "$CLIENT_SECRET" && echo "CLIENT_SECRET exists" || echo "CLIENT_SECRET missing"
+          test -n "$PROJECT_ID" && echo "PROJECT_ID exists" || echo "PROJECT_ID missing"
+
       - name: Install SSH Key
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 # v0.10.0
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
         with:
           node-version: 24
           package-manager-cache: false
+
       - name: enable corepack
         run: corepack enable
+
       - name: yarn set v4
         run: yarn set version stable
+
       - name: yarn install
         run: yarn install
+
       - name: Run check
         run: yarn check
