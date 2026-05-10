@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "infisicalLauncher --path=/qiitaTrend/next/local --envDir=../../  -- yarn next dev",
-    "build": "infisicalLauncher --path=/qiitaTrend/next/local  --envDir=../../ -- yarn next build",
-    "start": "infisicalLauncher --path=/qiitaTrend/next/local  --envDir=../../ -- yarn next start",
+    "build": "yarn next build",
+    "start": "yarn next start",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "format": "prettier --write \"src/**/*.(ts|tsx)\"",
     "check": "infisicalLauncher --path=/qiitaTrend/next/local --envDir=../../ -- yarn concurrently 'yarn typecheck' 'yarn lint' 'yarn format'  'yarn test'",

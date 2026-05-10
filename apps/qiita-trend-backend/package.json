@@ -6,10 +6,10 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "infisicalLauncher --path=/qiitaTrend/nest/local --envDir=../../ -- yarn nest build -c nest-cli-prod.json",
+    "build": "yarn nest build -c nest-cli-prod.json",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "dev": "infisicalLauncher --path=/qiitaTrend/nest/local --envDir=../../ -- yarn  nest start -b swc --debug --watch",
-    "start": "infisicalLauncher --path=/qiitaTrend/nest/local --envDir=../../ -- node dist/main",
+    "start": "node dist/main",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "typecheck": "tsc --noEmit",
