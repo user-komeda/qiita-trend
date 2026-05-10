@@ -53,6 +53,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }} # 前ステップで設定したタグを参照する
           labels: ${{ steps.meta.outputs.labels }} # 前ステップで設定したラベルを参照する
+          ssh: |
+            default=${{ env.SSH_AUTH_SOCK }}
   build-backend:
     runs-on: ubuntu-latest
     permissions:
@@ -88,4 +90,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }} # 前ステップで設定したタグを参照する
           labels: ${{ steps.meta.outputs.labels }} # 前ステップで設定したラベルを参照する
+          ssh: |
+            default=${{ env.SSH_AUTH_SOCK }}
 
