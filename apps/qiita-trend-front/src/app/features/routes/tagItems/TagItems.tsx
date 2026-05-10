@@ -19,9 +19,6 @@ const TagItems = async ({ tagName }: { tagName: string }) => {
         ':tagName',
         tagName,
       ),
-      {
-        next: { revalidate: 3600 },
-      },
     )
   ).json()) as ItemsData[]
 

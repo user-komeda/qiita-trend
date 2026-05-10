@@ -82,9 +82,6 @@ describe('tag_items component', () => {
           ':tagName',
           '品質',
         ),
-        {
-          next: { revalidate: 3600 },
-        },
       )
     })
   })

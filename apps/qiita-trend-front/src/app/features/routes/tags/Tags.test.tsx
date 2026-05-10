@@ -50,12 +50,7 @@ describe('tags component', () => {
     )
     render(await Tags())
     await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith(
-        `${BASE_URL}${GET_ALL_TAG_URL}`,
-        {
-          next: { revalidate: 3600 },
-        },
-      )
+      expect(global.fetch).toHaveBeenCalledWith(`${BASE_URL}${GET_ALL_TAG_URL}`)
     })
   })
 })

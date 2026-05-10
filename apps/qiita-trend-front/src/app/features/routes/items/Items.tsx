@@ -15,9 +15,7 @@ import fetchWithJwt from '@/app/util/fetchWithJwt'
  */
 const Items = async ({ id }: { id: string }) => {
   const resultData = (await (
-    await fetchWithJwt(`${BASE_URL}${GET_ALL_ITEM_API_URL}${id}`, {
-      next: { revalidate: 3600 },
-    })
+    await fetchWithJwt(`${BASE_URL}${GET_ALL_ITEM_API_URL}${id}`)
   ).json()) as ItemsData
   return (
     <div>

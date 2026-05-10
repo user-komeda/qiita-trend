@@ -95,7 +95,6 @@ describe('items component', () => {
 
     expect(mockFetchWithJwt).toHaveBeenCalledWith(
       `${BASE_URL}${GET_ALL_ITEM_API_URL}test-id`,
-      { next: { revalidate: 3600 } },
     )
   })
 })
