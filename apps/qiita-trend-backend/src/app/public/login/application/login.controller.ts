@@ -1,40 +1,35 @@
-import { Body, Controller, Post, Res } from '@nestjs/common'
-import { Response } from 'express'
+import { Body, Controller, Post } from '@nestjs/common'
+import { IsString } from 'class-validator'
 
 import { LoginService } from '@/public/login/domain/login.service'
 
+class LoginDto {
+  @IsString()
+  code!: string
+}
+
+interface LoginResponse {
+  token: string
+}
+
 /**
- *ItemsController
+ * LoginController
+ * Qiita の認可コードをアクセストークンに交換するだけ。
  */
-@Controller()
+@Controller('')
 export class LoginController {
   constructor(private readonly loginService: LoginService) {}
 
   /**
-   *login試行
+   * code → access_token 交換
    *
-   * @param body - body
+   * @param body - { code }
    *
-   * @param res - res
-   *
-   * @returns - Response
+   * @returns access token
    */
   @Post()
-  async login(@Body() body: string, @Res() res: Response): Promise<Response> {
-    const result = await this.loginService.login(body)
-    return (
-      res
-        .status(result.status)
-        //  eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        .cookie('token_value', result.data.token, {
-          signed: true,
-          httpOnly: true,
-          path: '/',
-          domain: 'localhost',
-          secure: false,
-          sameSite: 'lax',
-        })
-        .json(result.data)
-    )
+  async login(@Body() body: LoginDto): Promise<LoginResponse> {
+    const token = await this.loginService.exchangeCodeForToken(body.code)
+    return { token }
   }
 }

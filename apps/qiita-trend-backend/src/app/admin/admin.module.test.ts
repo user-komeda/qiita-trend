@@ -1,16 +1,17 @@
 import { Test } from '@nestjs/testing'
 import { describe, test, expect } from 'vitest'
 
-import { AdminModule } from '@/admin/admin.module'
+import { AdminModule } from './admin.module'
 
-describe('adminModule', () => {
+describe(AdminModule, () => {
   test('should compile the module', async () => {
     expect.hasAssertions()
 
-    const module = await Test.createTestingModule({
+    const moduleRef = await Test.createTestingModule({
       imports: [AdminModule],
     }).compile()
 
-    expect(module).toBeDefined()
+    expect(moduleRef).toBeDefined()
+    expect(AdminModule).toBeDefined()
   })
 })

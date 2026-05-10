@@ -1,29 +1,26 @@
 import { defineConfig } from 'vitest/config'
 import swc from 'unplugin-swc'
-import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
+  oxc: false,
   test: {
     globals: true,
     include: ['src/**/*.{test,spec}.{ts,tsx}'],
-    exclude: [
-      '**/node_modules/**',
-      '**/dist/**',
-      '**/.turbo/**',
-    ],
+    exclude: ['**/node_modules/**', '**/dist/**', '**/.turbo/**'],
     coverage: {
-      include: ['src/app/**'],
-      exclude: ['src/app/public/login/**'],
+      include: ['src/app/**/*.ts'],
+      exclude:["src/app/form/**/*.ts"],
+      reportsDirectory: './coverage',
+      reporter: ['text', 'json', 'html'],
       thresholds: {
-        functions: 100,
-        branches: 100,
-        statements: 100,
-        lines: 100,
+        100: true,
       },
     },
   },
   plugins: [
-    tsconfigPaths(),
     swc.vite({
       module: { type: 'nodenext' },
     }),

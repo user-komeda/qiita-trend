@@ -6,15 +6,17 @@ import { TagRepository } from '@/public/tag/domain/tag.repository'
 import { TagService } from '@/public/tag/domain/tag.service'
 import { TagRepositoryImpl } from '@/public/tag/infrastructure/tag.repositoryImpl'
 
-/**
- * TagModule
- */
-@Module({
+const tagModuleMetadata = {
   imports: [HttpModule],
   controllers: [TagController],
   providers: [
     TagService,
     { provide: TagRepository, useClass: TagRepositoryImpl },
   ],
-})
+}
+
+/**
+ * TagModule
+ */
+@Module(tagModuleMetadata)
 export class TagModule {}

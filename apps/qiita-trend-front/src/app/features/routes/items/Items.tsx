@@ -1,9 +1,10 @@
 import { Typography } from '@mui/material'
 
 import MarkDownComponent from '@/app/component/MarkDownComponent'
-import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/const'
+import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/path'
 import TagList from '@/app/features/routes/items/TagList'
 import { ItemsData } from '@/app/types/ItemsData'
+import fetchWithJwt from '@/app/util/fetchWithJwt'
 
 /**
  *取得した記事詳細を表示
@@ -14,9 +15,7 @@ import { ItemsData } from '@/app/types/ItemsData'
  */
 const Items = async ({ id }: { id: string }) => {
   const resultData = (await (
-    await fetch(`${BASE_URL}${GET_ALL_ITEM_API_URL}${id}`, {
-      next: { revalidate: 3600 },
-    })
+    await fetchWithJwt(`${BASE_URL}${GET_ALL_ITEM_API_URL}${id}`)
   ).json()) as ItemsData
   return (
     <div>

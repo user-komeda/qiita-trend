@@ -2,15 +2,20 @@ import { render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
 import '@testing-library/jest-dom'
-import { BASE_URL, GET_ITEMS_BY_TAG_URL } from '@/app/const/const'
+import { BASE_URL, GET_ITEMS_BY_TAG_URL } from '@/app/const/path'
 import TagItems from '@/app/features/routes/tagItems/TagItems'
+import fetchWithJwt from '@/app/util/fetchWithJwt'
 import replaceUrlParameter from '@/app/util/replaceUrlParameter'
 
-const mockFetch = vi.spyOn(global, 'fetch')
+vi.mock(import('@/app/util/fetchWithJwt'), () => ({
+  default: vi.fn<typeof fetchWithJwt>(),
+}))
+
+const mockFetchWithJwt = vi.mocked(fetchWithJwt)
 
 describe('tag_items component', () => {
   beforeEach(() => {
-    mockFetch.mockReset()
+    mockFetchWithJwt.mockReset()
   })
 
   test('renders by list empty', async () => {
@@ -21,9 +26,10 @@ describe('tag_items component', () => {
       status: 200,
       statusText: 'OK',
     }
-    mockFetch.mockResolvedValueOnce(
+    mockFetchWithJwt.mockResolvedValueOnce(
       new Response(JSON.stringify(mockBody), mockParams),
     )
+
     render(await TagItems({ tagName: '品質' }))
     const list = screen.getByRole('list')
 
@@ -42,9 +48,10 @@ describe('tag_items component', () => {
       status: 200,
       statusText: 'OK',
     }
-    mockFetch.mockResolvedValueOnce(
+    mockFetchWithJwt.mockResolvedValueOnce(
       new Response(JSON.stringify(mockBody), mockParams),
     )
+
     render(await TagItems({ tagName: '品質' }))
 
     expect(screen.getAllByRole('listitem')).toHaveLength(3)
@@ -62,20 +69,19 @@ describe('tag_items component', () => {
       status: 200,
       statusText: 'OK',
     }
-    mockFetch.mockResolvedValueOnce(
+    mockFetchWithJwt.mockResolvedValueOnce(
       new Response(JSON.stringify(mockBody), mockParams),
     )
+
     render(await TagItems({ tagName: '品質' }))
+
     await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith(
+      expect(mockFetchWithJwt).toHaveBeenCalledWith(
         replaceUrlParameter(
           `${BASE_URL}${GET_ITEMS_BY_TAG_URL}`,
-          'tagName',
+          ':tagName',
           '品質',
         ),
-        {
-          next: { revalidate: 3600 },
-        },
       )
     })
   })

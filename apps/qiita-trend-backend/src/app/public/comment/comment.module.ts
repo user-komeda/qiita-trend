@@ -6,15 +6,17 @@ import { CommentRepository } from '@/public/comment/domain/comment.repository'
 import { CommentService } from '@/public/comment/domain/comment.service'
 import { CommentRepositoryImpl } from '@/public/comment/infrastructure/comment.repositoryImpl'
 
-/**
- *CommentModule
- */
-@Module({
+const commentModuleMetadata = {
   imports: [HttpModule],
   controllers: [CommentController],
   providers: [
     CommentService,
     { provide: CommentRepository, useClass: CommentRepositoryImpl },
   ],
-})
+}
+
+/**
+ *CommentModule
+ */
+@Module(commentModuleMetadata)
 export class CommentModule {}

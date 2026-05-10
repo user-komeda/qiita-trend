@@ -1,14 +1,12 @@
 import StackRow from '@/app/component/StackRow'
-import { BASE_URL, GET_ALL_TAG_URL } from '@/app/const/const'
+import { BASE_URL, GET_ALL_TAG_URL } from '@/app/const/path'
 
 /**
  *Tags
  */
 const Tags = async () => {
   const resultDataList = (await (
-    await fetch(`${BASE_URL}${GET_ALL_TAG_URL}`, {
-      next: { revalidate: 3600 },
-    })
+    await fetch(`${BASE_URL}${GET_ALL_TAG_URL}`)
   ).json()) as TagsData[]
   return (
     <div>

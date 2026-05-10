@@ -3,8 +3,9 @@ import { plainToInstance } from 'class-transformer'
 import { ValidationOptions, validate } from 'class-validator'
 import { describe, test, expect } from 'vitest'
 
+import { ItemsId } from './itemsId'
+
 import { CURRENT_VALIDATION_ERROR, ZERO } from '@/const'
-import { ItemsId } from '@/form/itemsId/itemsId'
 import {
   getErrorForCheckIsEmpty,
   getErrorForCheckLength,
@@ -135,6 +136,14 @@ describe('itemsIdValidation', () => {
     stopAtFirstError: true,
     forbidUnknownValues: false,
   }
+
+  test('should instantiate ItemsId', () => {
+    expect.hasAssertions()
+
+    const instance = new ItemsId()
+
+    expect(instance).toBeDefined()
+  })
 
   test('should complete validation', async () => {
     expect.hasAssertions()

@@ -1,50 +1,34 @@
-import { cookies } from 'next/headers'
-import { NextRequest } from 'next/server'
-import * as v from 'valibot'
+import { randomBytes } from 'crypto'
 
-import { BASE_URL } from '@/app/const/const'
+import { NextResponse } from 'next/server'
 
-const OFF_SET = 1
+const STATE_BYTES = 32
+const STATE_MAX_AGE_SEC = 600
 
-const schema = v.object({
-  code: v.string(),
-})
+/**
+ * /api/login
+ * ログイン開始のみ行う
+ */
+export function GET(request: Request): Response {
+  const newState = randomBytes(STATE_BYTES).toString('hex')
 
-export async function POST(request: NextRequest): Promise<Response> {
-  const body: unknown = await request.json()
+  const clientId = process.env.CLIENT_ID ?? ''
+  const authorizeUrl =
+    `https://qiita.com/api/v2/oauth/authorize` +
+    `?client_id=${encodeURIComponent(clientId)}` +
+    `&scope=${encodeURIComponent('read_qiita write_qiita')}` +
+    `&state=${encodeURIComponent(newState)}` +
+    `&redirect_uri=${encodeURIComponent(`${new URL(request.url).origin}/api/login/redirect`)}`
 
-  const parsedBody = v.parse(schema, body)
-
-  const response = await fetch(`${BASE_URL}/public/login`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      client_id: process.env.CLIENT_ID,
-
-      client_secret: process.env.CLIENT_SECRET,
-      code: parsedBody.code,
-    }),
-  })
-  const cookieValue = response.headers.get('set-cookie')
-  const tokenPartStart = cookieValue?.indexOf('=')
-  const tokenPartEnd = cookieValue?.indexOf(';')
-
-  const token =
-    tokenPartStart && tokenPartEnd
-      ? cookieValue?.substring(tokenPartStart + OFF_SET, tokenPartEnd)
-      : ''
-  const cookie = await cookies()
-  cookie.set({
-    name: 'token',
-    value: token ?? '',
-    sameSite: 'lax',
-    secure: false,
-    domain: 'localhost',
-    path: '/',
+  const response = NextResponse.redirect(authorizeUrl)
+  response.cookies.set({
+    name: 'oauth_state',
+    value: newState,
     httpOnly: true,
+    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    path: '/',
+    maxAge: STATE_MAX_AGE_SEC,
   })
-
-  return Response.json({ data: 'resultData' })
+  return response
 }

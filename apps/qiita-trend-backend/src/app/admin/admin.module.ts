@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common'
 
-/**
- *AdminModule
- */
-@Module({
+const adminModuleMetadata = {
   imports: [],
-})
+}
+
+@Module(adminModuleMetadata)
 export class AdminModule {}

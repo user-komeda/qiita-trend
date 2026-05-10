@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
 import '@testing-library/jest-dom'
-import { BASE_URL, GET_ALL_TAG_URL } from '@/app/const/const'
+import { BASE_URL, GET_ALL_TAG_URL } from '@/app/const/path'
 import Tags from '@/app/features/routes/tags/Tags'
 
 const mockFetch = vi.spyOn(global, 'fetch')
@@ -50,12 +50,7 @@ describe('tags component', () => {
     )
     render(await Tags())
     await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith(
-        `${BASE_URL}${GET_ALL_TAG_URL}`,
-        {
-          next: { revalidate: 3600 },
-        },
-      )
+      expect(global.fetch).toHaveBeenCalledWith(`${BASE_URL}${GET_ALL_TAG_URL}`)
     })
   })
 })

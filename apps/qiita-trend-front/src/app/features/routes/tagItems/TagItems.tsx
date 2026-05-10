@@ -5,22 +5,20 @@ import {
   BASE_URL,
   BASE_URL_CLIENT,
   GET_ITEMS_BY_TAG_URL,
-} from '@/app/const/const'
+} from '@/app/const/path'
 import { ItemsData } from '@/app/types/ItemsData'
+import fetchWithJwt from '@/app/util/fetchWithJwt'
 import replaceUrlParameter from '@/app/util/replaceUrlParameter'
 
 /** TagItems */
 const TagItems = async ({ tagName }: { tagName: string }) => {
   const resultDataList = (await (
-    await fetch(
+    await fetchWithJwt(
       replaceUrlParameter(
         `${BASE_URL}${GET_ITEMS_BY_TAG_URL}`,
-        'tagName',
+        ':tagName',
         tagName,
       ),
-      {
-        next: { revalidate: 3600 },
-      },
     )
   ).json()) as ItemsData[]
 

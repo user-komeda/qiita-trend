@@ -5,15 +5,18 @@ import { TagsItemController } from '@/public/tags-item/application/tagsItem.cont
 import { TagsItemRepository } from '@/public/tags-item/domain/tagsItem.repository'
 import { TagsItemService } from '@/public/tags-item/domain/tagsItem.service'
 import { TagsItemRepositoryImpl } from '@/public/tags-item/infrastructure/tagsItem.repositoryImpl'
-/**
- *TagsItemModule
- */
-@Module({
+
+const tagItemModuleMetadata = {
   imports: [HttpModule],
   controllers: [TagsItemController],
   providers: [
     TagsItemService,
     { provide: TagsItemRepository, useClass: TagsItemRepositoryImpl },
   ],
-})
+}
+
+/**
+ *TagsItemModule
+ */
+@Module(tagItemModuleMetadata)
 export class TagsItemModule {}

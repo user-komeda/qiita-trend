@@ -29,11 +29,10 @@
     "target": "ES2017"
   },
   "include": [
-    "apps/qiita-trend-front/next-env.d.ts",
+    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/features/component/drawer/NormalItemList.tsx",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [

@@ -8,10 +8,16 @@ RUN turbo prune --scope=qiita-trend-front --docker
 
 FROM base AS installer
 WORKDIR /app/
+RUN microdnf install -y git openssh-clients && \
+    microdnf clean all && \
+    mkdir -p -m 0700 ~/.ssh && \
+    ssh-keyscan github.com >> ~/.ssh/known_hosts
 COPY --from=builder /app/out/json/ .
 RUN corepack enable
 RUN corepack install -g yarn@stable 
-RUN yarn install
+RUN --mount=type=ssh yarn install
+RUN --mount=type=ssh yarn add -D "infisicalLauncher@git+ssh://git@github.com:user-komeda/infisicalLauncher.git"
+
 COPY --from=builder /app/out/full/ .
 RUN yarn build
 
