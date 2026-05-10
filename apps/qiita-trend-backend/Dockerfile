@@ -17,7 +17,8 @@ RUN microdnf install -y git openssh-clients && \
 COPY --from=builder /app/out/json/ .
 RUN corepack enable
 RUN corepack install -g yarn@stable 
-RUN yarn install
+RUN --mount=type=ssh yarn install
+RUN --mount=type=ssh yarn add -D "infisicalLauncher@git+ssh://git@github.com:user-komeda/infisicalLauncher.git"
 COPY --from=builder /app/out/full/ .
 RUN yarn build
 
