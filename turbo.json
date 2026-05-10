@@ -1,14 +1,29 @@
 {
   "$schema": "https://turborepo.com/schema.json",
+  "globalEnv": [
+    "IMPORTANT_GLOBAL_VARIABLE"
+  ],
+  "globalPassThroughEnv": [
+    "CLIENT_ID",
+    "CLIENT_SECRET",
+    "PROJECT_ID"
+  ],
   "tasks": {
     "dev": {
-      "dependsOn": ["^dev"],
+      "dependsOn": [
+        "^dev"
+      ],
       "persistent": true,
       "cache": false
     },
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "dist/**"],
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "dist/**"
+      ],
       "cache": true
     },
     "check": {},
