@@ -3987,12 +3987,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:25.6.0":
-  version: 25.6.0
-  resolution: "@types/node@npm:25.6.0"
+"@types/node@npm:25.6.1":
+  version: 25.6.1
+  resolution: "@types/node@npm:25.6.1"
   dependencies:
     undici-types: "npm:~7.19.0"
-  checksum: 10c0/d2d2015630ff098a201407f55f5077a20270ae4f465c739b40865cd9933b91b9c5d2b85568eadaf3db0801b91e267333ca7eb39f007428b173d1cdab4b339ac5
+  checksum: 10c0/4aea21cf3dd98eed57ea2666aa89e2665a2478bdc46f76791d15bd0c3cf8ed812401f4906cfb0e47ee591fc7461179caf8da790b77c19307423e5268de9eb6f9
   languageName: node
   linkType: hard
 
@@ -10735,7 +10735,7 @@ __metadata:
     "@swc/core": "npm:1.15.33"
     "@types/cookie-parser": "npm:1.4.10"
     "@types/express": "npm:5.0.6"
-    "@types/node": "npm:25.6.0"
+    "@types/node": "npm:25.6.1"
     "@types/supertest": "npm:7.2.0"
     "@typescript-eslint/eslint-plugin": "npm:8.59.2"
     "@typescript-eslint/parser": "npm:8.59.2"
@@ -10791,7 +10791,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:6.9.1"
     "@testing-library/react": "npm:16.3.2"
     "@testing-library/user-event": "npm:14.6.1"
-    "@types/node": "npm:25.6.0"
+    "@types/node": "npm:25.6.1"
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     "@typescript-eslint/eslint-plugin": "npm:8.59.2"
