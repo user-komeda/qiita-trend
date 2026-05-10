@@ -1,9 +1,8 @@
-/* eslint testing-library/no-node-access: 0 */
-
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { describe, expect, test } from 'vitest'
 
+import { BASE_URL_CLIENT } from '@/app/const/path'
 import ItemList from '@/app/features/component/drawer/ItemList'
 
 describe('item_list component', () => {
@@ -22,13 +21,36 @@ describe('item_list component', () => {
     })
   })
 
+  test('sets correct href values for each month', () => {
+    expect.hasAssertions()
+
+    const monthList = [1, 2, 3]
+    render(<ItemList monthList={monthList} year={2023} />)
+
+    const links = screen.getAllByRole('link')
+
+    expect(links).toHaveLength(3)
+    expect(links[0]).toHaveAttribute(
+      'href',
+      `${BASE_URL_CLIENT}/?startDate=2023-1-01&endDate=2023-1-31`,
+    )
+    expect(links[1]).toHaveAttribute(
+      'href',
+      `${BASE_URL_CLIENT}/?startDate=2023-2-01&endDate=2023-2-28`,
+    )
+    expect(links[2]).toHaveAttribute(
+      'href',
+      `${BASE_URL_CLIENT}/?startDate=2023-3-01&endDate=2023-3-31`,
+    )
+  })
+
   test('renders an empty list when endDateLastMonthList is empty', () => {
     expect.hasAssertions()
 
-    const monthList: number[] = []
-    render(<ItemList monthList={monthList} year={2023} />)
+    render(<ItemList monthList={[]} year={2023} />)
     const container = screen.getByRole('list')
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(container.children).toHaveLength(0)
   })
 })

@@ -2,14 +2,19 @@ import { render, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/const'
+import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/path'
 import MainComponent from '@/app/features/routes/main/Main'
+import fetchWithJwt from '@/app/util/fetchWithJwt'
 
-const mockFetch = vi.spyOn(global, 'fetch')
+vi.mock(import('@/app/util/fetchWithJwt'), () => ({
+  default: vi.fn<typeof fetchWithJwt>(),
+}))
+
+const mockFetchWithJwt = vi.mocked(fetchWithJwt)
 
 describe('main component', () => {
   beforeEach(() => {
-    mockFetch.mockReset()
+    mockFetchWithJwt.mockReset()
   })
 
   test('renders by list empty', async () => {
@@ -20,7 +25,7 @@ describe('main component', () => {
       status: 200,
       statusText: 'OK',
     }
-    mockFetch.mockResolvedValueOnce(
+    mockFetchWithJwt.mockResolvedValueOnce(
       new Response(JSON.stringify(mockBody), mockParams),
     )
     render(
@@ -31,7 +36,7 @@ describe('main component', () => {
     expect(list).toBeInTheDocument()
 
     await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith(
+      expect(mockFetchWithJwt).toHaveBeenCalledWith(
         `${BASE_URL}${GET_ALL_ITEM_API_URL}?startDate=2023-01-01&endDate=2023-01-31`,
       )
     })
@@ -49,7 +54,7 @@ describe('main component', () => {
       status: 200,
       statusText: 'OK',
     }
-    mockFetch.mockResolvedValueOnce(
+    mockFetchWithJwt.mockResolvedValueOnce(
       new Response(JSON.stringify(mockBody), mockParams),
     )
     render(
@@ -71,12 +76,12 @@ describe('main component', () => {
       status: 200,
       statusText: 'OK',
     }
-    mockFetch.mockResolvedValueOnce(
+    mockFetchWithJwt.mockResolvedValueOnce(
       new Response(JSON.stringify(mockBody), mockParams),
     )
     render(await MainComponent({}))
     await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith(
+      expect(mockFetchWithJwt).toHaveBeenCalledWith(
         `${BASE_URL}${GET_ALL_ITEM_API_URL}?`,
       )
     })

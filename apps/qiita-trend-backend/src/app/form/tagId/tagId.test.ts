@@ -3,8 +3,9 @@ import { plainToInstance } from 'class-transformer'
 import { ValidationOptions, validate } from 'class-validator'
 import { describe, test, expect } from 'vitest'
 
+import { TagId } from './tagId'
+
 import { CURRENT_VALIDATION_ERROR, ZERO } from '@/const'
-import { TagId } from '@/form/tagId/tagId'
 import { getErrorForCheckIsEmpty } from '@/utils/getValidationErrorMessage'
 
 const testCase1 = async (option: ValidationOptions): Promise<boolean> => {
@@ -70,6 +71,14 @@ describe('tagIdValidation', () => {
     stopAtFirstError: true,
     forbidUnknownValues: false,
   }
+
+  test('should instantiate TagId', () => {
+    expect.hasAssertions()
+
+    const instance = new TagId()
+
+    expect(instance).toBeDefined()
+  })
 
   test('should complete validation', async () => {
     expect.hasAssertions()

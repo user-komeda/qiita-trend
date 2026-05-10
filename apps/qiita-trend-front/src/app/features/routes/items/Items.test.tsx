@@ -7,10 +7,15 @@ import { render, screen } from '@testing-library/react'
 import { describe, expect, test, vi, beforeEach } from 'vitest'
 import '@testing-library/jest-dom'
 
-import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/const'
+import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/path'
 import Items from '@/app/features/routes/items/Items'
+import fetchWithJwt from '@/app/util/fetchWithJwt'
 
-const mockFetch = vi.spyOn(global, 'fetch')
+vi.mock(import('@/app/util/fetchWithJwt'), () => ({
+  default: vi.fn<typeof fetchWithJwt>(),
+}))
+
+const mockFetchWithJwt = vi.mocked(fetchWithJwt)
 
 vi.mock(import('react-markdown'), () => {
   return {
@@ -32,7 +37,7 @@ vi.mock(import('remark-gfm'), () => {
 
 describe('items component', () => {
   beforeEach(() => {
-    mockFetch.mockReset()
+    mockFetchWithJwt.mockReset()
   })
 
   test('renders the fetched data correctly', async () => {
@@ -47,7 +52,7 @@ describe('items component', () => {
       status: 200,
       statusText: 'OK',
     }
-    mockFetch.mockResolvedValueOnce(
+    mockFetchWithJwt.mockResolvedValueOnce(
       new Response(JSON.stringify(mockBody), mockParams),
     )
 
@@ -82,13 +87,13 @@ describe('items component', () => {
       status: 200,
       statusText: 'OK',
     }
-    mockFetch.mockResolvedValueOnce(
+    mockFetchWithJwt.mockResolvedValueOnce(
       new Response(JSON.stringify(mockBody), mockParams),
     )
 
     render(await Items({ id: 'test-id' }))
 
-    expect(global.fetch).toHaveBeenCalledWith(
+    expect(mockFetchWithJwt).toHaveBeenCalledWith(
       `${BASE_URL}${GET_ALL_ITEM_API_URL}test-id`,
       { next: { revalidate: 3600 } },
     )

@@ -9,10 +9,7 @@ import { ItemsDetailRepository } from '@/public/itemsdetail/domain/itemsDetail.r
 import { ItemsDetailService } from '@/public/itemsdetail/domain/itemsDetail.service'
 import { ItemsDetailRepositoryImpl } from '@/public/itemsdetail/infrastructure/itemsDetail.repositoryImpl'
 
-/**
- * ItemsModule
- */
-@Module({
+const itemsModuleMetadata = {
   imports: [HttpModule],
   controllers: [ItemsController],
   providers: [
@@ -21,5 +18,10 @@ import { ItemsDetailRepositoryImpl } from '@/public/itemsdetail/infrastructure/i
     { provide: ItemsRepository, useClass: ItemsRepositoryImpl },
     { provide: ItemsDetailRepository, useClass: ItemsDetailRepositoryImpl },
   ],
-})
+}
+
+/**
+ * ItemsModule
+ */
+@Module(itemsModuleMetadata)
 export class ItemsModule {}

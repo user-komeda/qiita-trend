@@ -4,14 +4,49 @@ services:
     build:
       context: .
       dockerfile: ./apps/qiita-trend-front/Dockerfile
+    profiles:
+      - frontend
     restart: always
     ports:
-      - 3000:3000
+      - "3000:3000"
   qiita-trend-backend:
     container_name: qiita-trend-backend
     build:
       context: .
       dockerfile: ./apps/qiita-trend-backend/Dockerfile
+    profiles:
+      - backend
     restart: always
     ports:
-      - 3200:3200
+      - "3200:3200"
+  db:
+    container_name: db
+    image: postgres:18@sha256:52e6ffd11fddd081ae63880b635b2a61c14008c17fc98cdc7ce5472265516dd0
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "15432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+  redis:
+    image: redis:8.6@sha256:1f073813b641755b70b0200da64131bbeeb4ec5b633ca67772229b49820caafa
+    container_name: redis
+    command: >
+      redis-server
+      --appendonly yes
+      --appendfsync everysec
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+      --protected-mode yes
+      --requirepass password
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    restart: always
+volumes:
+  postgres_data:
+  redis-data:

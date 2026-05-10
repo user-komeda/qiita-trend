@@ -6,10 +6,12 @@ import { LoginModule } from '@/public/login/login.module'
 import { TagModule } from '@/public/tag/tag.module'
 import { TagsItemModule } from '@/public/tags-item/tagsItens.module'
 
+const publicModuleMetadata = {
+  imports: [ItemsModule, CommentModule, TagModule, TagsItemModule, LoginModule],
+}
+
 /**
  *PublicModule
  */
-@Module({
-  imports: [ItemsModule, CommentModule, TagModule, TagsItemModule, LoginModule],
-})
+@Module(publicModuleMetadata)
 export class PublicModule {}

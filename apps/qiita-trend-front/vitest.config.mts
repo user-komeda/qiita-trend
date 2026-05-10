@@ -1,25 +1,22 @@
 import { defineConfig } from 'vitest/config'
-import react from '@vitejs/plugin-react-swc'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  plugins: [tsconfigPaths(), react()],
+  plugins: [react()],
+  resolve: {
+    tsconfigPaths: true,
+  },
   test: {
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./vitest-setup.ts'],
     coverage: {
-      include: ['src/app/**'],
+      include: ['src/app/**/*.{ts,tsx}'],
       exclude: [
-        './src/app/api/**',
-        './src/app/(pages)/**',
-        './src/app/types/**',
-        './src/app/layout.tsx',
-        './src/app/component/Header.tsx',
-        './src/app/component/MainContent.tsx',
-        './src/app/component/SideMenu.tsx',
-        './src/app/component/WrapDrawer.tsx',
-        './src/app/features/component/drawer/DrawerMenu.tsx',
+        'src/app/layout.tsx',
+        'src/app/types/**',
+        'src/app/theme.tsx',
+        'src/app/\\(pages\\)/**',
       ],
       thresholds: {
         functions: 90,

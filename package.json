@@ -7,10 +7,17 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "check": "turbo run check"
+    "check": "turbo run check",
+    "compose:up": "infisicalLauncher --path=/postgres/local -- docker compose  up -d",
+    "compose:upAll": "infisicalLauncher --path=/postgres/local -- docker compose --profile frontend --profile backend up -d",
+    "compose:down": "docker compose down"
   },
   "devDependencies": {
+    "infisicalLauncher": "git+ssh://git@github.com:user-komeda/infisicalLauncher.git",
     "lefthook": "2.1.6",
     "turbo": "2.9.9"
+  },
+  "dependencies": {
+    "jose": "^6.2.3"
   }
 }

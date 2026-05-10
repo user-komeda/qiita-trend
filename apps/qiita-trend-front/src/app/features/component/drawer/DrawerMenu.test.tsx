@@ -1,39 +1,66 @@
-import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { render, fireEvent, screen } from '@testing-library/react'
 import React from 'react'
-import { describe, expect, test } from 'vitest'
+import { describe, expect, vi, test } from 'vitest'
 
 import DrawerMenu from '@/app/features/component/drawer/DrawerMenu'
-import '@testing-library/jest-dom'
 import useDrawerStore from '@/app/store/drawerStore'
 
-// beforeEach(() => {
-//   const mockDate = new Date(2023, 10, 28).getTime()
-//   Date.now = vi.fn(() => {
-//     return mockDate
-//   })
-// useDrawerStore.setState({ isOpen: true })
-// })
-describe('drawer_menu component', () => {
-  // //TODO: あとで見直す(Drawerのクローズが発火しない)
-  test.todo(
-    'should render MobileDrawerMenu and WrapDrawer components',
-    async () => {
-      expect.hasAssertions()
+interface MockDrawerState {
+  isOpen: boolean
+  changeIsOpen: (flag: boolean) => void
+}
 
-      render(<DrawerMenu />)
-      const allItem = screen.getAllByRole('listitem')
+vi.mock(import('@/app/component/WrapDrawer'), () => ({
+  default: () => <div data-testid="wrap-drawer">Wrap Drawer</div>,
+}))
 
-      expect(allItem).toHaveLength((12 * 11 + 4 + 11) * 2)
+vi.mock(import('@/app/features/component/drawer/MobileDrawer'), () => ({
+  default: ({
+    isModalOpen,
+    handleDrawerClose,
+  }: {
+    isModalOpen: boolean
+    handleDrawerClose: () => void
+  }) => (
+    <div data-testid="mobile-drawer">
+      <span>{isModalOpen ? 'open' : 'closed'}</span>
+      <button onClick={handleDrawerClose} data-testid="close-button">
+        Close
+      </button>
+    </div>
+  ),
+}))
 
-      await userEvent.keyboard('{esc}')
+vi.mock(import('@/app/store/drawerStore'), () => {
+  return {
+    // eslint-disable-next-line vitest/require-mock-type-parameters
+    default: vi.fn(),
+  } as unknown as Partial<typeof import('@/app/store/drawerStore')>
+})
 
-      expect(useDrawerStore.getState().isOpen).toBe(false)
-    },
-  )
-
-  test('assert', () => {
+describe('drawerMenu Component', () => {
+  test('正しい状態とハンドラーをMobileDrawerに渡すこと', () => {
     expect.hasAssertions()
-    expect(true).toBe(true) // Placeholder test to ensure the test suite runs without errors
+
+    const changeIsOpen = vi.fn<(flag: boolean) => void>()
+    const mockState: MockDrawerState = {
+      isOpen: true,
+      changeIsOpen,
+    }
+
+    vi.mocked(useDrawerStore).mockImplementation(
+      (selector?: (state: MockDrawerState) => unknown) => {
+        return selector === undefined ? mockState : selector(mockState)
+      },
+    )
+
+    render(<DrawerMenu />)
+
+    expect(screen.getByTestId('wrap-drawer')).toBeDefined()
+    expect(screen.getByText('open')).toBeDefined()
+
+    fireEvent.click(screen.getByTestId('close-button'))
+
+    expect(changeIsOpen).toHaveBeenCalledWith(false)
   })
 })

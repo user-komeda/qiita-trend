@@ -8,7 +8,6 @@ import {
 } from '@mui/material'
 import React, { ReactNode } from 'react'
 
-import NextLink from '@/app/component/NextLink'
 import { DRAWER_WIDTH } from '@/app/const/const'
 
 interface Props {
@@ -37,11 +36,9 @@ const Header = ({ title, childComponent }: Props) => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               {title}
             </Typography>
-            <NextLink
-              href={`https://qiita.com/api/v2/oauth/authorize?client_id=${process.env.CLIENT_ID ?? ''}&scope=read_qiita+write_qiita`}
-            >
-              <Button color="inherit">Login</Button>
-            </NextLink>
+            <Button color="inherit" component="a" href="/api/login">
+              Login
+            </Button>
           </Toolbar>
         </AppBar>
       </Box>

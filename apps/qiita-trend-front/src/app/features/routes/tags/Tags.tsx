@@ -1,5 +1,5 @@
 import StackRow from '@/app/component/StackRow'
-import { BASE_URL, GET_ALL_TAG_URL } from '@/app/const/const'
+import { BASE_URL, GET_ALL_TAG_URL } from '@/app/const/path'
 
 /**
  *Tags

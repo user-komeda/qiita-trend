@@ -1,7 +1,7 @@
 import { List } from '@mui/material'
 
 import ListItemComponent from '@/app/component/ListItemComponent'
-import { BASE_URL_CLIENT } from '@/app/const/const'
+import { BASE_URL_CLIENT } from '@/app/const/path'
 import getLastDate from '@/app/util/getLastDate'
 
 interface Props {
@@ -17,9 +17,8 @@ const ItemList = ({ monthList, year }: Props) => {
     <List>
       {monthList.map((month) => {
         const date = new Date(year, month)
-        const dateString = `${date.getFullYear().toLocaleString()}-${date.getMonth().toLocaleString()}-01`
-
-        const endDateString = `${date.getFullYear().toLocaleString()}-${date.getMonth().toLocaleString()}-${getLastDate(date.getFullYear(), date.getMonth()).toLocaleString()}`
+        const dateString = `${date.getFullYear().toString()}-${date.getMonth().toString()}-01`
+        const endDateString = `${date.getFullYear().toString()}-${date.getMonth().toString()}-${getLastDate(date.getFullYear(), date.getMonth()).toString()}`
         return (
           <ListItemComponent
             key={month}

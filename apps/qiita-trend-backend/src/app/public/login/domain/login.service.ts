@@ -1,24 +1,51 @@
 import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
-import { AxiosResponse } from 'axios'
+import { ConfigService } from '@nestjs/config'
 import { lastValueFrom } from 'rxjs'
 
+interface QiitaTokenResponse {
+  token: string
+}
+
 /**
- *ItemsService
+ * LoginService
  */
 @Injectable()
 export class LoginService {
-  constructor(private readonly httpService: HttpService) {}
+  constructor(
+    private readonly httpService: HttpService,
+    private readonly config: ConfigService,
+  ) {}
+
   /**
-   *login試行
+   * code をアクセストークンに交換
    *
-   * @param body - body
+   * @param code - 認可コード
    *
-   * @returns - loginResult
+   * @returns Qiita アクセストークン
    */
-  async login(body: string): Promise<AxiosResponse> {
-    return lastValueFrom(
-      this.httpService.post('https://qiita.com/api/v2/access_tokens', body),
+  async exchangeCodeForToken(code: string): Promise<string> {
+    const clientId = this.config.get<string>('CLIENT_ID')
+    const clientSecret = this.config.get<string>('CLIENT_SECRET')
+
+    const payload = {
+      client_id: clientId,
+      client_secret: clientSecret,
+      code,
+    }
+
+    const response = await lastValueFrom(
+      this.httpService.post<QiitaTokenResponse>(
+        'https://qiita.com/api/v2/access_tokens',
+        payload,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        },
+      ),
     )
+    return response.data.token
   }
 }

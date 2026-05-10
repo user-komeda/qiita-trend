@@ -5,8 +5,9 @@ import {
   BASE_URL,
   BASE_URL_CLIENT,
   GET_ALL_ITEM_API_URL,
-} from '@/app/const/const'
+} from '@/app/const/path'
 import { ItemsData } from '@/app/types/ItemsData'
+import fetchWithJwt from '@/app/util/fetchWithJwt'
 
 /** Main */
 const Main = async ({
@@ -17,13 +18,14 @@ const Main = async ({
   endDate?: string
 }) => {
   const searchParams = new URLSearchParams()
-
   if (startDate && endDate) {
     searchParams.append('startDate', startDate)
     searchParams.append('endDate', endDate)
   }
   const resultDataList = (await (
-    await fetch(`${BASE_URL}${GET_ALL_ITEM_API_URL}?${searchParams.toString()}`)
+    await fetchWithJwt(
+      `${BASE_URL}${GET_ALL_ITEM_API_URL}?${searchParams.toString()}`,
+    )
   ).json()) as ItemsData[]
 
   return (
