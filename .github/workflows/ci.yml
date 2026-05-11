@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       redis:
-        image: redis:8.6.3
+        image: redis:8.6.3@sha256:0c341492924cad6f5483f9133e43bd6c51ecdecbcadfac5b51657393b6a7936c
         env:
           REDIS_PASSWORD: password
         ports:
