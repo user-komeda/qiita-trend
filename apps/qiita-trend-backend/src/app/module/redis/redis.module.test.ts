@@ -134,7 +134,7 @@ describe(RedisModule, () => {
       .compile()
 
     expect(createClient).toHaveBeenCalledWith({
-      url: "'redis://:password@localhost:6379'",
+      url: 'redis://:password@localhost:6379',
     })
 
     await tempModule.close()
