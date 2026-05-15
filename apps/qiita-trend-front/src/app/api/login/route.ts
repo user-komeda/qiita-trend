@@ -2,6 +2,8 @@ import { randomBytes } from 'crypto'
 
 import { NextResponse } from 'next/server'
 
+import { ORIGIN } from '@/app/const/path'
+
 const STATE_BYTES = 32
 const STATE_MAX_AGE_SEC = 600
 
@@ -9,7 +11,7 @@ const STATE_MAX_AGE_SEC = 600
  * /api/login
  * ログイン開始のみ行う
  */
-export function GET(request: Request): Response {
+export function GET(): Response {
   const newState = randomBytes(STATE_BYTES).toString('hex')
 
   const clientId = process.env.CLIENT_ID ?? ''
@@ -18,7 +20,7 @@ export function GET(request: Request): Response {
     `?client_id=${encodeURIComponent(clientId)}` +
     `&scope=${encodeURIComponent('read_qiita write_qiita')}` +
     `&state=${encodeURIComponent(newState)}` +
-    `&redirect_uri=${encodeURIComponent(`${new URL(request.url).origin}/api/login/redirect`)}`
+    `&redirect_uri=${encodeURIComponent(`${ORIGIN}/api/login/redirect`)}`
 
   const response = NextResponse.redirect(authorizeUrl)
   response.cookies.set({

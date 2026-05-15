@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material'
+import { Alert, Typography } from '@mui/material'
 
 import MarkDownComponent from '@/app/component/MarkDownComponent'
 import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/path'
@@ -14,9 +14,15 @@ import fetchWithJwt from '@/app/util/fetchWithJwt'
  * @returns - React Element
  */
 const Items = async ({ id }: { id: string }) => {
-  const resultData = (await (
-    await fetchWithJwt(`${BASE_URL}${GET_ALL_ITEM_API_URL}${id}`)
-  ).json()) as ItemsData
+  const result = await fetchWithJwt<ItemsData>(
+    `${BASE_URL}${GET_ALL_ITEM_API_URL}${id}`,
+  )
+
+  if (!result.ok) {
+    return <Alert severity="error">{result.message}</Alert>
+  }
+  const resultData = result.data
+
   return (
     <div>
       <Typography variant="h4" component="h2" sx={{ fontWeight: 'bold' }}>

@@ -1,4 +1,4 @@
-import { ExecutionContext, UnauthorizedException } from '@nestjs/common'
+import { ExecutionContext, ForbiddenException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
 import { describe, expect, vi, beforeEach, test } from 'vitest'
@@ -28,7 +28,7 @@ describe(JwtGuard, () => {
     jwtGuard = new JwtGuard(jwtService, configService)
   })
 
-  test('should throw UnauthorizedException if token is missing', async () => {
+  test('should throw ForbiddenException if token is missing', async () => {
     expect.hasAssertions()
 
     const mockRequest = { headers: {} }
@@ -39,11 +39,11 @@ describe(JwtGuard, () => {
     } as unknown as ExecutionContext
 
     await expect(jwtGuard.canActivate(mockExecutionContext)).rejects.toThrow(
-      new UnauthorizedException('missing_token'),
+      new ForbiddenException('missing_token'),
     )
   })
 
-  test('should throw UnauthorizedException if token format is invalid', async () => {
+  test('should throw ForbiddenException if token format is invalid', async () => {
     expect.hasAssertions()
 
     const mockRequest = { headers: { authorization: 'invalid-format' } }
@@ -54,11 +54,11 @@ describe(JwtGuard, () => {
     } as unknown as ExecutionContext
 
     await expect(jwtGuard.canActivate(mockExecutionContext)).rejects.toThrow(
-      new UnauthorizedException('missing_token'),
+      new ForbiddenException('missing_token'),
     )
   })
 
-  test('should throw UnauthorizedException if JWT verification fails', async () => {
+  test('should throw ForbiddenException if JWT verification fails', async () => {
     expect.hasAssertions()
 
     const mockRequest = { headers: { authorization: 'Bearer invalid-token' } }
@@ -73,7 +73,7 @@ describe(JwtGuard, () => {
     )
 
     await expect(jwtGuard.canActivate(mockExecutionContext)).rejects.toThrow(
-      new UnauthorizedException('invalid_token'),
+      new ForbiddenException('invalid_token'),
     )
   })
 
