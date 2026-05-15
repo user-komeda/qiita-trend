@@ -4,7 +4,8 @@ import { createClient } from 'redis'
 import { describe, expect, vi, beforeEach, test } from 'vitest'
 
 import { RedisModule, REDIS_CLIENT } from './redis.module'
-import { RedisStore } from './redisStore'
+
+import { RedisStore } from '../../redisStore'
 
 interface MockRedisClient {
   on: ReturnType<
