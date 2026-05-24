@@ -8,15 +8,15 @@
   "scripts": {
     "build": "yarn nest build -c nest-cli-prod.json",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "dev": "infisicalLauncher --path=/qiitaTrend/nest/local --envDir=../../ -- yarn  nest start -b swc --debug --watch",
+    "dev": "infisicalLauncher --path=/qiitaTrend/nest/local -- yarn  nest start -b swc --debug --watch",
     "start": "node dist/main",
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
     "typecheck": "tsc --noEmit",
-    "check": "infisicalLauncher --path=/qiitaTrend/nest/local --envDir=../../ -- yarn concurrently 'yarn lint' 'yarn format' 'yarn typecheck' 'yarn test'",
-    "test": "vitest run --coverage --pool=forks",
-    "test:watch": "vitest --watch",
-    "test:cov": "vitest --coverage"
+    "check": "yarn concurrently 'yarn lint' 'yarn format' 'yarn typecheck' 'yarn test'",
+    "test": "infisicalLauncher --path=/qiitaTrend/nest/local -- yarn vitest run --coverage --pool=forks",
+    "test:watch": "infisicalLauncher --path=/qiitaTrend/nest/local -- yarn vitest --watch",
+    "test:cov": "infisicalLauncher --path=/qiitaTrend/nest/local -- yarn vitest --coverage"
   },
   "dependencies": {
     "@nestjs/axios": "^4.0.1",

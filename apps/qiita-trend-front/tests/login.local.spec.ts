@@ -18,7 +18,7 @@ const approveQiitaAuthorizationIfNeeded = async (page: Page) => {
   }
 }
 
-test.describe('Local real login flow with logged-in Qiita session', () => {
+test.describe('Local real login flow with logged-in Qiita session @local-only', () => {
   test.use({
     storageState: 'playwright/.auth/qiita.json',
   })

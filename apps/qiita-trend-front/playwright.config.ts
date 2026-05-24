@@ -1,13 +1,13 @@
-import { defineConfig, devices } from '@playwright/test'
-
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
+import { defineConfig, devices } from '@playwright/test'
+const currentDir = dirname(fileURLToPath(import.meta.url))
+const backendDir = resolve(currentDir, '../qiita-trend-backend')
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -62,19 +62,19 @@ export default defineConfig({
 
   webServer: [
     {
-      command: 'yarn  dev',
+      command: 'yarn next dev',
       url: 'http://localhost:3000',
       name: 'Frontend',
       timeout: 120 * 1000,
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: false,
     },
     {
-      command: 'yarn dev',
+      command: 'yarn nest start -b swc --debug --watch',
       url: 'http://localhost:3200/health',
       name: 'Backend',
-      cwd: '../qiita-trend-backend',
+      cwd: backendDir,
       timeout: 120 * 1000,
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: false,
     },
   ],
 })

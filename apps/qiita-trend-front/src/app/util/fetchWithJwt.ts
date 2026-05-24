@@ -47,9 +47,8 @@ const fetchWithJwt = async <T>(
       ok: true,
       data,
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,unused-imports/no-unused-vars
   } catch (error) {
-    console.error(error)
-
     return {
       ok: false,
       message: ERROR_MESSAGE,

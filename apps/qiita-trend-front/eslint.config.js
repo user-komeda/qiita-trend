@@ -20,6 +20,7 @@ export default tseslint.config(
       'next-env.d.ts',
       'eslint.config.js',
       'vitest.config.mts',
+      'tests-results/**',
     ],
   },
   {
