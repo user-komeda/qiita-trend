@@ -1,4 +1,4 @@
-import { List } from '@mui/material'
+import { Alert, List } from '@mui/material'
 
 import ListItemComponent from '@/app/component/ListItemComponent'
 import {
@@ -22,15 +22,19 @@ const Main = async ({
     searchParams.append('startDate', startDate)
     searchParams.append('endDate', endDate)
   }
-  const resultDataList = (await (
-    await fetchWithJwt(
-      `${BASE_URL}${GET_ALL_ITEM_API_URL}?${searchParams.toString()}`,
-    )
-  ).json()) as ItemsData[]
+  const result = await fetchWithJwt<ItemsData[]>(
+    `${BASE_URL}${GET_ALL_ITEM_API_URL}?${searchParams.toString()}`,
+  )
+
+  if (!result.ok) {
+    return <Alert severity="error">{result.message}</Alert>
+  }
+
+  const data = result.data
 
   return (
     <List>
-      {resultDataList.map((resultData) => {
+      {data.map((resultData) => {
         return (
           <ListItemComponent
             key={resultData.id}

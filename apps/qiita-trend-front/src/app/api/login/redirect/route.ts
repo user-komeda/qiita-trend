@@ -2,7 +2,7 @@ import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 import * as v from 'valibot'
 
-import { BASE_URL } from '@/app/const/path'
+import { BASE_URL, ORIGIN } from '@/app/const/path'
 import { SESSION_MAX_AGE_SEC } from '@/app/const/sessionConfig'
 import fetchWithJwt from '@/app/util/fetchWithJwt'
 import { generateSessionId, saveSessionToken } from '@/app/util/session'
@@ -28,14 +28,12 @@ export async function GET(request: NextRequest): Promise<Response> {
     body: JSON.stringify({ code }),
   })
   if (!backendRes.ok) {
-    const response = NextResponse.redirect(
-      new URL('/?login=failed', request.url),
-    )
+    const response = NextResponse.redirect(new URL('/?login=failed', ORIGIN))
     response.cookies.delete('oauth_state')
     return response
   }
 
-  const json: unknown = await backendRes.json()
+  const json = await backendRes.data
   return await setResponseCookie(request, json)
 }
 
@@ -50,7 +48,7 @@ const validation = async (request: NextRequest) => {
   // state 検証はエラーレスポンスでも先に行う（CSRF 対策）
   if (expectedState === undefined || state !== expectedState) {
     const response = NextResponse.redirect(
-      new URL('/?login=invalid_state', request.url),
+      new URL('/?login=invalid_state', ORIGIN),
     )
     response.cookies.delete('oauth_state')
     return response
@@ -59,16 +57,14 @@ const validation = async (request: NextRequest) => {
   // Qiita 側で認可エラー（ユーザー拒否など）が発生したケース
   if (error !== null) {
     const reason = error === 'access_denied' ? 'denied' : 'error'
-    const response = NextResponse.redirect(
-      new URL(`/?login=${reason}`, request.url),
-    )
+    const response = NextResponse.redirect(new URL(`/?login=${reason}`, ORIGIN))
     response.cookies.delete('oauth_state')
     return response
   }
 
   if (code === null) {
     const response = NextResponse.redirect(
-      new URL('/?login=invalid_request', request.url),
+      new URL('/?login=invalid_request', ORIGIN),
     )
     response.cookies.delete('oauth_state')
     return response
@@ -81,7 +77,7 @@ const setResponseCookie = async (request: NextRequest, json: unknown) => {
 
   const sessionId = generateSessionId()
   await saveSessionToken(sessionId, token)
-  const response = NextResponse.redirect(new URL('/', request.url))
+  const response = NextResponse.redirect(new URL('/', ORIGIN))
   response.cookies.delete('oauth_state')
   response.cookies.set({
     name: 'sessionId',

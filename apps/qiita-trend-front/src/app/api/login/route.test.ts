@@ -14,9 +14,8 @@ describe('login API Route', () => {
     expect.hasAssertions()
 
     process.env.CLIENT_ID = 'test-client-id'
-    const request = new Request('http://localhost:3000/api/login')
 
-    const response = GET(request)
+    const response = GET()
 
     expect(response.status).toBe(307) // NextResponse.redirectのデフォルト
 
@@ -41,9 +40,8 @@ describe('login API Route', () => {
     expect.hasAssertions()
 
     delete process.env.CLIENT_ID
-    const request = new Request('http://localhost:3000/api/login')
 
-    const response = GET(request)
+    const response = GET()
 
     const location = response.headers.get('location')
 

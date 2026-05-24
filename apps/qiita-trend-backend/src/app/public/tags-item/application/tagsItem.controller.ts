@@ -15,7 +15,7 @@ export class TagsItemController {
    *
    * @param id - tagId
    */
-  @Get('')
+  @Get()
   getItemsFromTag(@Param() id: TagId): Promise<ItemsData[]> {
     return this.tagsItemService.getItemsFromTag(id.tagId)
   }

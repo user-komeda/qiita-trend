@@ -1,4 +1,3 @@
-import { HttpModule } from '@nestjs/axios'
 import { Module } from '@nestjs/common'
 
 import { CommentController } from '@/public/comment/application/comment.controller'
@@ -7,7 +6,6 @@ import { CommentService } from '@/public/comment/domain/comment.service'
 import { CommentRepositoryImpl } from '@/public/comment/infrastructure/comment.repositoryImpl'
 
 const commentModuleMetadata = {
-  imports: [HttpModule],
   controllers: [CommentController],
   providers: [
     CommentService,

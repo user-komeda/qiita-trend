@@ -1,17 +1,25 @@
+/* eslint-disable max-lines */
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'
 import { describe, expect, vi, test } from 'vitest'
 
 import { GET } from '@/app/api/login/redirect/route'
-import fetchWithJwt from '@/app/util/fetchWithJwt'
+import fetchWithJwt, { type FetchWithJwtResult } from '@/app/util/fetchWithJwt'
 import { generateSessionId, saveSessionToken } from '@/app/util/session'
 
 vi.mock(import('next/headers'), () => ({
   cookies: vi.fn<typeof cookies>(),
 }))
 
+type FetchWithJwtMock = <T>(
+  path: string,
+  init?: RequestInit,
+) => Promise<FetchWithJwtResult<T>>
+
+const fetchWithJwtMock = vi.hoisted(() => vi.fn<FetchWithJwtMock>())
+
 vi.mock(import('@/app/util/fetchWithJwt'), () => ({
-  default: vi.fn<typeof fetchWithJwt>(),
+  default: fetchWithJwtMock as typeof fetchWithJwt,
 }))
 
 vi.mock(import('@/app/util/session'), () => ({
@@ -35,9 +43,10 @@ describe('login Redirect', () => {
     expect.hasAssertions()
 
     setupMocks()
-    vi.mocked(fetchWithJwt).mockResolvedValue(
-      new Response(JSON.stringify({ token: 'qiita-token' }), { status: 200 }),
-    )
+    fetchWithJwtMock.mockResolvedValue({
+      ok: true,
+      data: { token: 'qiita-token' },
+    })
     vi.mocked(generateSessionId).mockReturnValue('mock-session-id')
     const request = new NextRequest(
       'http://localhost:3000/api/login/redirect?code=test-code&state=test-state',
@@ -95,9 +104,11 @@ describe('login Redirect', () => {
     expect.hasAssertions()
 
     setupMocks()
-    vi.mocked(fetchWithJwt).mockResolvedValue(
-      new Response(null, { status: 500 }),
-    )
+    fetchWithJwtMock.mockResolvedValue({
+      ok: false,
+      message: 'error',
+      status: 500,
+    })
     const request = new NextRequest(
       'http://localhost:3000/api/login/redirect?code=test-code&state=test-state',
     )
