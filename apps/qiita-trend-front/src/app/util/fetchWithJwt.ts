@@ -34,6 +34,7 @@ const fetchWithJwt = async <T>(
     }
 
     if (!response.ok) {
+      console.error('Fetch failed:', response.status, response.statusText)
       return {
         ok: false,
         status: response.status,
