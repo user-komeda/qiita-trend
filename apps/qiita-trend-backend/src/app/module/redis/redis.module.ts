@@ -20,8 +20,7 @@ export const REDIS_CLIENT = 'REDIS_CLIENT'
       inject: [ConfigService],
       useFactory: async (config: ConfigService): Promise<RedisClientType> => {
         const url =
-          config.get<string>('REDIS_URL') ??
-          "'redis://:password@localhost:6379'"
+          config.get<string>('REDIS_URL') ?? 'redis://:password@localhost:6379'
         const client: RedisClientType = createClient({ url })
         client.on('error', (e) => {
           console.error('[Redis] error:', e)

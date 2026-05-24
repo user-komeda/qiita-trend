@@ -5,7 +5,10 @@
     {
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
-      "automerge": true
+      "automerge": true,
+    },
+    {
+      "minimumReleaseAge": "7 days"
     }
   ]
 }

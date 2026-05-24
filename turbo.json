@@ -4,9 +4,9 @@
     "IMPORTANT_GLOBAL_VARIABLE"
   ],
   "globalPassThroughEnv": [
-    "CLIENT_ID",
-    "CLIENT_SECRET",
-    "PROJECT_ID"
+    "LOCAL_INFISICAL_CLIENT_ID",
+    "LOCAL_INFISICAL_CLIENT_SECRET",
+    "LOCAL_INFISICAL_PROJECT_ID"
   ],
   "tasks": {
     "dev": {
