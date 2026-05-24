@@ -2561,9 +2561,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/testing@npm:11.1.19":
-  version: 11.1.19
-  resolution: "@nestjs/testing@npm:11.1.19"
+"@nestjs/testing@npm:11.1.20":
+  version: 11.1.20
+  resolution: "@nestjs/testing@npm:11.1.20"
   dependencies:
     tslib: "npm:2.8.1"
   peerDependencies:
@@ -2576,7 +2576,7 @@ __metadata:
       optional: true
     "@nestjs/platform-express":
       optional: true
-  checksum: 10c0/58c1d8249384ca22dd68af20d8cbd555328e8c2bbecd64c2785964ef75a084c94b760edf08cc7085896496292bc6e5ec42e018e7743a99bb2f1bb23ba2ec5b55
+  checksum: 10c0/80ee6eaa0ad50d79c258efdf083ecb72e3d8bda379a979128d99b83db25abecc8a85faa67d4b143ba283133adf5466e51eaba404d20882fabdf320cf082ea8eb
   languageName: node
   linkType: hard
 
@@ -10846,7 +10846,7 @@ __metadata:
     "@nestjs/platform-express": "npm:^11.1.19"
     "@nestjs/schematics": "npm:11.1.0"
     "@nestjs/swagger": "npm:11.4.2"
-    "@nestjs/testing": "npm:11.1.19"
+    "@nestjs/testing": "npm:11.1.20"
     "@swc/cli": "npm:0.8.1"
     "@swc/core": "npm:1.15.33"
     "@types/cookie-parser": "npm:1.4.10"
