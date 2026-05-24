@@ -8125,14 +8125,14 @@ __metadata:
   linkType: hard
 
 "infisicalLauncher@git+ssh://git@github.com:user-komeda/infisicalLauncher.git":
-  version: 1.0.0
-  resolution: "infisicalLauncher@git+ssh://git@github.com:user-komeda/infisicalLauncher.git#commit=6d61aeb5aac271aed34914f4ee51d8f35bf7d388"
+  version: 1.0.1
+  resolution: "infisicalLauncher@git+ssh://git@github.com:user-komeda/infisicalLauncher.git#commit=56f0e23b70405a9cddb19459e7962816e0568d82"
   dependencies:
     "@infisical/sdk": "npm:^5.0.2"
     dotenv: "npm:^17.4.2"
   bin:
     infisicalLauncher: ./dist/index.cjs
-  checksum: 10c0/51fa0f938993f1b8cdf3e5d37c97f10372388ca71655ed1fdc016d6ec7cbbe42eb7d4c71968e72438feecfb358dbb76d6c622ba33347d95f86b6f394d01676bc
+  checksum: 10c0/20569a7abe82aef2f77db72627ac63ab7f56f83c473c0860c2932412f56394cd3481f4ba8f8a638072f46605d2feb74ea1c1c17ef31d4840dea79a57850aad3d
   languageName: node
   linkType: hard
 
