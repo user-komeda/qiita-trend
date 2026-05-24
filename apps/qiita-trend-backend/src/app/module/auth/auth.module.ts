@@ -3,10 +3,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { APP_GUARD } from '@nestjs/core'
 import { JwtModule } from '@nestjs/jwt'
 
-import { JwtGuard } from './guard/jwtGuard'
-import { RedisModule } from './redis.module'
-
 import { AuthGuard } from '@/app/guard/authGuard'
+import { JwtGuard } from '@/app/guard/jwtGuard'
+import { RedisModule } from '@/app/module/redis/redis.module'
 
 /**
  * AuthModule

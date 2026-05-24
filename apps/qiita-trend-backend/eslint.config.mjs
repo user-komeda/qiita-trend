@@ -10,7 +10,10 @@ import importPlugin from 'eslint-plugin-import'
 // ... and all your other imports
 export default tseslint.config(
   {
-    files: ['./src/**/*.{mjs,ts,mts}'],
+    ignores: ['dist/**', 'coverage/**'],
+  },
+  {
+    files: ['./src/**/*.{mjs,ts,mts}', './test/**/*.{mjs,ts,mts}'],
     extends: [
       js.configs.recommended,
       importPlugin.flatConfigs.recommended,
@@ -68,7 +71,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['src/**/*.test.ts'],
+    files: ['src/**/*.test.ts', 'test/**/*.test.ts'],
     settings: {
       vitest: {
         typecheck: true,
@@ -88,9 +91,6 @@ export default tseslint.config(
       'max-depth': 'off',
       // TODO: 50にしたい
       'max-lines': 'off',
-      // TODO: 30にしたい
-      'max-lines-per-function': 'off',
-      'max-params': 'off',
       'vitest/consistent-test-it': ['error', { fn: 'test' }],
       'vitest/no-hooks': [
         'error',

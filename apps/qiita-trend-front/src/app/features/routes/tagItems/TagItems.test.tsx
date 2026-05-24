@@ -4,31 +4,33 @@ import { beforeEach, describe, expect, test, vi } from 'vitest'
 import '@testing-library/jest-dom'
 import { BASE_URL, GET_ITEMS_BY_TAG_URL } from '@/app/const/path'
 import TagItems from '@/app/features/routes/tagItems/TagItems'
-import fetchWithJwt from '@/app/util/fetchWithJwt'
+import fetchWithJwt, { type FetchWithJwtResult } from '@/app/util/fetchWithJwt'
 import replaceUrlParameter from '@/app/util/replaceUrlParameter'
 
-vi.mock(import('@/app/util/fetchWithJwt'), () => ({
-  default: vi.fn<typeof fetchWithJwt>(),
-}))
+type FetchWithJwtMock = <T>(
+  path: string,
+  init?: RequestInit,
+) => Promise<FetchWithJwtResult<T>>
 
-const mockFetchWithJwt = vi.mocked(fetchWithJwt)
+const fetchWithJwtMock = vi.hoisted(() => vi.fn<FetchWithJwtMock>())
+
+vi.mock(import('@/app/util/fetchWithJwt'), () => ({
+  default: fetchWithJwtMock as typeof fetchWithJwt,
+}))
 
 describe('tag_items component', () => {
   beforeEach(() => {
-    mockFetchWithJwt.mockReset()
+    fetchWithJwtMock.mockReset()
   })
 
   test('renders by list empty', async () => {
     expect.hasAssertions()
 
     const mockBody: unknown = []
-    const mockParams = {
-      status: 200,
-      statusText: 'OK',
-    }
-    mockFetchWithJwt.mockResolvedValueOnce(
-      new Response(JSON.stringify(mockBody), mockParams),
-    )
+    fetchWithJwtMock.mockResolvedValueOnce({
+      ok: true,
+      data: mockBody,
+    })
 
     render(await TagItems({ tagName: '品質' }))
     const list = screen.getByRole('list')
@@ -44,13 +46,10 @@ describe('tag_items component', () => {
       { id: 2, title: 'Test2 Title' },
       { id: 3, title: 'Test3 Title' },
     ]
-    const mockParams = {
-      status: 200,
-      statusText: 'OK',
-    }
-    mockFetchWithJwt.mockResolvedValueOnce(
-      new Response(JSON.stringify(mockBody), mockParams),
-    )
+    fetchWithJwtMock.mockResolvedValueOnce({
+      ok: true,
+      data: mockBody,
+    })
 
     render(await TagItems({ tagName: '品質' }))
 
@@ -65,18 +64,15 @@ describe('tag_items component', () => {
       { id: 2, title: 'Test2 Title' },
       { id: 3, title: 'Test3 Title' },
     ]
-    const mockParams = {
-      status: 200,
-      statusText: 'OK',
-    }
-    mockFetchWithJwt.mockResolvedValueOnce(
-      new Response(JSON.stringify(mockBody), mockParams),
-    )
+    fetchWithJwtMock.mockResolvedValueOnce({
+      ok: true,
+      data: mockBody,
+    })
 
     render(await TagItems({ tagName: '品質' }))
 
     await waitFor(() => {
-      expect(mockFetchWithJwt).toHaveBeenCalledWith(
+      expect(fetchWithJwtMock).toHaveBeenCalledWith(
         replaceUrlParameter(
           `${BASE_URL}${GET_ITEMS_BY_TAG_URL}`,
           ':tagName',
@@ -84,5 +80,18 @@ describe('tag_items component', () => {
         ),
       )
     })
+  })
+
+  test('renders error alert when fetch fails', async () => {
+    expect.hasAssertions()
+
+    fetchWithJwtMock.mockResolvedValueOnce({
+      ok: false,
+      message: 'Fetch failed',
+    })
+
+    render(await TagItems({ tagName: '品質' }))
+
+    expect(screen.getByText('Fetch failed')).toBeInTheDocument()
   })
 })
