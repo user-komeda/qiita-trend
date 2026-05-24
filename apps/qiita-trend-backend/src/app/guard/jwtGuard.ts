@@ -1,9 +1,9 @@
 import {
   CanActivate,
   ExecutionContext,
+  ForbiddenException,
   Injectable,
   Logger,
-  UnauthorizedException,
 } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
@@ -37,8 +37,9 @@ export class JwtGuard implements CanActivate {
     const req = context.switchToHttp().getRequest<AuthenticatedRequest>()
     const auth = req.headers.authorization ?? ''
     const token = auth.startsWith('Bearer ') ? auth.slice('Bearer '.length) : ''
-
-    if (token === '') throw new UnauthorizedException('missing_token')
+    if (token === '') {
+      throw new ForbiddenException('missing_token')
+    }
 
     let payload: JwtPayload
     try {
@@ -50,7 +51,7 @@ export class JwtGuard implements CanActivate {
       })
     } catch (e) {
       this.logger.warn(`JWT verify failed: ${(e as Error).message}`)
-      throw new UnauthorizedException('invalid_token')
+      throw new ForbiddenException('invalid_token')
     }
 
     const sessionId = payload.sub ?? ''

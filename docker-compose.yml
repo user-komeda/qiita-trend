@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: ./apps/qiita-trend-front/Dockerfile
+      ssh:
+        - default
     profiles:
       - frontend
     restart: always
@@ -14,6 +16,8 @@ services:
     build:
       context: .
       dockerfile: ./apps/qiita-trend-backend/Dockerfile
+      ssh:
+        - default
     profiles:
       - backend
     restart: always

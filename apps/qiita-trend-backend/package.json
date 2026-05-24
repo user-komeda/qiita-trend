@@ -8,17 +8,15 @@
   "scripts": {
     "build": "yarn nest build -c nest-cli-prod.json",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "dev": "infisicalLauncher --path=/qiitaTrend/nest/local --envDir=../../ -- yarn  nest start -b swc --debug --watch",
+    "dev": "infisicalLauncher --path=/qiitaTrend/nest/local -- yarn  nest start -b swc --debug --watch",
     "start": "node dist/main",
-    "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix",
+    "lint": "eslint ./",
+    "lint:fix": "eslint ./ --fix",
     "typecheck": "tsc --noEmit",
-    "check": "infisicalLauncher --path=/qiitaTrend/nest/local --envDir=../../ -- yarn concurrently 'yarn lint' 'yarn format' 'yarn typecheck' 'yarn test'",
-    "test": "vitest run --coverage --pool=forks",
-    "test:watch": "vitest --watch",
-    "test:cov": "vitest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "check": "yarn concurrently 'yarn lint' 'yarn format' 'yarn typecheck' 'yarn test'",
+    "test": "infisicalLauncher --path=/qiitaTrend/nest/local -- yarn vitest run --coverage --pool=forks",
+    "test:watch": "infisicalLauncher --path=/qiitaTrend/nest/local -- yarn vitest --watch",
+    "test:cov": "infisicalLauncher --path=/qiitaTrend/nest/local -- yarn vitest --coverage"
   },
   "dependencies": {
     "@nestjs/axios": "^4.0.1",
@@ -27,6 +25,7 @@
     "@nestjs/core": "^11.1.19",
     "@nestjs/jwt": "11.0.2",
     "@nestjs/platform-express": "^11.1.19",
+    "@nestjs/swagger": "11.4.2",
     "axios": "^1.16.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
