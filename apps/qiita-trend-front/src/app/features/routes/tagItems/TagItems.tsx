@@ -1,4 +1,4 @@
-import { List } from '@mui/material'
+import { Alert, List } from '@mui/material'
 
 import ListItemComponent from '@/app/component/ListItemComponent'
 import {
@@ -12,15 +12,19 @@ import replaceUrlParameter from '@/app/util/replaceUrlParameter'
 
 /** TagItems */
 const TagItems = async ({ tagName }: { tagName: string }) => {
-  const resultDataList = (await (
-    await fetchWithJwt(
-      replaceUrlParameter(
-        `${BASE_URL}${GET_ITEMS_BY_TAG_URL}`,
-        ':tagName',
-        tagName,
-      ),
-    )
-  ).json()) as ItemsData[]
+  const result = await fetchWithJwt<ItemsData[]>(
+    replaceUrlParameter(
+      `${BASE_URL}${GET_ITEMS_BY_TAG_URL}`,
+      ':tagName',
+      tagName,
+    ),
+  )
+
+  if (!result.ok) {
+    return <Alert severity="error">{result.message}</Alert>
+  }
+
+  const resultDataList = result.data
 
   return (
     <List>

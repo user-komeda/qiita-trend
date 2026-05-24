@@ -2,6 +2,7 @@ import { HttpService } from '@nestjs/axios'
 import { Test } from '@nestjs/testing'
 import { describe, expect, test } from 'vitest'
 
+import { SharedHttpModule } from '../../module/util/sharedHttp.module'
 import { TagsItemController } from '@/public/tags-item/application/tagsItem.controller'
 import { TagsItemRepository } from '@/public/tags-item/domain/tagsItem.repository'
 import { TagsItemService } from '@/public/tags-item/domain/tagsItem.service'
@@ -13,7 +14,7 @@ describe('tagsItemModule', () => {
     expect.hasAssertions()
 
     const module = await Test.createTestingModule({
-      imports: [TagsItemModule],
+      imports: [TagsItemModule, SharedHttpModule],
     }).compile()
 
     expect(module).toBeDefined()

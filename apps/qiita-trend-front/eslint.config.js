@@ -4,6 +4,7 @@ import vitest from '@vitest/eslint-plugin'
 import prettier from 'eslint-config-prettier'
 import importPlugin from 'eslint-plugin-import'
 import noRelativeImportPaths from 'eslint-plugin-no-relative-import-paths'
+import playwright from 'eslint-plugin-playwright'
 import reactCompiler from 'eslint-plugin-react-compiler'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import testingLibrary from 'eslint-plugin-testing-library'
@@ -11,6 +12,17 @@ import unusedImports from 'eslint-plugin-unused-imports'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
+  {
+    ignores: [
+      '.next/**',
+      'coverage/**',
+      'node_modules/**',
+      'next-env.d.ts',
+      'eslint.config.js',
+      'vitest.config.mts',
+      'tests-results/**',
+    ],
+  },
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     languageOptions: {
@@ -107,6 +119,14 @@ export default tseslint.config(
       'vitest/prefer-importing-vitest-globals': 'off',
       'max-lines-per-function': ['error', 100],
       'max-params': ['error', 4],
+    },
+  },
+  {
+    files: ['tests/**'],
+    extends: [playwright.configs['flat/recommended']],
+    rules: {
+      // Customize Playwright rules
+      // ...
     },
   },
 )
