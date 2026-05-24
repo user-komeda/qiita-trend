@@ -6,7 +6,7 @@ WORKDIR /app
 RUN yarn global add turbo@2.9.12
 COPY . .
 
-RUN turbo prune --scope=qiita-trend-backend --docker
+RUN turbo prune --scope=qiita-trend-front --docker
 
 FROM base AS installer
 WORKDIR /app
