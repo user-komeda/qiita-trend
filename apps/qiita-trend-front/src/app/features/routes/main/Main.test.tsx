@@ -4,13 +4,20 @@ import { beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/path'
 import MainComponent from '@/app/features/routes/main/Main'
-import fetchWithJwt from '@/app/util/fetchWithJwt'
+import fetchWithJwt, { type FetchWithJwtResult } from '@/app/util/fetchWithJwt'
+
+type FetchWithJwtMock = <T>(
+  path: string,
+  init?: RequestInit,
+) => Promise<FetchWithJwtResult<T>>
+
+const fetchWithJwtMock = vi.hoisted(() => vi.fn<FetchWithJwtMock>())
 
 vi.mock(import('@/app/util/fetchWithJwt'), () => ({
-  default: vi.fn<typeof fetchWithJwt>(),
+  default: fetchWithJwtMock as typeof fetchWithJwt,
 }))
 
-const mockFetchWithJwt = vi.mocked(fetchWithJwt)
+const mockFetchWithJwt = fetchWithJwtMock
 
 describe('main component', () => {
   beforeEach(() => {
@@ -21,13 +28,10 @@ describe('main component', () => {
     expect.hasAssertions()
 
     const mockBody: unknown = []
-    const mockParams = {
-      status: 200,
-      statusText: 'OK',
-    }
-    mockFetchWithJwt.mockResolvedValueOnce(
-      new Response(JSON.stringify(mockBody), mockParams),
-    )
+    mockFetchWithJwt.mockResolvedValueOnce({
+      ok: true,
+      data: mockBody,
+    })
     render(
       await MainComponent({ startDate: '2023-01-01', endDate: '2023-01-31' }),
     )
@@ -50,13 +54,10 @@ describe('main component', () => {
       { id: 2, title: 'Test2 Title' },
       { id: 3, title: 'Test3 Title' },
     ]
-    const mockParams = {
-      status: 200,
-      statusText: 'OK',
-    }
-    mockFetchWithJwt.mockResolvedValueOnce(
-      new Response(JSON.stringify(mockBody), mockParams),
-    )
+    mockFetchWithJwt.mockResolvedValueOnce({
+      ok: true,
+      data: mockBody,
+    })
     render(
       await MainComponent({ startDate: '2023-01-01', endDate: '2023-01-31' }),
     )
@@ -72,18 +73,28 @@ describe('main component', () => {
       { id: 2, title: 'Test2 Title' },
       { id: 3, title: 'Test3 Title' },
     ]
-    const mockParams = {
-      status: 200,
-      statusText: 'OK',
-    }
-    mockFetchWithJwt.mockResolvedValueOnce(
-      new Response(JSON.stringify(mockBody), mockParams),
-    )
+    mockFetchWithJwt.mockResolvedValueOnce({
+      ok: true,
+      data: mockBody,
+    })
     render(await MainComponent({}))
     await waitFor(() => {
       expect(mockFetchWithJwt).toHaveBeenCalledWith(
         `${BASE_URL}${GET_ALL_ITEM_API_URL}?`,
       )
     })
+  })
+
+  test('renders error alert when fetch fails', async () => {
+    expect.hasAssertions()
+
+    mockFetchWithJwt.mockResolvedValueOnce({
+      ok: false,
+      message: 'Fetch failed',
+    })
+
+    render(await MainComponent({}))
+
+    expect(screen.getByText('Fetch failed')).toBeInTheDocument()
   })
 })
