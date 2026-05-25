@@ -1,43 +1,40 @@
-/* eslint @typescript-eslint/no-explicit-any: 0 */
-/* eslint @typescript-eslint/no-unsafe-return: 0 */
-/* eslint @typescript-eslint/no-unsafe-member-access: 0 */
-/* eslint  @typescript-eslint/no-empty-function: 0 */
-
 import { render, screen } from '@testing-library/react'
+import { ReactNode } from 'react'
 import { describe, expect, test, vi, beforeEach } from 'vitest'
 import '@testing-library/jest-dom'
 
 import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/path'
 import Items from '@/app/features/routes/items/Items'
-import fetchWithJwt from '@/app/util/fetchWithJwt'
+import fetchWithJwt, { type FetchWithJwtResult } from '@/app/util/fetchWithJwt'
+
+type FetchWithJwtMock = <T>(
+  path: string,
+  init?: RequestInit,
+) => Promise<FetchWithJwtResult<T>>
+
+const fetchWithJwtMock = vi.hoisted(() => vi.fn<FetchWithJwtMock>())
 
 vi.mock(import('@/app/util/fetchWithJwt'), () => ({
-  default: vi.fn<typeof fetchWithJwt>(),
+  default: fetchWithJwtMock as typeof fetchWithJwt,
 }))
 
-const mockFetchWithJwt = vi.mocked(fetchWithJwt)
-
 vi.mock(import('react-markdown'), () => {
-  return {
-    __esModule: true,
+  const ReactMarkdown = (props: { children?: ReactNode }) => {
+    return <>{props.children}</>
+  }
 
-    default: (props: any) => {
-      return props.children
-    },
+  return {
+    default: ReactMarkdown,
   }
 })
 
-vi.mock(import('remark-gfm'), () => {
-  return {
-    __esModule: true,
-
-    default: () => {},
-  }
-})
+vi.mock(import('remark-gfm'), () => ({
+  default: vi.fn<typeof import('remark-gfm').default>(),
+}))
 
 describe('items component', () => {
   beforeEach(() => {
-    mockFetchWithJwt.mockReset()
+    fetchWithJwtMock.mockReset()
   })
 
   test('renders the fetched data correctly', async () => {
@@ -48,13 +45,10 @@ describe('items component', () => {
       tags: ['tag1', 'tag2'],
       body: 'Test Body',
     }
-    const mockParams = {
-      status: 200,
-      statusText: 'OK',
-    }
-    mockFetchWithJwt.mockResolvedValueOnce(
-      new Response(JSON.stringify(mockBody), mockParams),
-    )
+    fetchWithJwtMock.mockResolvedValueOnce({
+      ok: true,
+      data: mockBody,
+    })
 
     render(await Items({ id: 'test-id' }))
 
@@ -83,18 +77,28 @@ describe('items component', () => {
       tags: ['tag1', 'tag2'],
       body: 'Test Body',
     }
-    const mockParams = {
-      status: 200,
-      statusText: 'OK',
-    }
-    mockFetchWithJwt.mockResolvedValueOnce(
-      new Response(JSON.stringify(mockBody), mockParams),
-    )
+    fetchWithJwtMock.mockResolvedValueOnce({
+      ok: true,
+      data: mockBody,
+    })
 
     render(await Items({ id: 'test-id' }))
 
-    expect(mockFetchWithJwt).toHaveBeenCalledWith(
+    expect(fetchWithJwtMock).toHaveBeenCalledWith(
       `${BASE_URL}${GET_ALL_ITEM_API_URL}test-id`,
     )
+  })
+
+  test('renders error alert when fetch fails', async () => {
+    expect.hasAssertions()
+
+    fetchWithJwtMock.mockResolvedValueOnce({
+      ok: false,
+      message: 'Fetch failed',
+    })
+
+    render(await Items({ id: 'test-id' }))
+
+    expect(screen.getByText('Fetch failed')).toBeInTheDocument()
   })
 })

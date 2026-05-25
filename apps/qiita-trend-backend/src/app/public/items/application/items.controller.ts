@@ -40,7 +40,7 @@ export class ItemsController {
    * @param id - 記事id
    */
   @Get(':itemsId')
-  getItem(@Param('') id: ItemsId): Promise<ItemsData> {
+  getItem(@Param() id: ItemsId): Promise<ItemsData> {
     return this.itemsDetailService.getDetailItems(id.itemsId)
   }
 }
