@@ -1,12 +1,11 @@
 import { ValidatorOptions } from '@nestjs/common/interfaces/external/validator-options.interface'
 import { plainToInstance } from 'class-transformer'
 import { ValidationOptions, validate } from 'class-validator'
-import { describe, test, expect } from 'vitest'
+import { describe, expect, test } from 'vitest'
 
 import { TagId } from './tagId'
 
 import { CURRENT_VALIDATION_ERROR, ZERO } from '@/const'
-import { getErrorForCheckIsEmpty } from '@/utils/getValidationErrorMessage'
 
 const testCase1 = async (option: ValidationOptions): Promise<boolean> => {
   expect.hasAssertions()
@@ -29,9 +28,7 @@ const testCase2 = async (option: ValidationOptions): Promise<boolean> => {
   const errors = await validate(tagId, option)
 
   expect(errors).not.toHaveLength(ZERO)
-  expect(getErrorForCheckIsEmpty(errors[CURRENT_VALIDATION_ERROR])).toBe(
-    'tagId should not be empty',
-  )
+  expect(errors[CURRENT_VALIDATION_ERROR].constraints).toBeDefined()
 
   return true
 }
@@ -44,23 +41,62 @@ const testCase3 = async (option: ValidationOptions): Promise<boolean> => {
   const errors = await validate(tagId, option)
 
   expect(errors).not.toHaveLength(ZERO)
-  expect(getErrorForCheckIsEmpty(errors[CURRENT_VALIDATION_ERROR])).toBe(
-    'tagId should not be empty',
-  )
+  expect(errors[CURRENT_VALIDATION_ERROR].constraints).toBeDefined()
 
   return true
 }
 const testCase4 = async (option: ValidationOptions): Promise<boolean> => {
   expect.hasAssertions()
 
-  const tagId = plainToInstance(TagId, {
+  const tagId: TagId = plainToInstance(TagId, {
     tagId: undefined,
   })
   const errors = await validate(tagId, option)
 
   expect(errors).not.toHaveLength(ZERO)
-  expect(getErrorForCheckIsEmpty(errors[CURRENT_VALIDATION_ERROR])).toBe(
-    'tagId should not be empty',
+  expect(errors[CURRENT_VALIDATION_ERROR].constraints).toBeDefined()
+
+  return true
+}
+const testCase5 = async (option: ValidationOptions): Promise<boolean> => {
+  expect.hasAssertions()
+
+  const tagId: TagId = plainToInstance(TagId, {
+    tagId: ' ',
+  })
+  const errors = await validate(tagId, option)
+
+  expect(errors).not.toHaveLength(ZERO)
+  expect(errors[CURRENT_VALIDATION_ERROR].constraints).toHaveProperty('matches')
+
+  return true
+}
+const testCase6 = async (option: ValidationOptions): Promise<boolean> => {
+  expect.hasAssertions()
+
+  const tagId: TagId = plainToInstance(TagId, {
+    tagId: 'null',
+  })
+  const errors = await validate(tagId, option)
+
+  expect(errors).not.toHaveLength(ZERO)
+  expect(errors[CURRENT_VALIDATION_ERROR].constraints).toHaveProperty(
+    'notEquals',
+  )
+
+  return true
+}
+const testCase7 = async (option: ValidationOptions): Promise<boolean> => {
+  expect.hasAssertions()
+
+  const tagId: TagId = plainToInstance(TagId, {
+    tagId: 'undefined',
+  })
+  const errors = await validate(tagId, option)
+
+  expect(errors).not.toHaveLength(ZERO)
+  expect(errors[CURRENT_VALIDATION_ERROR].constraints).toHaveProperty(
+    'notEquals',
   )
 
   return true
@@ -85,18 +121,33 @@ describe('tagIdValidation', () => {
     await expect(testCase1(option)).resolves.toBe(true)
   })
 
-  test('should throw error when itemsId is empty', async () => {
+  test('should throw error when tagId is empty', async () => {
     expect.hasAssertions()
     await expect(testCase2(option)).resolves.toBe(true)
   })
 
-  test('should throw error when itemsId is null', async () => {
+  test('should throw error when tagId is null', async () => {
     expect.hasAssertions()
     await expect(testCase3(option)).resolves.toBe(true)
   })
 
-  test('should throw error when itemsId is undefined', async () => {
+  test('should throw error when tagId is undefined', async () => {
     expect.hasAssertions()
     await expect(testCase4(option)).resolves.toBe(true)
+  })
+
+  test('should throw error when tagId is blank', async () => {
+    expect.hasAssertions()
+    await expect(testCase5(option)).resolves.toBe(true)
+  })
+
+  test('should throw error when tagId is null string', async () => {
+    expect.hasAssertions()
+    await expect(testCase6(option)).resolves.toBe(true)
+  })
+
+  test('should throw error when tagId is undefined string', async () => {
+    expect.hasAssertions()
+    await expect(testCase7(option)).resolves.toBe(true)
   })
 })

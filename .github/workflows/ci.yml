@@ -6,9 +6,11 @@ name: ci
 jobs:
   ci:
     runs-on: ubuntu-latest
+
     services:
       redis:
-        image: redis:8.6.3@sha256:0c341492924cad6f5483f9133e43bd6c51ecdecbcadfac5b51657393b6a7936c
+        image: redis:8.6.3@sha256:4d25e2fe601f7ffaeb4437cb6ced3518bc36edf34ebe98863c80836943d94529
+        command: redis-server --requirepass password
         env:
           REDIS_PASSWORD: password
         ports:
@@ -18,22 +20,13 @@ jobs:
           --health-interval 5s
           --health-timeout 3s
           --health-retries 10
+
     env:
-      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-      CLIENT_ID: ${{ secrets.CLIENT_ID }}
-      PROJECT_ID: ${{ secrets.PROJECT_ID }}
+      LOCAL_INFISICAL_CLIENT_ID: ${{ secrets.LOCAL_INFISICAL_CLIENT_ID }}
+      LOCAL_INFISICAL_CLIENT_SECRET: ${{ secrets.LOCAL_INFISICAL_CLIENT_SECRET }}
+      LOCAL_INFISICAL_PROJECT_ID: ${{ secrets.LOCAL_INFISICAL_PROJECT_ID }}
+
     steps:
-      - name: Debug env exists
-        run: |
-          test -n "$CLIENT_ID" && echo "CLIENT_ID exists" || echo "CLIENT_ID missing"
-          test -n "$CLIENT_SECRET" && echo "CLIENT_SECRET exists" || echo "CLIENT_SECRET missing"
-          test -n "$PROJECT_ID" && echo "PROJECT_ID exists" || echo "PROJECT_ID missing"
-
-      - name: Install SSH Key
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
@@ -41,14 +34,22 @@ jobs:
           node-version: 24
           package-manager-cache: false
 
-      - name: enable corepack
+      - name: Enable Corepack
         run: corepack enable
 
-      - name: yarn set v4
-        run: yarn set version stable
+      - name: Check Yarn version
+        run: yarn --version
 
-      - name: yarn install
-        run: yarn install
+      - name: Install SSH Key
+        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Install dependencies
+        run: yarn install --immutable --check-cache
+
+      - name: Install Playwright browsers
+        run: yarn workspace qiita-trend-front exec playwright install --with-deps chromium
 
       - name: Run check
         run: yarn check

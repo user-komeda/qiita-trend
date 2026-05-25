@@ -8,11 +8,14 @@ export default defineConfig({
   oxc: false,
   test: {
     globals: true,
-    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    include: [
+      'src/**/*.{test,spec}.{ts,tsx}',
+      'test/**/*.{test,spec}.{ts,tsx}',
+    ],
     exclude: ['**/node_modules/**', '**/dist/**', '**/.turbo/**'],
     coverage: {
       include: ['src/app/**/*.ts'],
-      exclude:["src/app/form/**/*.ts"],
+      exclude: ['src/app/form/**/*.ts'],
       reportsDirectory: './coverage',
       reporter: ['text', 'json', 'html'],
       thresholds: {
