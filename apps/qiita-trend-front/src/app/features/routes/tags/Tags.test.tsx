@@ -2,14 +2,25 @@ import { render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
 import '@testing-library/jest-dom'
+
 import { BASE_URL, GET_ALL_TAG_URL } from '@/app/const/path'
 import Tags from '@/app/features/routes/tags/Tags'
+import fetchWithJwt, { FetchWithJwtResult } from '@/app/util/fetchWithJwt'
 
-const mockFetch = vi.spyOn(global, 'fetch')
+type FetchWithJwtMock = <T>(
+  path: string,
+  init?: RequestInit,
+) => Promise<FetchWithJwtResult<T>>
+
+const fetchWithJwtMock = vi.hoisted(() => vi.fn<FetchWithJwtMock>())
+
+vi.mock(import('@/app/util/fetchWithJwt'), () => ({
+  default: fetchWithJwtMock as typeof fetchWithJwt,
+}))
 
 describe('tags component', () => {
   beforeEach(() => {
-    mockFetch.mockReset()
+    fetchWithJwtMock.mockReset()
   })
 
   test('renders list items correctly', async () => {
@@ -19,13 +30,12 @@ describe('tags component', () => {
       { id: 'tag1', itemsCount: 200 },
       { id: 'tag2', itemsCount: 500 },
     ]
-    const mockParams = {
-      status: 200,
-      statusText: 'OK',
-    }
-    mockFetch.mockResolvedValueOnce(
-      new Response(JSON.stringify(mockBody), mockParams),
-    )
+
+    fetchWithJwtMock.mockResolvedValueOnce({
+      ok: true,
+      data: mockBody,
+    })
+
     render(await Tags())
 
     expect(screen.getByText('tag1')).toBeInTheDocument()
@@ -41,16 +51,31 @@ describe('tags component', () => {
       { id: 'tag1', itemsCount: 200 },
       { id: 'tag2', itemsCount: 500 },
     ]
-    const mockParams = {
-      status: 200,
-      statusText: 'OK',
-    }
-    mockFetch.mockResolvedValueOnce(
-      new Response(JSON.stringify(mockBody), mockParams),
-    )
-    render(await Tags())
-    await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith(`${BASE_URL}${GET_ALL_TAG_URL}`)
+
+    fetchWithJwtMock.mockResolvedValueOnce({
+      ok: true,
+      data: mockBody,
     })
+
+    render(await Tags())
+
+    await waitFor(() => {
+      expect(fetchWithJwtMock).toHaveBeenCalledWith(
+        `${BASE_URL}${GET_ALL_TAG_URL}`,
+      )
+    })
+  })
+
+  test('renders error alert when fetch fails', async () => {
+    expect.hasAssertions()
+
+    fetchWithJwtMock.mockResolvedValueOnce({
+      ok: false,
+      message: 'Fetch failed',
+    })
+
+    render(await Tags())
+
+    expect(screen.getByText('Fetch failed')).toBeInTheDocument()
   })
 })

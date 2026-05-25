@@ -1,4 +1,3 @@
-import { HttpModule } from '@nestjs/axios'
 import { Module } from '@nestjs/common'
 
 import { ItemsController } from '@/public/items/application/items.controller'
@@ -10,7 +9,6 @@ import { ItemsDetailService } from '@/public/itemsdetail/domain/itemsDetail.serv
 import { ItemsDetailRepositoryImpl } from '@/public/itemsdetail/infrastructure/itemsDetail.repositoryImpl'
 
 const itemsModuleMetadata = {
-  imports: [HttpModule],
   controllers: [ItemsController],
   providers: [
     ItemsService,
