@@ -3,6 +3,7 @@ import { Test } from '@nestjs/testing'
 import { describe, expect, test } from 'vitest'
 
 import { SharedHttpModule } from '../module/util/sharedHttp.module'
+import { REDIS_CLIENT } from '@/const'
 import { CommentModule } from '@/public/comment/comment.module'
 import { ItemsModule } from '@/public/items/items.module'
 import { LoginModule } from '@/public/login/login.module'
@@ -14,9 +15,18 @@ describe('publicModule', () => {
   test('should compile the module', async () => {
     expect.hasAssertions()
 
+    const redisClientMock = {
+      get: (): string | null => null,
+      set: (): string => 'OK',
+      del: (): number => 1,
+    }
+
     const module = await Test.createTestingModule({
       imports: [PublicModule, SharedHttpModule],
-    }).compile()
+    })
+      .overrideProvider(REDIS_CLIENT)
+      .useValue(redisClientMock)
+      .compile()
 
     expect(module).toBeDefined()
     expect(module.get(LoginModule)).toBeInstanceOf(LoginModule)
