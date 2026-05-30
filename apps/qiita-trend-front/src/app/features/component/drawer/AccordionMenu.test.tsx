@@ -3,8 +3,7 @@
 
 import { render, screen } from '@testing-library/react'
 import React from 'react'
-import { describe } from 'vitest'
-import { expect, test, vi } from 'vitest'
+import { describe, expect, test, vi } from 'vitest'
 
 import AccordionMenu from '@/app/features/component/drawer/AccordionMenu'
 

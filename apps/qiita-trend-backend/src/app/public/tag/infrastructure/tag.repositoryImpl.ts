@@ -1,10 +1,10 @@
 import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
+import { TagsSchema, TagsSchemaType } from '@qiita-trend/schema'
 import { map, lastValueFrom } from 'rxjs'
 import * as v from 'valibot' // 1.31 kB
 
 import { TagRepository } from '@/public/tag/domain/tag.repository'
-import { tagsSchema, TagsSchemaType } from '@/schema/tagsSchema'
 import { TagData } from '@/types/tagData'
 
 /**
@@ -20,7 +20,7 @@ export class TagRepositoryImpl implements TagRepository {
     return await lastValueFrom(
       this.httpService.get(this.buildUrl()).pipe(
         map((response) => {
-          const parsedData = v.parse(tagsSchema, response.data)
+          const parsedData = v.parse(TagsSchema, response.data)
           return this.convertResponseData(parsedData)
         }),
       ),

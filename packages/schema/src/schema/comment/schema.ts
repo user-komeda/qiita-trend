@@ -1,8 +1,8 @@
 import * as v from 'valibot' // 1.31 kB
 
-import { userSchema } from '@/app/schema/userSchema'
+import { userSchema } from '../common/userSchema.js'
 
-export const schema = v.array(
+export const CommentSchema = v.array(
   v.object({
     body: v.string(),
     created_at: v.string(),
@@ -13,4 +13,4 @@ export const schema = v.array(
   }),
 )
 
-export type CommentSchemaType = v.InferOutput<typeof schema>
+export type CommentSchemaType = v.InferOutput<typeof CommentSchema>

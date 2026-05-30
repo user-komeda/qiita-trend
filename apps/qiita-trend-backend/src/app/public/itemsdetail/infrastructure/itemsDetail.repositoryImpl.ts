@@ -1,10 +1,10 @@
 import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
+import { ItemsDetailSchemaType, ItemsDetailSchema } from '@qiita-trend/schema'
 import { lastValueFrom, map } from 'rxjs'
 import * as v from 'valibot' // 1.31 kB
 
 import { ItemsDetailRepository } from '@/public/itemsdetail/domain/itemsDetail.repository'
-import { ItemsDetailSchemaType, schema } from '@/public/itemsdetail/schema'
 import { ItemsData } from '@/types/itemsData'
 
 /**
@@ -22,7 +22,7 @@ export class ItemsDetailRepositoryImpl implements ItemsDetailRepository {
     return await lastValueFrom(
       this.httpService.get(this.buildUrl(id)).pipe(
         map((response) => {
-          const parsedData = v.parse(schema, response.data)
+          const parsedData = v.parse(ItemsDetailSchema, response.data)
           return this.convertResponseData(parsedData)
         }),
       ),

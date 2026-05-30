@@ -1,14 +1,17 @@
-import js from '@eslint/js'
 import nextPlugin from '@next/eslint-plugin-next'
-import vitest from '@vitest/eslint-plugin'
-import prettier from 'eslint-config-prettier'
-import importPlugin from 'eslint-plugin-import'
+import {
+  baseConfig,
+  importConfig,
+  prettierConfig,
+  qualityConfig,
+  typescriptConfig,
+  vitestConfig,
+} from '@qiita-trend/eslint'
 import noRelativeImportPaths from 'eslint-plugin-no-relative-import-paths'
 import playwright from 'eslint-plugin-playwright'
 import reactCompiler from 'eslint-plugin-react-compiler'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import testingLibrary from 'eslint-plugin-testing-library'
-import unusedImports from 'eslint-plugin-unused-imports'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
@@ -31,59 +34,28 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
-    settings: {
-      'import/resolver': {
-        typescript: {},
-      },
-    },
     extends: [
-      js.configs.recommended,
-      ...tseslint.configs.strict,
-      ...tseslint.configs.strictTypeChecked,
-      ...tseslint.configs.stylistic,
-      ...tseslint.configs.stylisticTypeChecked,
+      ...baseConfig,
+      ...importConfig,
+      ...typescriptConfig,
+      ...qualityConfig,
       reactCompiler.configs.recommended,
-      prettier,
+      ...prettierConfig,
     ],
     plugins: {
       '@next/next': nextPlugin,
-      import: importPlugin,
-      'unused-imports': unusedImports,
       'no-relative-import-paths': noRelativeImportPaths,
       'react-refresh': reactRefresh,
     },
     rules: {
       ...nextPlugin.configs.recommended.rules,
       ...nextPlugin.configs['core-web-vitals'].rules,
-      complexity: ['error', 10],
-      'max-depth': ['error', 2],
-      // TODO: 50にしたい
       'max-lines': ['error', 115],
-      // TODO: 30にしたい
       'max-lines-per-function': ['error', 40],
-      'max-params': ['error', 3],
       'no-relative-import-paths/no-relative-import-paths': 'error',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
-      ],
-      'unused-imports/no-unused-imports': 'error',
-      'unused-imports/no-unused-vars': [
-        'warn',
-        {
-          vars: 'all',
-          varsIgnorePattern: '^_',
-          args: 'after-used',
-          argsIgnorePattern: '^_',
-        },
-      ],
-      'import/order': [
-        'error',
-        {
-          groups: ['builtin', 'external', 'sibling', 'index', 'object', 'type'],
-          alphabetize: { order: 'asc', caseInsensitive: false },
-          'newlines-between': 'always',
-        },
       ],
     },
   },
@@ -93,32 +65,9 @@ export default tseslint.config(
   },
   {
     files: ['**/*.test.ts', '**/*.test.tsx'],
-    settings: {
-      vitest: {
-        typecheck: true,
-      },
-    },
-    languageOptions: {
-      globals: {
-        ...vitest.environments.env.globals,
-      },
-    },
-    plugins: {
-      vitest,
-    },
-    extends: [testingLibrary.configs['flat/react']],
+    extends: [...vitestConfig, testingLibrary.configs['flat/react']],
     rules: {
-      ...vitest.configs.all.rules, // you can also use vitest.configs.all.rules to enable all rules
-      'vitest/consistent-test-it': ['error', { fn: 'test' }],
-      'vitest/no-hooks': [
-        'error',
-        {
-          allow: ['beforeEach'],
-        },
-      ],
       'vitest/prefer-importing-vitest-globals': 'off',
-      'max-lines-per-function': ['error', 100],
-      'max-params': ['error', 4],
     },
   },
   {

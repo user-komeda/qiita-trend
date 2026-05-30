@@ -1,11 +1,11 @@
 import * as v from 'valibot' // 1.31 kB
 
-import { groupSchema } from '@/app/schema/groupSchema'
-import { itemTagsSchema } from '@/app/schema/itemTagsSchema'
-import { teamMembershipSchema } from '@/app/schema/teamMembershipSchma'
-import { userSchema } from '@/app/schema/userSchema'
+import { groupSchema } from '../common/groupSchema.js'
+import { itemTagsSchema } from '../common/itemTagsSchema.js'
+import { teamMembershipSchema } from '../common/teamMembershipSchma.js'
+import { userSchema } from '../common/userSchema.js'
 
-export const schema = v.object({
+export const ItemsDetailSchema = v.object({
   rendered_body: v.string(),
   body: v.string(),
   coediting: v.boolean(),
@@ -28,4 +28,4 @@ export const schema = v.object({
   slide: v.boolean(),
 })
 
-export type ItemsDetailSchemaType = v.InferOutput<typeof schema>
+export type ItemsDetailSchemaType = v.InferOutput<typeof ItemsDetailSchema>

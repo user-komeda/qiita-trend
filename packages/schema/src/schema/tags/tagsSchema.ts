@@ -1,6 +1,6 @@
 import * as v from 'valibot' // 1.31 kB
 
-export const tagsSchema = v.array(
+export const TagsSchema = v.array(
   v.object({
     id: v.string(),
     items_count: v.number(),
@@ -9,4 +9,4 @@ export const tagsSchema = v.array(
   }),
 )
 
-export type TagsSchemaType = v.InferOutput<typeof tagsSchema>
+export type TagsSchemaType = v.InferOutput<typeof TagsSchema>
