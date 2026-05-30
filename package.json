@@ -10,7 +10,7 @@
     "build": "turbo run build",
     "check": "turbo run check",
     "compose:up": "infisicalLauncher --path=/postgres/local -- docker compose  up -d",
-    "compose:upAll": "infisicalLauncher --path=/postgres/local -- docker compose --profile frontend --profile backend up -d",
+    "compose:upAll": "infisicalLauncher --path=/postgres/local -- docker compose --profile frontend --profile backend up -d --build",
     "compose:down": "docker compose --profile frontend --profile backend down"
   },
   "devDependencies": {

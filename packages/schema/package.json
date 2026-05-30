@@ -20,6 +20,7 @@
     "valibot": "1.4.0"
   },
   "devDependencies": {
+    "@qiita-trend/tsconfig": "workspace:*",
     "typescript": "6.0.3"
   }
 }

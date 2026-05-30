@@ -42,6 +42,7 @@
     "@nestjs/schematics": "11.1.0",
     "@nestjs/testing": "11.1.23",
     "@qiita-trend/eslint": "workspace:*",
+    "@qiita-trend/tsconfig": "workspace:*",
     "@swc/cli": "0.8.1",
     "@swc/core": "1.15.33",
     "@types/cookie-parser": "1.4.10",
