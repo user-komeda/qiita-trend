@@ -31,7 +31,7 @@ test.describe('Local real login flow with logged-in Qiita session @local-only', 
 
     await page.goto('http://localhost:3000')
 
-    await page.getByRole('link', { name: 'Login' }).click()
+    await page.getByRole('link', { name: 'Login', exact: true }).click()
 
     await expect(page).toHaveURL(/qiita\.com/, {
       timeout: 30000,

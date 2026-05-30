@@ -2,14 +2,15 @@
   "name": "qiita-trend",
   "packageManager": "yarn@4.14.1",
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
     "check": "turbo run check",
     "compose:up": "infisicalLauncher --path=/postgres/local -- docker compose  up -d",
-    "compose:upAll": "infisicalLauncher --path=/postgres/local -- docker compose --profile frontend --profile backend up -d",
+    "compose:upAll": "infisicalLauncher --path=/postgres/local -- docker compose --profile frontend --profile backend up -d --build",
     "compose:down": "docker compose --profile frontend --profile backend down"
   },
   "devDependencies": {

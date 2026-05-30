@@ -1,13 +1,8 @@
 {
+  "extends": "../../packages/tsconfig/base.json",
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -22,9 +17,7 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
     "target": "ES2017"
   },
@@ -35,11 +28,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "./vitest.config.mts"
-  ],
-  "types": [
-    "vitest/globals"
-  ]
+  "exclude": ["node_modules", "./vitest.config.mts"],
+  "types": ["vitest/globals"]
 }

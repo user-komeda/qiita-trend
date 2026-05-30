@@ -1,0 +1,26 @@
+{
+  "name": "@qiita-trend/schema",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "yarn@4.14.1",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "valibot": "1.4.0"
+  },
+  "devDependencies": {
+    "@qiita-trend/tsconfig": "workspace:*",
+    "typescript": "6.0.3"
+  }
+}

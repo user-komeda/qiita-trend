@@ -1,0 +1,31 @@
+{
+  "name": "@qiita-trend/eslint",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@4.14.1",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./base": "./src/base.mjs",
+    "./typescript": "./src/typescript.mjs",
+    "./import": "./src/import.mjs",
+    "./quality": "./src/quality.mjs",
+    "./prettier": "./src/prettier.mjs",
+    "./vitest": "./src/vitest.mjs"
+  },
+  "dependencies": {
+    "@eslint/js": "9.39.4",
+    "@vitest/eslint-plugin": "1.6.17",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-import-resolver-typescript": "4.4.4",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-unused-imports": "4.4.1",
+    "typescript-eslint": "8.59.4"
+  },
+  "peerDependencies": {
+    "eslint": "9.39.4",
+    "typescript": "6.0.3",
+    "vitest": "4.1.7"
+  }
+}

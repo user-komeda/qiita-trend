@@ -10,7 +10,7 @@ test.describe('Login flow', () => {
   }) => {
     await page.goto('http://localhost:3000')
 
-    await page.getByRole('link', { name: 'Login' }).click()
+    await page.getByRole('link', { name: 'Login', exact: true }).click()
 
     await expect(page).toHaveURL(/https:\/\/qiita\.com\/login\?redirect_to=/, {
       timeout: 30000,

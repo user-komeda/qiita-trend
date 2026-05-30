@@ -14,7 +14,10 @@ test.describe('Qiita Trend App', () => {
     await expect(page.getByText('qiitaの殿堂')).toBeVisible()
 
     // ログインボタンの確認
-    const loginButton = page.getByRole('link', { name: 'Login' })
+    const loginButton = page.getByRole('link', {
+      name: 'Login',
+      exact: true,
+    })
     await expect(loginButton).toBeVisible()
     // next/link を使っているため、href が期待通りか確認
     await expect(loginButton).toHaveAttribute('href', /.*login.*/)

@@ -1,5 +1,4 @@
-import { describe, test } from 'vitest'
-import { expect } from 'vitest'
+import { describe, expect, test } from 'vitest'
 
 import replaceUrlParameter from '@/app/util/replaceUrlParameter'
 

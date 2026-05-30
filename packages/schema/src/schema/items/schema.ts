@@ -1,18 +1,18 @@
 import * as v from 'valibot' // 1.31 kB
 
-import { teamMembershipSchema } from '@/app/schema/teamMembershipSchma'
-import { groupSchema } from '@/schema/groupSchema'
-import { itemTagsSchema } from '@/schema/itemTagsSchema'
-import { userSchema } from '@/schema/userSchema'
+import { groupSchema } from '../common/groupSchema.js'
+import { itemTagsSchema } from '../common/itemTagsSchema.js'
+import { teamMembershipSchema } from '../common/teamMembershipSchma.js'
+import { userSchema } from '../common/userSchema.js'
 
-export const schema = v.array(
+export const ItemsSchema = v.array(
   v.object({
     rendered_body: v.string(),
     body: v.string(),
     coediting: v.boolean(),
     comments_count: v.number(),
     created_at: v.string(),
-    group: groupSchema,
+    group: v.nullable(groupSchema),
     id: v.string(),
     likes_count: v.number(),
     private: v.boolean(),
@@ -30,4 +30,4 @@ export const schema = v.array(
   }),
 )
 
-export type TagItemSchemaType = v.InferOutput<typeof schema>
+export type ItemsSchemaType = v.InferOutput<typeof ItemsSchema>

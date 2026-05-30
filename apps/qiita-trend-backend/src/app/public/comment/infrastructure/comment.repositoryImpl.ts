@@ -1,10 +1,10 @@
 import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
+import { CommentSchema, CommentSchemaType } from '@qiita-trend/schema'
 import { lastValueFrom, map } from 'rxjs'
 import * as v from 'valibot' // 1.31 kB
 
 import { CommentRepository } from '@/public/comment/domain/comment.repository'
-import { CommentSchemaType, schema } from '@/public/comment/schema'
 
 /**
  *CommentRepositoryImpl
@@ -21,7 +21,7 @@ export class CommentRepositoryImpl implements CommentRepository {
     return await lastValueFrom(
       this.httpService.get(this.buildUrl(id)).pipe(
         map((response) => {
-          const parsedData = v.parse(schema, response.data)
+          const parsedData = v.parse(CommentSchema, response.data)
           return this.convertData(parsedData)
         }),
       ),
