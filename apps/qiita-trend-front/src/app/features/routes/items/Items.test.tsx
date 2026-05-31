@@ -32,6 +32,16 @@ vi.mock(import('remark-gfm'), () => ({
   default: vi.fn<typeof import('remark-gfm').default>(),
 }))
 
+vi.mock(import('@/app/features/routes/items/comments/Comments'), () => {
+  const MockComments = ({ id }: { id: string }) => (
+    <div data-testid="comments">Comments for {id}</div>
+  )
+
+  return {
+    Comments: MockComments as never,
+  }
+})
+
 describe('items component', () => {
   beforeEach(() => {
     fetchWithJwtMock.mockReset()

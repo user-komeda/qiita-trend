@@ -70,9 +70,6 @@ const testCase = async (
   repository: CommentRepository,
 ): Promise<boolean> => {
   const requestData = 'e37caf50776e00e733be'
-  const responseData = httpServiceMockData.map((data) => {
-    return data.body
-  })
   vi.spyOn(httpService, 'get').mockImplementationOnce(() => {
     return of({
       data: httpServiceMockData,
@@ -83,7 +80,7 @@ const testCase = async (
   expect(httpService.get).toHaveBeenCalledWith(
     `https://qiita.com/api/v2/items/${requestData}/comments?per_page=100`,
   )
-  expect(result).toStrictEqual(responseData)
+  expect(result).toStrictEqual(httpServiceMockData)
 
   return true
 }

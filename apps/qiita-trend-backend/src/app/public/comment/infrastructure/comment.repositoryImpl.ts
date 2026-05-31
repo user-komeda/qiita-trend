@@ -17,12 +17,12 @@ export class CommentRepositoryImpl implements CommentRepository {
    *
    * @param id - 記事id
    */
-  async getItemComment(id: string): Promise<string[]> {
+  async getItemComment(id: string): Promise<CommentSchemaType> {
     return await lastValueFrom(
       this.httpService.get(this.buildUrl(id)).pipe(
         map((response) => {
-          const parsedData = v.parse(CommentSchema, response.data)
-          return this.convertData(parsedData)
+          console.log(response.data)
+          return v.parse(CommentSchema, response.data)
         }),
       ),
     )
@@ -30,11 +30,5 @@ export class CommentRepositoryImpl implements CommentRepository {
 
   private buildUrl(id: string): string {
     return `https://qiita.com/api/v2/items/${id}/comments?per_page=100`
-  }
-
-  private convertData(dataList: CommentSchemaType): string[] {
-    return dataList.map((data) => {
-      return data.body
-    })
   }
 }

@@ -1,4 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common'
+import { CommentSchemaType } from '@qiita-trend/schema'
 
 import { ItemsId } from '@/form/itemsId/itemsId'
 import { CommentService } from '@/public/comment/domain/comment.service'
@@ -15,7 +16,9 @@ export class CommentController {
    * @param id - 記事のid
    */
   @Get()
-  getItemComment(@Param() id: ItemsId): Promise<string[]> {
+  getItemComment(@Param() id: ItemsId): Promise<CommentSchemaType> {
+    console.log(id)
+    console.log('comment')
     return this.commentService.getItemComment(id.itemsId)
   }
 }

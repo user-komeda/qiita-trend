@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {
   Box,
   List,
@@ -6,7 +7,6 @@ import {
   AccordionDetails,
 } from '@mui/material'
 
-import { DRAWER_WIDTH } from '@/app/const/const'
 import ItemList from '@/app/features/component/drawer/ItemList'
 
 interface DateObject {
@@ -22,21 +22,38 @@ const ADD_YEAR_AND_MONTH = 1
 const MONTH_OFFSET = 1
 
 /** AccordionMenu */
+// eslint-disable-next-line max-lines-per-function
 const AccordionMenu = () => {
   const dateObject = getDateObject()
   const yearList = yearArray(dateObject)
 
   const monthList = monthArray(1, dateObject.firstDateLastMonth)
-
   const firstDateLastMonthList = monthArray(9, dateObject.firstDateLastMonth)
-
   const endDateLastMonthList = monthArray(1, dateObject.EndDateLastMonth)
+
+  const summaryHeight = `calc(100dvh / ${yearList.length.toString()})`
   return (
-    <Box sx={{ width: DRAWER_WIDTH }} role="presentation">
+    <Box role="presentation">
       {yearList.map((year) => {
         return (
-          <Accordion key={year}>
-            <AccordionSummary>{year}</AccordionSummary>
+          <Accordion
+            key={year}
+            sx={{
+              boxShadow: 'none',
+              '&:before': {
+                display: 'none',
+              },
+              borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+            }}
+          >
+            <AccordionSummary
+              sx={{
+                minHeight: summaryHeight,
+              }}
+            >
+              {year}
+            </AccordionSummary>
+
             <AccordionDetails>
               <nav aria-label="main mailbox folders">
                 <List>
@@ -49,7 +66,7 @@ const AccordionMenu = () => {
                           ? endDateLastMonthList
                           : firstDateLastMonthList
                     }
-                  ></ItemList>
+                  />
                 </List>
               </nav>
             </AccordionDetails>

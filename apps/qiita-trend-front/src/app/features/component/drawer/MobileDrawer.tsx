@@ -1,7 +1,6 @@
 import { Drawer } from '@mui/material'
 import React from 'react'
 
-import { DRAWER_WIDTH } from '@/app/const/const'
 import AccordionMenu from '@/app/features/component/drawer/AccordionMenu'
 
 interface Props {
@@ -23,7 +22,7 @@ const MobileDrawerMenu = ({ isModalOpen, handleDrawerClose }: Props) => {
         display: { xs: 'block', sm: 'none' },
         '& .MuiDrawer-paper': {
           boxSizing: 'border-box',
-          width: DRAWER_WIDTH,
+          width: '50%',
         },
       }}
     >
