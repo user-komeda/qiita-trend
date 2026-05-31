@@ -8,7 +8,7 @@ interface Props {
 /** MainContent */
 const MainContent = ({ childComponent }: Props) => {
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Toolbar />
       {childComponent}
     </Container>

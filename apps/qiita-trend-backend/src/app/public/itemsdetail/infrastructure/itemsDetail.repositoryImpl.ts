@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
-import { ItemsDetailSchemaType, ItemsDetailSchema } from '@qiita-trend/schema'
+import { ItemsDetailSchema, ItemsDetailSchemaType } from '@qiita-trend/schema'
 import { lastValueFrom, map } from 'rxjs'
 import * as v from 'valibot' // 1.31 kB
 
@@ -37,10 +37,8 @@ export class ItemsDetailRepositoryImpl implements ItemsDetailRepository {
     const tag = data.tags.map((tag) => {
       return tag.name
     })
-    /**
-     *result
-     */
-    const result: ItemsData = {
+
+    return {
       body: data.body,
       id: data.id,
       likesCount: data.likes_count,
@@ -52,6 +50,5 @@ export class ItemsDetailRepositoryImpl implements ItemsDetailRepository {
       url: data.url,
       pageViewsCount: data.page_views_count,
     }
-    return result
   }
 }

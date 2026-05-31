@@ -1,4 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common'
+import { CommentSchemaType } from '@qiita-trend/schema'
 
 import { CommentRepository } from '@/public/comment/domain/comment.repository'
 
@@ -16,7 +17,7 @@ export class CommentService {
    *
    * @param id - 記事id
    */
-  getItemComment(id: string): Promise<string[]> {
+  getItemComment(id: string): Promise<CommentSchemaType> {
     return this.commentRepository.getItemComment(id)
   }
 }

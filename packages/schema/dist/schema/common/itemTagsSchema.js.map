@@ -1,1 +1,0 @@
-{"version":3,"file":"itemTagsSchema.js","sourceRoot":"","sources":["../../../src/schema/common/itemTagsSchema.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,2CAA4B,CAAC,UAAU;AAE1B,QAAA,cAAc,GAAG,CAAC,CAAC,KAAK,CACnC,CAAC,CAAC,MAAM,CAAC;IACP,IAAI,EAAE,CAAC,CAAC,MAAM,EAAE;IAChB,QAAQ,EAAE,CAAC,CAAC,KAAK,CAAC,CAAC,CAAC,MAAM,EAAE,CAAC;CAC9B,CAAC,CACH,CAAA"}

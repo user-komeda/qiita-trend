@@ -1,8 +1,9 @@
-import { Alert, Typography } from '@mui/material'
+import { Alert, Box, Card, Typography } from '@mui/material'
 
 import MarkDownComponent from '@/app/component/MarkDownComponent'
 import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/path'
 import TagList from '@/app/features/routes/items/TagList'
+import { Comments } from '@/app/features/routes/items/comments/Comments'
 import { ItemsData } from '@/app/types/ItemsData'
 import fetchWithJwt from '@/app/util/fetchWithJwt'
 
@@ -22,16 +23,22 @@ const Items = async ({ id }: { id: string }) => {
     return <Alert severity="error">{result.message}</Alert>
   }
   const resultData = result.data
-
   return (
-    <div>
-      <Typography variant="h4" component="h2" sx={{ fontWeight: 'bold' }}>
-        {resultData.title}
-      </Typography>
-      <TagList tagList={resultData.tags}></TagList>
+    <Box sx={{ my: 4 }}>
+      <Card sx={{ bgcolor: 'white' }}>
+        <Box sx={{ p: 4 }}>
+          <Typography variant="h4" component="h2" sx={{ fontWeight: 'bold' }}>
+            {resultData.title}
+          </Typography>
+          <TagList tagList={resultData.tags}></TagList>
 
-      <MarkDownComponent markDownText={resultData.body}></MarkDownComponent>
-    </div>
+          <MarkDownComponent markDownText={resultData.body}></MarkDownComponent>
+        </Box>
+      </Card>
+      <Box sx={{ my: 2 }}>
+        <Comments id={id} />
+      </Box>
+    </Box>
   )
 }
 export default Items

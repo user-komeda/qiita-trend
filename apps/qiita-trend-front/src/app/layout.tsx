@@ -1,6 +1,6 @@
 /* eslint  react-refresh/only-export-components: 0 */
 
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import { CssBaseline, Stack, ThemeProvider } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import { ReactNode, Suspense } from 'react'
 
@@ -24,12 +24,19 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Header
-              title={'qiitaの殿堂'}
-              childComponent={<HeaderMenu></HeaderMenu>}
-            ></Header>{' '}
-            <SideMenu childComponent={<DrawerMenu />}></SideMenu>
-            <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+
+            <Stack direction={'row'} sx={{ bgcolor: '#f5f6f6' }}>
+              <Stack sx={{ width: '12%' }}>
+                <SideMenu childComponent={<DrawerMenu />}></SideMenu>
+              </Stack>
+              <Stack sx={{ width: '88%' }}>
+                <Header
+                  title={'qiitaの殿堂'}
+                  childComponent={<HeaderMenu></HeaderMenu>}
+                ></Header>{' '}
+                <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+              </Stack>
+            </Stack>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
