@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common'
+import { ItemsDetailSchemaType } from '@qiita-trend/schema'
 
 import { ItemsDetailRepository } from '@/public/itemsdetail/domain/itemsDetail.repository'
-import { ItemsData } from '@/types/itemsData'
 
 /**
  *ItemsDetailService
@@ -17,7 +17,7 @@ export class ItemsDetailService {
    *
    * @param id - 記事ID
    */
-  getDetailItems(id: string): Promise<ItemsData> {
+  getDetailItems(id: string): Promise<ItemsDetailSchemaType> {
     return this.itemsDetailRepository.getDetailItems(id)
   }
 }

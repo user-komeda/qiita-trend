@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { render, screen } from '@testing-library/react'
 import { ReactNode } from 'react'
 import { describe, expect, test, vi, beforeEach } from 'vitest'
@@ -52,7 +53,10 @@ describe('items component', () => {
 
     const mockBody = {
       title: 'Test Title',
-      tags: ['tag1', 'tag2'],
+      tags: [
+        { name: 'tag1', versions: [] },
+        { name: 'tag2', versions: [] },
+      ],
       body: 'Test Body',
     }
     fetchWithJwtMock.mockResolvedValueOnce({
@@ -61,7 +65,6 @@ describe('items component', () => {
     })
 
     render(await Items({ id: 'test-id' }))
-
     const titleElement = screen.getByText('Test Title')
 
     expect(titleElement).toBeInTheDocument()
@@ -84,7 +87,10 @@ describe('items component', () => {
 
     const mockBody = {
       title: 'Test Title',
-      tags: ['tag1', 'tag2'],
+      tags: [
+        { name: 'tag1', versions: [] },
+        { name: 'tag2', versions: [] },
+      ],
       body: 'Test Body',
     }
     fetchWithJwtMock.mockResolvedValueOnce({

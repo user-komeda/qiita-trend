@@ -17,8 +17,6 @@ export class CommentController {
    */
   @Get()
   getItemComment(@Param() id: ItemsId): Promise<CommentSchemaType> {
-    console.log(id)
-    console.log('comment')
     return this.commentService.getItemComment(id.itemsId)
   }
 }

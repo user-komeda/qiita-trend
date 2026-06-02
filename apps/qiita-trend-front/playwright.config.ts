@@ -8,7 +8,6 @@ import { fileURLToPath } from 'node:url'
 import { defineConfig, devices } from '@playwright/test'
 const currentDir = dirname(fileURLToPath(import.meta.url))
 const backendDir = resolve(currentDir, '../qiita-trend-backend')
-console.log(backendDir)
 /**
  * See https://playwright.dev/docs/test-configuration.
  */

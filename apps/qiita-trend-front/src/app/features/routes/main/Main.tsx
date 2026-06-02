@@ -1,4 +1,5 @@
 import { Alert, List } from '@mui/material'
+import { ItemsSchemaType } from '@qiita-trend/schema'
 
 import ListItemComponent from '@/app/component/ListItemComponent'
 import {
@@ -6,7 +7,6 @@ import {
   BASE_URL_CLIENT,
   GET_ALL_ITEM_API_URL,
 } from '@/app/const/path'
-import { ItemsData } from '@/app/types/ItemsData'
 import fetchWithJwt from '@/app/util/fetchWithJwt'
 
 /** Main */
@@ -22,7 +22,7 @@ const Main = async ({
     searchParams.append('startDate', startDate)
     searchParams.append('endDate', endDate)
   }
-  const result = await fetchWithJwt<ItemsData[]>(
+  const result = await fetchWithJwt<ItemsSchemaType>(
     `${BASE_URL}${GET_ALL_ITEM_API_URL}?${searchParams.toString()}`,
   )
 

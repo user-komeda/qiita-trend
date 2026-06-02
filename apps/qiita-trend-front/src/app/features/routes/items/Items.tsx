@@ -1,10 +1,10 @@
 import { Alert, Box, Card, Typography } from '@mui/material'
+import { ItemsSchemaType } from '@qiita-trend/schema'
 
 import MarkDownComponent from '@/app/component/MarkDownComponent'
 import { BASE_URL, GET_ALL_ITEM_API_URL } from '@/app/const/path'
 import TagList from '@/app/features/routes/items/TagList'
 import { Comments } from '@/app/features/routes/items/comments/Comments'
-import { ItemsData } from '@/app/types/ItemsData'
 import fetchWithJwt from '@/app/util/fetchWithJwt'
 
 /**
@@ -15,7 +15,7 @@ import fetchWithJwt from '@/app/util/fetchWithJwt'
  * @returns - React Element
  */
 const Items = async ({ id }: { id: string }) => {
-  const result = await fetchWithJwt<ItemsData>(
+  const result = await fetchWithJwt<ItemsSchemaType[number]>(
     `${BASE_URL}${GET_ALL_ITEM_API_URL}${id}`,
   )
 

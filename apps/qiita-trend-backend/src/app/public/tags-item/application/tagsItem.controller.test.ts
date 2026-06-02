@@ -1,37 +1,56 @@
 import { HttpModule } from '@nestjs/axios'
 import { Test, TestingModule } from '@nestjs/testing'
+import { ItemsSchemaType } from '@qiita-trend/schema'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { TagsItemController } from '@/public/tags-item/application/tagsItem.controller'
 import { TagsItemRepository } from '@/public/tags-item/domain/tagsItem.repository'
 import { TagsItemService } from '@/public/tags-item/domain/tagsItem.service'
 import { TagsItemRepositoryImpl } from '@/public/tags-item/infrastructure/tagsItem.repositoryImpl'
-import { ItemsData } from '@/types/itemsData'
 
-const mockData: ItemsData[] = [
+const mockData: ItemsSchemaType = [
   {
+    rendered_body: 'hello world',
     body: 'hello world',
+    coediting: false,
+    comments_count: 1,
+    created_at: '2024-01-01',
+    group: null,
     id: 'e37caf50776e00e733be',
-    likesCount: 1,
+    likes_count: 1,
     private: false,
-    stocksCount: 1,
-    reactionsCount: 1,
-    tags: ['tagA', 'tagB', 'wifi'],
+    reactions_count: 1,
+    stocks_count: 1,
+    tags: [
+      { name: 'tagA', versions: [] },
+      { name: 'tagB', versions: [] },
+      { name: 'wifi', versions: [] },
+    ],
     title: 'hello world',
+    updated_at: '2024-01-01',
     url: 'https://github.com/',
-    pageViewsCount: 1,
-  },
-  {
-    body: 'foo bar',
-    id: 'e37caf50776e00e733be',
-    likesCount: 2,
-    private: false,
-    stocksCount: 2,
-    reactionsCount: 2,
-    tags: ['tagC', 'tagD', 'wifi'],
-    title: 'foo bar',
-    url: 'https://github.com/',
-    pageViewsCount: 2,
+    user: {
+      description: 'description',
+      facebook_id: 'facebook_id',
+      followees_count: 1,
+      followers_count: 1,
+      github_login_name: 'github_login_name',
+      id: 'id',
+      items_count: 1,
+      linkedin_id: 'linkedin_id',
+      location: 'location',
+      name: 'name',
+      organization: 'organization',
+      permanent_id: 1,
+      profile_image_url: 'profile_image_url',
+      team_only: false,
+      twitter_screen_name: 'twitter_screen_name',
+      website_url: 'website_url',
+    },
+    page_views_count: 1,
+    team_membership: null,
+    organization_url_name: null,
+    slide: false,
   },
 ]
 

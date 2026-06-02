@@ -1,6 +1,7 @@
 import { HttpModule } from '@nestjs/axios'
 import { ValidationPipe } from '@nestjs/common/pipes/validation.pipe'
 import { Test, TestingModule } from '@nestjs/testing'
+import { ItemsSchemaType } from '@qiita-trend/schema'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { ItemsController } from '@/public/items/application/items.controller'
@@ -9,51 +10,156 @@ import { ItemsService } from '@/public/items/domain/items.service'
 import { ItemsRepositoryImpl } from '@/public/items/infrastructure/items.repositoryImpl'
 import { ItemsDetailRepository } from '@/public/itemsdetail/domain/itemsDetail.repository'
 import { ItemsDetailService } from '@/public/itemsdetail/domain/itemsDetail.service'
-import { ItemsData } from '@/types/itemsData'
 
 const FIRST_MOCK_DATA_INDEX = 0
 
-const mockData: ItemsData[] = [
+const mockData: ItemsSchemaType = [
   {
     body: 'hello world',
     id: 'e37caf50776e00e733be',
-    likesCount: 1,
+    likes_count: 1,
     private: false,
-    stocksCount: 1,
-    reactionsCount: 1,
-    tags: ['tagA', 'tagB'],
+    stocks_count: 1,
+    reactions_count: 1,
+    tags: [
+      { name: 'tagA', versions: [] },
+      { name: 'tagB', versions: [] },
+    ],
     title: 'hello world',
     url: 'https://github.com/',
-    pageViewsCount: 1,
+    page_views_count: 1,
+    rendered_body: '',
+    coediting: false,
+    comments_count: 0,
+    created_at: '',
+    group: null,
+    updated_at: '',
+    user: {
+      description: null,
+      facebook_id: null,
+      followees_count: 0,
+      followers_count: 0,
+      github_login_name: null,
+      id: '',
+      items_count: 0,
+      linkedin_id: null,
+      location: null,
+      name: null,
+      organization: null,
+      permanent_id: 0,
+      profile_image_url: '',
+      team_only: false,
+      twitter_screen_name: null,
+      website_url: null,
+    },
+    team_membership: null,
+    organization_url_name: null,
+    slide: false,
   },
   {
     body: 'foo bar',
-    id: 'e37caf50776e00e733be',
-    likesCount: 2,
+    id: '7244eb5869024651548a',
+    likes_count: 2,
     private: false,
-    stocksCount: 2,
-    reactionsCount: 2,
-    tags: ['tagC', 'tagD'],
+    stocks_count: 2,
+    reactions_count: 2,
+    tags: [
+      { name: 'tagC', versions: [] },
+      { name: 'tagD', versions: [] },
+    ],
     title: 'foo bar',
     url: 'https://github.com/',
-    pageViewsCount: 2,
+    page_views_count: 2,
+    rendered_body: '',
+    coediting: false,
+    comments_count: 0,
+    created_at: '',
+    group: null,
+    updated_at: '',
+    user: {
+      description: null,
+      facebook_id: null,
+      followees_count: 0,
+      followers_count: 0,
+      github_login_name: null,
+      id: '',
+      items_count: 0,
+      linkedin_id: null,
+      location: null,
+      name: null,
+      organization: null,
+      permanent_id: 0,
+      profile_image_url: '',
+      team_only: false,
+      twitter_screen_name: null,
+      website_url: null,
+    },
+    team_membership: null,
+    organization_url_name: null,
+    slide: false,
   },
 ]
-const testCase = async (
+
+const getAllItemsTestCase = async (
   itemsController: ItemsController,
   itemService: ItemsService,
 ): Promise<boolean> => {
   expect.hasAssertions()
 
-  vi.spyOn(itemService, 'getItems').mockResolvedValueOnce(mockData)
-  const result = await itemsController.getAllItems('2021-01-01', '2021-01-31')
+  const startDate = '2021-01-01'
+  const endDate = '2021-01-31'
+  const page = '1'
 
-  expect(itemService.getItems).toHaveBeenCalledWith('2021-01-01', '2021-01-31')
-  expect(result).toStrictEqual(result)
+  vi.spyOn(itemService, 'getItems').mockResolvedValueOnce(mockData)
+
+  const result = await itemsController.getAllItems(startDate, endDate, page)
+
+  expect(itemService.getItems).toHaveBeenCalledWith(startDate, endDate, page)
+  expect(result).toStrictEqual(mockData)
 
   return true
 }
-const testCase2 = async (
+
+const getAllItemsDefaultPageTestCase = async (
+  itemsController: ItemsController,
+  itemService: ItemsService,
+): Promise<boolean> => {
+  expect.hasAssertions()
+
+  const startDate = '2021-01-01'
+  const endDate = '2021-01-31'
+
+  vi.spyOn(itemService, 'getItems').mockResolvedValueOnce(mockData)
+
+  const result = await itemsController.getAllItems(startDate, endDate)
+
+  expect(itemService.getItems).toHaveBeenCalledWith(startDate, endDate, '1')
+  expect(result).toStrictEqual(mockData)
+
+  return true
+}
+
+const getAllItemsPaginationTestCase = async (
+  itemsController: ItemsController,
+  itemService: ItemsService,
+): Promise<boolean> => {
+  expect.hasAssertions()
+
+  const startDate = '2021-01-01'
+  const endDate = '2021-01-31'
+  const page = '2'
+
+  vi.spyOn(itemService, 'getItems').mockResolvedValueOnce(mockData)
+
+  const result = await itemsController.getAllItems(startDate, endDate, page)
+
+  expect(itemService.getItems).toHaveBeenCalledWith(startDate, endDate, page)
+  expect(result).toStrictEqual(mockData)
+
+  return true
+}
+
+const getItemTestCase = async (
   itemsController: ItemsController,
   itemDetailService: ItemsDetailService,
 ): Promise<boolean> => {
@@ -64,12 +170,13 @@ const testCase2 = async (
   vi.spyOn(itemDetailService, 'getDetailItems').mockResolvedValueOnce(
     mockData[FIRST_MOCK_DATA_INDEX],
   )
+
   const result = await itemsController.getItem(requestData)
 
   expect(itemDetailService.getDetailItems).toHaveBeenCalledWith(
     requestData.itemsId,
   )
-  expect(result).toStrictEqual(result)
+  expect(result).toStrictEqual(mockData[FIRST_MOCK_DATA_INDEX])
 
   return true
 }
@@ -94,20 +201,41 @@ describe('itemController', () => {
     itemsController = module.get<ItemsController>(ItemsController)
     itemService = module.get<ItemsService>(ItemsService)
     itemDetailService = module.get<ItemsDetailService>(ItemsDetailService)
+
     const app = module.createNestApplication()
     app.useGlobalPipes(new ValidationPipe({ forbidUnknownValues: true }))
     await app.init()
   })
 
-  test('should return "Hello World!"', async () => {
+  test('should get all items with date range and first page', async () => {
     expect.hasAssertions()
-    await expect(testCase(itemsController, itemService)).resolves.toBe(true)
+
+    await expect(
+      getAllItemsTestCase(itemsController, itemService),
+    ).resolves.toBe(true)
   })
 
-  test('2should return "Hello World!"', async () => {
+  test('should get all items with default page', async () => {
     expect.hasAssertions()
-    await expect(testCase2(itemsController, itemDetailService)).resolves.toBe(
-      true,
-    )
+
+    await expect(
+      getAllItemsDefaultPageTestCase(itemsController, itemService),
+    ).resolves.toBe(true)
+  })
+
+  test('should get all items with specified page', async () => {
+    expect.hasAssertions()
+
+    await expect(
+      getAllItemsPaginationTestCase(itemsController, itemService),
+    ).resolves.toBe(true)
+  })
+
+  test('should get item detail', async () => {
+    expect.hasAssertions()
+
+    await expect(
+      getItemTestCase(itemsController, itemDetailService),
+    ).resolves.toBe(true)
   })
 })
