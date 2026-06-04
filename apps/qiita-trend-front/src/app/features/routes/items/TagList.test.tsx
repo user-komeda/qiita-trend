@@ -8,7 +8,11 @@ describe('tag_list component', () => {
   test('renders the correct number of tags', () => {
     expect.hasAssertions()
 
-    const tags = ['tag1', 'tag2', 'tag3']
+    const tags = [
+      { name: 'tag1', versions: [] },
+      { name: 'tag2', versions: [] },
+      { name: 'tag3', versions: [] },
+    ]
     render(<TagList tagList={tags} />)
     const chips = screen.getAllByRole('listitem')
 
@@ -18,10 +22,14 @@ describe('tag_list component', () => {
   test('renders the correct tag labels', () => {
     expect.hasAssertions()
 
-    const tags = ['tag1', 'tag2', 'tag3']
+    const tags = [
+      { name: 'tag1', versions: [] },
+      { name: 'tag2', versions: [] },
+      { name: 'tag3', versions: [] },
+    ]
     render(<TagList tagList={tags} />)
     tags.forEach((tag) => {
-      expect(screen.getByText(tag).textContent).toBe(tag)
+      expect(screen.getByText(tag.name).textContent).toBe(tag.name)
     })
   })
 })

@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common'
+import { ItemsSchemaType } from '@qiita-trend/schema'
 
 import { TagsItemRepository } from '@/public/tags-item/domain/tagsItem.repository'
-import { ItemsData } from '@/types/itemsData'
 
 /**
  *TagsItemService
@@ -17,7 +17,7 @@ export class TagsItemService {
    *
    * @param id - tagId
    */
-  getItemsFromTag(id: string): Promise<ItemsData[]> {
+  getItemsFromTag(id: string): Promise<ItemsSchemaType> {
     return this.tagsItemRepository.getItemsFromTag(id)
   }
 }

@@ -1,12 +1,12 @@
 import { HttpModule, HttpService } from '@nestjs/axios'
 import { Test, TestingModule } from '@nestjs/testing'
+import { ItemsSchemaType } from '@qiita-trend/schema'
 import { AxiosResponse } from 'axios'
 import { of } from 'rxjs/internal/observable/of'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { TagsItemRepository } from '@/public/tags-item/domain/tagsItem.repository'
 import { TagsItemRepositoryImpl } from '@/public/tags-item/infrastructure/tagsItem.repositoryImpl'
-import { ItemsData } from '@/types/itemsData'
 
 const httpServiceMockData = [
   {
@@ -147,30 +147,113 @@ const httpServiceMockData = [
   },
 ]
 
-const responseData: ItemsData[] = [
+const responseData: ItemsSchemaType = [
   {
+    rendered_body: httpServiceMockData[0].rendered_body,
     body: '株式会社オズビジョンの @terra_yucco です。\n2020/01 現在、オズビジョン 6 年目。内部ではちらほら配置換えもありつつも、なんだかんだでこの 6 年の大半はメインプロダクト「ハピタス」を見ています。\n\n# 前置き\n現在、品質向上のために仕様統括＋品質管理というロールを担っております。\n主な役割は、着手が決まった案件について、以下の項目のそれぞれについてレビューの必要性があるかを判断し、必要となったものはレビューをすること。もちろん担当チームは自分たちでも確認をしますが、仕様統括という形で全体のつながりも意識しながら追加で確認しています。\n\n- 要件定義\n- テスト設計\n- リリース・反映手順、動作確認手順\n- 後日確認手順\n- 切り戻し手順\n\nansible のコードや、aws 関連のスクリプトの場合はコードを見たりもしますが、基本はプロダクトのコードは見ません。\n\n# なぜこんなロールがあるのか\n一時期、リリース前後に不具合が頻発することがあったため。また、検出した不具合は、単純なテスト忘れや確認漏れが多く、誰かがチェックしていれば防げたんじゃないかと思われるようなものも多かったため。\n\n# どんな点に気を付けて見ているのか\n## 仕様統括として\n### 要件定義\n\n- これまでの機能との相反・不整合がないか\n    - ユーザステータスの遷移\n    - 既存データとのドメインチェック\n\n### テスト設計\n\n- 動作テストにおいて、提供機能のハッピーパスがテストされているか\n- 機能的に見落としている、重要な組み合わせパターンはないか\n- 事業的に意味を持つ、入力値のバリエーションはないか、ある場合はテストパターンに含まれているか\n\n### リリース・反映手順、動作確認手順\n\n- 複数機能をリリースする場合、前後関係は正しく保たれているか\n- 機能にダウンタイムが発生する場合、調整はされているか、メンテナンスが必要な場合は調整済か\n- 動作確認手順は、実際にリリースする変更部分の動作を確認できるものとなっているか\n\n### 全般\n\n- 過去に出た不具合と類似の事象が発生しそうな場所はないか\n\n## 品質管理として\n\n若手のメンバーも多いので、かなり一般的な見方をしています。これは主にテスト設計の確認に適用しています。\n本来は DB 設計やセキュリティ観点なども要件定義で見たほうが良いのですが、これは現状では各チームに移管しています。\n\n### 基本\n\n- 誰が見ても実施する内容がわかるテスト設計となっているか\n- 期待するインプットが明確か、全て洗い出されているか\n- 期待する想定の結果が明示されているか　※「正常であること」などは想定結果ではない\n\n### 単体観点\n\n- 各ドメインの値、境界値\n- カバレッジ\n\n### 結合観点\n\n- 状態遷移を伴う場合には、実際に遷移させるテストを行う設計になっているか\n- 既存の機能に影響する場合、その機能全体の通しのテストも行う設計になっているか\n\n### 全体\n\n- 必要なテストが、コードレベルの UT などとマニュアルテストを合わせて網羅されているか\n\n# 効果\n\n普段の業務にプラスオンして何名かのメンバーで分担していますが、レビューを間に挟んで別の人の目を入れたということはいい方に働いており、このレビューをしっかりやった案件ほど不具合が出ないという結果にはなっています。\nただし当たり前ながら QCD の CD を少し犠牲にして Q を上げている結果にはなっているので、次はここに何らかの手を打っていきたいと考えています。\n\n# これから\n\n既に一回実施していますが、このレビューを通して得られた知見を社内にシェアし、将来的には特別なレビューを挟まなくても各チームで品質向上に取り組んでいければと考えています。\n皆さんのレビュー観点などももしあればぜひ教えてください。\n',
+    coediting: false,
+    comments_count: 0,
+    created_at: '2020-01-31T23:59:59+09:00',
+    group: {
+      created_at: '2000-01-01T00:00:00+00:00',
+      description: 'This group is for developers.',
+      name: 'Dev',
+      private: false,
+      updated_at: '2000-01-01T00:00:00+00:00',
+      url_name: 'dev',
+    },
     id: 'dbd83151ce9d74b016e8',
-    likesCount: 2,
+    likes_count: 2,
     private: false,
-    reactionsCount: 0,
-    stocksCount: 3,
-    tags: ['仕様', '品質管理', '品質', 'QCD', 'wifi'],
+    reactions_count: 0,
+    stocks_count: 3,
+    tags: [
+      { name: '仕様', versions: [] },
+      { name: '品質管理', versions: [] },
+      { name: '品質', versions: [] },
+      { name: 'QCD', versions: [] },
+      { name: 'wifi', versions: [] },
+    ],
     title: '品質担保に本気で取り組んでみている話',
+    updated_at: '2020-01-31T23:59:59+09:00',
     url: 'https://qiita.com/terra_yucco/items/dbd83151ce9d74b016e8',
-    pageViewsCount: 0,
+    user: {
+      description:
+        '株式会社オズビジョンでサーバサイドエンジニアとして勤務しているユッコ (テラシマユウコ) です。IPA の情報処理技術者試験で資格を取りまくっていた時期があり FE/AP/SA/DB/ES/SC(旧区分時代:情報セキュリティスペシャリスト) を取得済。',
+      facebook_id: '',
+      followees_count: 14,
+      followers_count: 44,
+      github_login_name: 'terra-yucco',
+      id: 'terra_yucco',
+      items_count: 97,
+      linkedin_id: '',
+      location: 'Tokyo, Japan',
+      name: 'Yuko Terashima',
+      organization: 'OZvision Inc.',
+      permanent_id: 95030,
+      profile_image_url:
+        'https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/95030/profile-images/1575334595',
+      team_only: false,
+      twitter_screen_name: 'terra_yucco',
+      website_url: '',
+    },
+    page_views_count: 0,
+    team_membership: null,
+    organization_url_name: 'ozvision',
+    slide: false,
   },
   {
+    rendered_body: httpServiceMockData[1].rendered_body,
     body: '# Unityで取得できる Screen.safeAreaには罠（？）がある\n\n罠に遭遇したのは、以下の条件\n\n- 4.7インチiPhone(iPhone6/7など)\n- Unity2017.4.35, 2018.4.15\n- iOS10\n\n|OS|Screen.safeArea.h|Screen.height|ステータスバー高さ|\n|---|---|---|---|\n|iOS12|1294|1334|40|\n|iOS10|1334|1334|40|\n\n- iOS11以降だとsafeAreaのRectは正しくステータスバーを避けてくれるが、iOS10だと重なってしまう\n\n# 原因\n\n- そもそもsafeAreaの導入がiOS11から\n- Screen.safeAreaは単純にsafeAreaInsetsをOS判定して取得しているだけだと思われる\n    - iOS10以下はエラーにならないようにしているだけ?\n\n# 解決策\n\n- OSを取得して分岐するしかなさそう\n - iOS10以下ならiPhoneX系統は存在しないから、ステータスバーは 20 x scale で固定…？\n    - scaleを取得するにも結局plugin書かないとなので、topLayoutGuide、bottomLayoutGuideあたりを使うのが良さそう\n\n# 参考\n\n- [iPhoneXでのAutoLayoutをきれいに書くための試行錯誤](https://qiita.com/risuke/items/bb5735f0e8f3bc8306db)\n- [【Unity】これ以上iOSのSafeAreaで消耗したくない人のため『Unity-SafeAreaCanvas』](https://qiita.com/nkjzm/items/e395e6da9ca46963dba9)\n\n\n# 余談\n\n- この記事を検証するにあたってシミュレーターで実行しようとして色々色々罠にハマった…\n- 警告に従って、Graphics APIsにGLES3を「追加」すると、シミュレーターでのアプリ起動時に `UnityInitApplicationGraphics` で停止してしまう\n- 正解は、「追加」ではなく入れ替え（Metalは削除）\n- が、ES3に入れ替えたバージョンでiOS13の検証はできたが、iOS10のシミュレーターで実行しようとすると再び`UnityInitApplicationGraphics` で停止\n- 未検証だが、ES2にするべきなのかもしれない\n',
+    coediting: false,
+    comments_count: 0,
+    created_at: '2020-01-31T23:56:36+09:00',
+    group: {
+      created_at: '2000-01-01T00:00:00+00:00',
+      description: 'This group is for developers.',
+      name: 'Dev',
+      private: false,
+      updated_at: '2000-01-01T00:00:00+00:00',
+      url_name: 'dev',
+    },
     id: '7244eb5869024651548a',
-    likesCount: 5,
+    likes_count: 5,
     private: false,
-    reactionsCount: 0,
-    stocksCount: 4,
-    tags: ['iOS', 'Unity', 'SafeArea', 'wifi'],
+    reactions_count: 0,
+    stocks_count: 4,
+    tags: [
+      { name: 'iOS', versions: [] },
+      { name: 'Unity', versions: [] },
+      { name: 'SafeArea', versions: [] },
+      { name: 'wifi', versions: [] },
+    ],
     title: '【Unity】Screen.safeAreaとiOSステータスバーの罠（？）',
+    updated_at: '2020-02-02T15:38:48+09:00',
     url: 'https://qiita.com/yuiyoichi/items/7244eb5869024651548a',
-    pageViewsCount: 0,
+    user: {
+      description:
+        '湘南藤沢在住、こんにちはマイコン世代のゲームプログラマです。',
+      facebook_id: '',
+      followees_count: 5,
+      followers_count: 3,
+      github_login_name: 'yuiyoichi',
+      id: 'yuiyoichi',
+      items_count: 8,
+      linkedin_id: '',
+      location: '神奈川県藤沢市',
+      name: 'ゆい よういち',
+      organization: '',
+      permanent_id: 102758,
+      profile_image_url:
+        'https://qiita-image-store.s3.amazonaws.com/0/102758/profile-images/1473708796',
+      team_only: false,
+      twitter_screen_name: 'meross_k',
+      website_url: 'https://tassle.hatenablog.com/',
+    },
+    page_views_count: 0,
+    team_membership: null,
+    organization_url_name: null,
+    slide: false,
   },
 ]
 

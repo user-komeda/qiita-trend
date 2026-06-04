@@ -1,11 +1,14 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common'
 import { Test, TestingModule } from '@nestjs/testing'
+import {
+  ItemsDetailSchemaType,
+  PaginatedItemsSchemaType,
+} from '@qiita-trend/schema'
 import request, { Response } from 'supertest'
 import { beforeEach, describe, expect, test } from 'vitest'
 
 import createJwt from '../helper/createJwt'
 import { AppModule } from '@/app/module/app/app.module'
-import { ItemsData } from '@/types/itemsData'
 
 // eslint-disable-next-line max-lines-per-function
 describe('itemsController (e2e)', () => {
@@ -32,17 +35,18 @@ describe('itemsController (e2e)', () => {
         .set('Authorization', `Bearer ${await createJwt()}`)
         .expect(200)
 
-      const body = response.body as unknown as ItemsData[]
+      const body = response.body as unknown as PaginatedItemsSchemaType
 
-      expect(Array.isArray(body)).toBe(true)
-      expect(body.length).toBeGreaterThan(0)
-      expect(body[0]).toSatisfy((item: ItemsData) => {
+      expect(Array.isArray(body.items)).toBe(true)
+      expect(body.items.length).toBeGreaterThan(0)
+      expect(body.totalCount).toBeTypeOf('number')
+      expect(body.items[0]).toSatisfy((item: ItemsDetailSchemaType) => {
         return (
           typeof item.id === 'string' &&
           typeof item.title === 'string' &&
           typeof item.url === 'string' &&
           typeof item.body === 'string' &&
-          typeof item.likesCount === 'number'
+          typeof item.likes_count === 'number'
         )
       })
     })
@@ -68,9 +72,27 @@ describe('itemsController (e2e)', () => {
         .set('Authorization', `Bearer ${await createJwt()}`)
         .expect(200)
 
-      const body = response.body as unknown
+      const body = response.body as unknown as PaginatedItemsSchemaType
 
-      expect(Array.isArray(body)).toBe(true)
+      expect(Array.isArray(body.items)).toBe(true)
+      expect(body.totalCount).toBeTypeOf('number')
+    })
+
+    test('should return items for a specific page', async () => {
+      expect.hasAssertions()
+
+      const page = '2'
+      const response: Response = await request(app.getHttpServer() as string)
+        .get(
+          `/public/items?page=${page}&startDate=2024-01-01&endDate=2024-01-02`,
+        )
+        .set('Authorization', `Bearer ${await createJwt()}`)
+        .expect(200)
+
+      const body = response.body as unknown as PaginatedItemsSchemaType
+
+      expect(Array.isArray(body.items)).toBe(true)
+      expect(body.totalCount).toBeTypeOf('number')
     })
   })
 
@@ -85,19 +107,19 @@ describe('itemsController (e2e)', () => {
         .set('Authorization', `Bearer ${await createJwt()}`)
         .expect(200)
 
-      const listBody = listResponse.body as unknown as ItemsData[]
+      const listBody = listResponse.body as unknown as PaginatedItemsSchemaType
 
-      expect(listBody.length).toBeGreaterThan(0)
+      expect(listBody.items.length).toBeGreaterThan(0)
 
-      const itemId = listBody[0].id
+      const itemId = listBody.items[0].id
       const response: Response = await request(app.getHttpServer() as string)
         .get(`/public/items/${itemId}`)
         .set('Authorization', `Bearer ${await createJwt()}`)
         .expect(200)
 
-      const body = response.body as unknown as ItemsData
+      const body = response.body as unknown as ItemsDetailSchemaType
 
-      expect(body).toSatisfy((item: ItemsData) => {
+      expect(body).toSatisfy((item: ItemsDetailSchemaType) => {
         return (
           item.id === itemId &&
           typeof item.title === 'string' &&

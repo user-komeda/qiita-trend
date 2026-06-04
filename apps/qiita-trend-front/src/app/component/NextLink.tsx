@@ -1,27 +1,34 @@
+'use client'
 import { Link as MuiLink } from '@mui/material'
-import { ReactNode } from 'react'
+import NextLinkBase from 'next/link'
 
-interface Props {
+import type { LinkProps as MuiLinkProps } from '@mui/material'
+import type { ReactNode } from 'react'
+
+type Props = Omit<MuiLinkProps, 'href' | 'component' | 'sx'> & {
   href: string
-  children: ReactNode
+  children?: ReactNode
   isDisableMarginZero?: boolean
 }
+
 /**
  * NextJSLink
- *
- * @param href - href
- *
- * @returns - JSX Element
  */
-const NextLink = ({ href, children, isDisableMarginZero }: Props) => {
-  const sx =
-    isDisableMarginZero !== undefined && isDisableMarginZero
-      ? { marginLeft: '15px !important' }
-      : { marginLeft: '0 !important' }
+const NextLink = ({ href, children, isDisableMarginZero, ...props }: Props) => {
   return (
-    <MuiLink href={href} underline="none" sx={sx}>
+    <MuiLink
+      {...props}
+      component={NextLinkBase}
+      href={href}
+      underline="none"
+      sx={{
+        marginLeft:
+          isDisableMarginZero === true ? '15px !important' : '0 !important',
+      }}
+    >
       {children}
     </MuiLink>
   )
 }
+
 export default NextLink

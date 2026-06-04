@@ -1,9 +1,12 @@
-import { Controller, Get, Param, Query } from '@nestjs/common'
+import { Controller, DefaultValuePipe, Get, Param, Query } from '@nestjs/common'
+import {
+  ItemsDetailSchemaType,
+  PaginatedItemsSchemaType,
+} from '@qiita-trend/schema'
 
 import { ItemsId } from '@/form/itemsId/itemsId'
 import { ItemsService } from '@/public/items/domain/items.service'
 import { ItemsDetailService } from '@/public/itemsdetail/domain/itemsDetail.service'
-import { ItemsData } from '@/types/itemsData'
 
 /**
  *ItemsController
@@ -15,23 +18,17 @@ export class ItemsController {
     private readonly itemsDetailService: ItemsDetailService,
   ) {}
 
-  /**
-   *getAllItems
-   *
-   * @param startDate - startDate
-   *
-   * @param endDate - endDate
-   *
-   * @returns - ItemsData[]
-   */
   @Get()
   getAllItems(
     @Query('startDate')
     startDate: string,
+
     @Query('endDate')
     endDate: string,
-  ): Promise<ItemsData[]> {
-    return this.itemsService.getItems(startDate, endDate)
+    @Query('page', new DefaultValuePipe('1'))
+    page: string,
+  ): Promise<PaginatedItemsSchemaType> {
+    return this.itemsService.getItems(startDate, endDate, page)
   }
 
   /**
@@ -40,7 +37,7 @@ export class ItemsController {
    * @param id - 記事id
    */
   @Get(':itemsId')
-  getItem(@Param() id: ItemsId): Promise<ItemsData> {
+  getItem(@Param() id: ItemsId): Promise<ItemsDetailSchemaType> {
     return this.itemsDetailService.getDetailItems(id.itemsId)
   }
 }

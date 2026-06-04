@@ -1,4 +1,5 @@
 import { Alert, List } from '@mui/material'
+import { ItemsSchemaType } from '@qiita-trend/schema'
 
 import ListItemComponent from '@/app/component/ListItemComponent'
 import {
@@ -6,13 +7,12 @@ import {
   BASE_URL_CLIENT,
   GET_ITEMS_BY_TAG_URL,
 } from '@/app/const/path'
-import { ItemsData } from '@/app/types/ItemsData'
 import fetchWithJwt from '@/app/util/fetchWithJwt'
 import replaceUrlParameter from '@/app/util/replaceUrlParameter'
 
 /** TagItems */
 const TagItems = async ({ tagName }: { tagName: string }) => {
-  const result = await fetchWithJwt<ItemsData[]>(
+  const result = await fetchWithJwt<ItemsSchemaType>(
     replaceUrlParameter(
       `${BASE_URL}${GET_ITEMS_BY_TAG_URL}`,
       ':tagName',

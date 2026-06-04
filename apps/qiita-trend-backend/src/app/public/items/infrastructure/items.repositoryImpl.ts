@@ -1,11 +1,13 @@
 import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
-import { ItemsSchemaType, ItemsSchema } from '@qiita-trend/schema'
+import {
+  PaginatedItemsSchema,
+  PaginatedItemsSchemaType,
+} from '@qiita-trend/schema'
 import { lastValueFrom, map } from 'rxjs'
 import * as v from 'valibot' // 1.31 kB
 
 import { ItemsRepository } from '@/public/items/domain/items.repository'
-import { ItemsData } from '@/types/itemsData'
 
 /**
  *ItemsRepositoryImpl
@@ -13,54 +15,37 @@ import { ItemsData } from '@/types/itemsData'
 @Injectable()
 export class ItemsRepositoryImpl implements ItemsRepository {
   constructor(private readonly httpService: HttpService) {}
-  /**
-   *getItems
-   *
-   * @param startDate - startDate.
-   *
-   * @param endDate - endDate
-   *
-   * @returns - ItemsData[]
-   */
-  async getItems(startDate: string, endDate: string): Promise<ItemsData[]> {
+
+  async getItems(
+    startDate: string,
+    endDate: string,
+    page: string,
+  ): Promise<PaginatedItemsSchemaType> {
     return await lastValueFrom(
-      this.httpService.get(this.buildUrl(startDate, endDate)).pipe(
+      this.httpService.get(this.buildUrl(startDate, endDate, page)).pipe(
         map((response) => {
-          const parsedData = v.parse(ItemsSchema, response.data)
-          return this.convertResponseData(parsedData)
+          return v.parse(PaginatedItemsSchema, {
+            items: response.data as unknown,
+            totalCount: Number(response.headers['total-count']),
+          })
         }),
       ),
     )
   }
 
-  private buildUrl(startDate: string, endDate: string): string {
+  private buildUrl(startDate: string, endDate: string, page: string): string {
+    const url = new URL('https://qiita.com/api/v2/items')
+    const queryConditions = ['stocks:>=100']
     if (startDate && endDate) {
-      return `https://qiita.com/api/v2/items?sort=stock&per_page=100&query=created%3A%3E%3D${startDate}+created%3A%3C%3D${endDate}`
+      queryConditions.unshift(`created:>=${startDate}`, `created:<=${endDate}`)
     }
-    return `https://qiita.com/api/v2/items?sort=stock&per_page=100`
-  }
+    const pageNumber = Number(page)
+    const validPage = pageNumber > 100 ? '100' : page
 
-  private convertResponseData(dataList: ItemsSchemaType): ItemsData[] {
-    return dataList.map((data) => {
-      const tag = data.tags.map((tag) => {
-        return tag.name
-      })
-      /**
-       *result
-       */
-      const result: ItemsData = {
-        body: data.body,
-        id: data.id,
-        likesCount: data.likes_count,
-        private: data.private,
-        reactionsCount: data.reactions_count,
-        stocksCount: data.stocks_count,
-        tags: tag,
-        title: data.title,
-        url: data.url,
-        pageViewsCount: data.page_views_count,
-      }
-      return result
-    })
+    url.searchParams.set('sort', 'stock')
+    url.searchParams.set('page', validPage)
+    url.searchParams.set('per_page', '100')
+    url.searchParams.set('query', queryConditions.join(' '))
+    return url.toString()
   }
 }

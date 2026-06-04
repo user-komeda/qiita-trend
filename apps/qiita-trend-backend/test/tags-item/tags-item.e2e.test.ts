@@ -1,11 +1,11 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common'
 import { Test, TestingModule } from '@nestjs/testing'
+import { ItemsDetailSchemaType, ItemsSchemaType } from '@qiita-trend/schema'
 import request, { Response } from 'supertest'
 import { beforeEach, describe, expect, test } from 'vitest'
 
 import createJwt from '../helper/createJwt'
 import { AppModule } from '@/app/module/app/app.module'
-import { ItemsData } from '@/types/itemsData'
 import { TagData } from '@/types/tagData'
 
 describe('tagsItemController (e2e)', () => {
@@ -45,12 +45,12 @@ describe('tagsItemController (e2e)', () => {
         .set('Authorization', `Bearer ${await createJwt()}`)
         .expect(200)
 
-      const body = response.body as ItemsData[]
+      const body = response.body as ItemsSchemaType
 
       expect(Array.isArray(body)).toBe(true)
       // タグに関連する記事は存在するはず
       expect(body.length).toBeGreaterThan(0)
-      expect(body[0]).toSatisfy((item: ItemsData) => {
+      expect(body[0]).toSatisfy((item: ItemsDetailSchemaType) => {
         return (
           typeof item.id === 'string' &&
           typeof item.title === 'string' &&

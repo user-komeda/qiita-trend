@@ -21,7 +21,6 @@ export class CommentRepositoryImpl implements CommentRepository {
     return await lastValueFrom(
       this.httpService.get(this.buildUrl(id)).pipe(
         map((response) => {
-          console.log(response.data)
           return v.parse(CommentSchema, response.data)
         }),
       ),
