@@ -18,6 +18,7 @@ const Home = async ({
           <Main
             startDate={(params.startDate ?? '') as string}
             endDate={(params.endDate ?? '') as string}
+            page={(params.page ?? '') as string}
           ></Main>
         }
       ></MainContent>

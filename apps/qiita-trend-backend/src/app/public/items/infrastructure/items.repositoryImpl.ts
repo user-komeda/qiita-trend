@@ -1,6 +1,9 @@
 import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
-import { ItemsSchema, ItemsSchemaType } from '@qiita-trend/schema'
+import {
+  PaginatedItemsSchema,
+  PaginatedItemsSchemaType,
+} from '@qiita-trend/schema'
 import { lastValueFrom, map } from 'rxjs'
 import * as v from 'valibot' // 1.31 kB
 
@@ -17,11 +20,14 @@ export class ItemsRepositoryImpl implements ItemsRepository {
     startDate: string,
     endDate: string,
     page: string,
-  ): Promise<ItemsSchemaType> {
+  ): Promise<PaginatedItemsSchemaType> {
     return await lastValueFrom(
       this.httpService.get(this.buildUrl(startDate, endDate, page)).pipe(
         map((response) => {
-          return v.parse(ItemsSchema, response.data)
+          return v.parse(PaginatedItemsSchema, {
+            items: response.data as unknown,
+            totalCount: Number(response.headers['total-count']),
+          })
         }),
       ),
     )
@@ -33,8 +39,11 @@ export class ItemsRepositoryImpl implements ItemsRepository {
     if (startDate && endDate) {
       queryConditions.unshift(`created:>=${startDate}`, `created:<=${endDate}`)
     }
+    const pageNumber = Number(page)
+    const validPage = pageNumber > 100 ? '100' : page
+
     url.searchParams.set('sort', 'stock')
-    url.searchParams.set('page', page)
+    url.searchParams.set('page', validPage)
     url.searchParams.set('per_page', '100')
     url.searchParams.set('query', queryConditions.join(' '))
     return url.toString()

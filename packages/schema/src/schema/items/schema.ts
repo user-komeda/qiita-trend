@@ -30,4 +30,10 @@ export const ItemsSchema = v.array(
   }),
 )
 
+export const PaginatedItemsSchema = v.object({
+  items: ItemsSchema,
+  totalCount: v.number(),
+})
+
 export type ItemsSchemaType = v.InferOutput<typeof ItemsSchema>
+export type PaginatedItemsSchemaType = v.InferOutput<typeof PaginatedItemsSchema>

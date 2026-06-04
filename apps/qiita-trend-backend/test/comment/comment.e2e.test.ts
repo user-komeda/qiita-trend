@@ -1,6 +1,6 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common'
 import { Test, TestingModule } from '@nestjs/testing'
-import { ItemsSchemaType } from '@qiita-trend/schema'
+import { PaginatedItemsSchemaType } from '@qiita-trend/schema'
 import request, { Response } from 'supertest'
 import { beforeEach, describe, expect, test } from 'vitest'
 
@@ -34,7 +34,7 @@ describe('commentController (e2e)', () => {
         .set('Authorization', `Bearer ${await createJwt()}`)
         .expect(200)
 
-      const items = itemsResponse.body as ItemsSchemaType
+      const { items } = itemsResponse.body as PaginatedItemsSchemaType
 
       expect(items.length).toBeGreaterThan(0)
 

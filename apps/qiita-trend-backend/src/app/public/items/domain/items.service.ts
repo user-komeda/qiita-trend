@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common'
-import { ItemsSchemaType } from '@qiita-trend/schema'
+import { PaginatedItemsSchemaType } from '@qiita-trend/schema'
 
 import { ItemsRepository } from '@/public/items/domain/items.repository'
 
@@ -16,7 +16,7 @@ export class ItemsService {
     startDate: string,
     endDate: string,
     page: string,
-  ): Promise<ItemsSchemaType> {
+  ): Promise<PaginatedItemsSchemaType> {
     return this.itemsRepository.getItems(startDate, endDate, page)
   }
 }

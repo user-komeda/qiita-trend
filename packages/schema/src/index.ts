@@ -5,7 +5,9 @@ export {
 
 export {
     ItemsSchema,
-    type ItemsSchemaType
+    PaginatedItemsSchema,
+    type ItemsSchemaType,
+    type PaginatedItemsSchemaType
 } from "./schema/items/schema.js"
 
 export {

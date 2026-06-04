@@ -1,7 +1,7 @@
 import { HttpModule } from '@nestjs/axios'
 import { ValidationPipe } from '@nestjs/common/pipes/validation.pipe'
 import { Test, TestingModule } from '@nestjs/testing'
-import { ItemsSchemaType } from '@qiita-trend/schema'
+import { ItemsSchemaType, PaginatedItemsSchemaType } from '@qiita-trend/schema'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { ItemsController } from '@/public/items/application/items.controller'
@@ -100,6 +100,11 @@ const mockData: ItemsSchemaType = [
   },
 ]
 
+const mockPaginatedData: PaginatedItemsSchemaType = {
+  items: mockData,
+  totalCount: 200,
+}
+
 const getAllItemsTestCase = async (
   itemsController: ItemsController,
   itemService: ItemsService,
@@ -110,12 +115,12 @@ const getAllItemsTestCase = async (
   const endDate = '2021-01-31'
   const page = '1'
 
-  vi.spyOn(itemService, 'getItems').mockResolvedValueOnce(mockData)
+  vi.spyOn(itemService, 'getItems').mockResolvedValueOnce(mockPaginatedData)
 
   const result = await itemsController.getAllItems(startDate, endDate, page)
 
   expect(itemService.getItems).toHaveBeenCalledWith(startDate, endDate, page)
-  expect(result).toStrictEqual(mockData)
+  expect(result).toStrictEqual(mockPaginatedData)
 
   return true
 }
@@ -129,12 +134,12 @@ const getAllItemsDefaultPageTestCase = async (
   const startDate = '2021-01-01'
   const endDate = '2021-01-31'
 
-  vi.spyOn(itemService, 'getItems').mockResolvedValueOnce(mockData)
+  vi.spyOn(itemService, 'getItems').mockResolvedValueOnce(mockPaginatedData)
 
-  const result = await itemsController.getAllItems(startDate, endDate)
+  const result = await itemsController.getAllItems(startDate, endDate, '1')
 
   expect(itemService.getItems).toHaveBeenCalledWith(startDate, endDate, '1')
-  expect(result).toStrictEqual(mockData)
+  expect(result).toStrictEqual(mockPaginatedData)
 
   return true
 }
@@ -149,12 +154,12 @@ const getAllItemsPaginationTestCase = async (
   const endDate = '2021-01-31'
   const page = '2'
 
-  vi.spyOn(itemService, 'getItems').mockResolvedValueOnce(mockData)
+  vi.spyOn(itemService, 'getItems').mockResolvedValueOnce(mockPaginatedData)
 
   const result = await itemsController.getAllItems(startDate, endDate, page)
 
   expect(itemService.getItems).toHaveBeenCalledWith(startDate, endDate, page)
-  expect(result).toStrictEqual(mockData)
+  expect(result).toStrictEqual(mockPaginatedData)
 
   return true
 }

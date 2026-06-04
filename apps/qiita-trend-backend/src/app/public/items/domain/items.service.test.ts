@@ -1,6 +1,6 @@
 import { HttpModule } from '@nestjs/axios'
 import { Test, TestingModule } from '@nestjs/testing'
-import { ItemsSchemaType } from '@qiita-trend/schema'
+import { ItemsSchemaType, PaginatedItemsSchemaType } from '@qiita-trend/schema'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { ItemsRepository } from '@/public/items/domain/items.repository'
@@ -94,6 +94,11 @@ const mockData: ItemsSchemaType = [
   },
 ]
 
+const mockPaginatedData: PaginatedItemsSchemaType = {
+  items: mockData,
+  totalCount: 200,
+}
+
 const testCase = async (
   itemService: ItemsService,
   itemsRepository: ItemsRepository,
@@ -103,7 +108,7 @@ const testCase = async (
   const startDate = '2021-01-01'
   const endDate = '2021-01-31'
   const page = '1'
-  vi.spyOn(itemsRepository, 'getItems').mockResolvedValueOnce(mockData)
+  vi.spyOn(itemsRepository, 'getItems').mockResolvedValueOnce(mockPaginatedData)
   const result = await itemService.getItems(startDate, endDate, page)
 
   expect(itemsRepository.getItems).toHaveBeenCalledWith(
@@ -111,7 +116,7 @@ const testCase = async (
     endDate,
     page,
   )
-  expect(result).toStrictEqual(mockData)
+  expect(result).toStrictEqual(mockPaginatedData)
 
   return true
 }

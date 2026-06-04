@@ -1,5 +1,8 @@
-import { Controller, Get, Param, Query } from '@nestjs/common'
-import { ItemsDetailSchemaType, ItemsSchemaType } from '@qiita-trend/schema'
+import { Controller, DefaultValuePipe, Get, Param, Query } from '@nestjs/common'
+import {
+  ItemsDetailSchemaType,
+  PaginatedItemsSchemaType,
+} from '@qiita-trend/schema'
 
 import { ItemsId } from '@/form/itemsId/itemsId'
 import { ItemsService } from '@/public/items/domain/items.service'
@@ -19,11 +22,12 @@ export class ItemsController {
   getAllItems(
     @Query('startDate')
     startDate: string,
+
     @Query('endDate')
     endDate: string,
-    @Query('page')
-    page = '1',
-  ): Promise<ItemsSchemaType> {
+    @Query('page', new DefaultValuePipe('1'))
+    page: string,
+  ): Promise<PaginatedItemsSchemaType> {
     return this.itemsService.getItems(startDate, endDate, page)
   }
 

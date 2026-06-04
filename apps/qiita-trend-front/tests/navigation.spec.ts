@@ -53,4 +53,63 @@ test.describe('Navigation and Search Parameters', () => {
     // 詳細ページに遷移したことをURLで確認
     await expect(page).toHaveURL(new RegExp(href))
   })
+
+  test('should change items when navigating through pagination', async ({
+    page,
+  }) => {
+    const itemLinks = page
+      .locator('.MuiContainer-root')
+      .locator('a[href*="/items/"]:has(.MuiListItem-root)')
+
+    // 1ページ目のアイテムが表示されるのを待つ
+    const firstItem = itemLinks.first()
+    await expect(firstItem).toBeVisible({ timeout: 15000 })
+
+    const firstItemTitle = await firstItem.innerText()
+    expect(firstItemTitle.trim()).not.toBe('')
+
+    // 2ページ目へのリンクをクリック
+    const page2Link = page.getByRole('link', { name: 'Go to page 2' })
+    await expect(page2Link).toBeVisible()
+    // eslint-disable-next-line playwright/prefer-locator
+    await page2Link.click()
+
+    // URLにpage=2が含まれることを確認
+    await expect(page).toHaveURL(/page=2/, { timeout: 15000 })
+
+    // 2ページ目のアイテムが表示されるのを待つ
+    const secondPageFirstItem = itemLinks.first()
+    await expect(secondPageFirstItem).toBeVisible({ timeout: 15000 })
+
+    // 1ページ目と異なるアイテムが表示されていることを確認
+    await expect(secondPageFirstItem).not.toHaveText(firstItemTitle)
+  })
+
+  test('should keep existing query parameters when navigating through pagination', async ({
+    page,
+  }) => {
+    // 検索パラメータ付きでページを開く
+    await page.goto(
+      'http://localhost:3000/?startDate=2016-01-01&endDate=2016-01-31',
+    )
+
+    const itemLinks = page
+      .locator('.MuiContainer-root')
+      .locator('a[href*="/items/"]:has(.MuiListItem-root)')
+
+    // 1ページ目のアイテムが表示されるのを待つ
+    const firstItem = itemLinks.first()
+    await expect(firstItem).toBeVisible({ timeout: 15000 })
+
+    // 2ページ目へのリンクをクリック
+    const page2Link = page.getByRole('link', { name: 'Go to page 2' })
+    await expect(page2Link).toBeVisible()
+    // eslint-disable-next-line playwright/prefer-locator
+    await page2Link.click()
+
+    // URLにstartDate, endDate, page=2が含まれることを確認
+    await expect(page).toHaveURL(/startDate=2016-01-01/, { timeout: 15000 })
+    await expect(page).toHaveURL(/endDate=2016-01-31/)
+    await expect(page).toHaveURL(/page=2/)
+  })
 })

@@ -1,4 +1,4 @@
-import { ItemsSchemaType } from '@qiita-trend/schema'
+import { PaginatedItemsSchemaType } from '@qiita-trend/schema'
 
 /**
  *ItemsRepository
@@ -11,7 +11,7 @@ export interface ItemsRepository {
     startDate: string,
     endDate: string,
     page: string,
-  ): Promise<ItemsSchemaType>
+  ): Promise<PaginatedItemsSchemaType>
 }
 
 /** ItemsRepositorySymbol  */
