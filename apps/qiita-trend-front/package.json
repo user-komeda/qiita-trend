@@ -14,7 +14,7 @@
     "test:watch": "vitest --watch",
     "test:cov": "vitest --coverage",
     "test:e2e:prepare": "infisicalLauncher --path=/qiitaTrend/next/local -- yarn playwright codegen --save-storage=playwright/.auth/qiita.json https://qiita.com",
-    "test:e2e": " infisicalLauncher --path=/qiitaTrend/next/local -- yarn playwright test",
+    "test:e2e": "infisicalLauncher --path=/qiitaTrend/next/local -- yarn playwright test",
     "test:e2e:ci": "infisicalLauncher --path=/qiitaTrend/next/local -- yarn playwright test --grep-invert @local-only",
     "test:e2e:ui": "infisicalLauncher --path=/qiitaTrend/next/local -- yarn playwright test --ui",
     "typecheck": "tsc --noEmit",

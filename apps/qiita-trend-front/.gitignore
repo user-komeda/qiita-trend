@@ -45,3 +45,4 @@ next-env.d.ts
 /playwright/.cache/
 /playwright/.auth/
 playwright-report
+/lint-results.json
