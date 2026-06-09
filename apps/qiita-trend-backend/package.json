@@ -44,12 +44,12 @@
     "@qiita-trend/eslint": "workspace:*",
     "@qiita-trend/tsconfig": "workspace:*",
     "@swc/cli": "0.8.1",
-    "@swc/core": "1.15.33",
+    "@swc/core": "1.15.40",
     "@types/cookie-parser": "1.4.10",
     "@types/express": "5.0.6",
     "@types/node": "25.9.2",
     "@types/supertest": "7.2.0",
-    "@vitest/coverage-v8": "4.1.7",
+    "@vitest/coverage-v8": "4.1.8",
     "concurrently": "9.2.1",
     "eslint": "9.39.4",
     "globals": "17.6.0",
@@ -63,7 +63,7 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.59.4",
     "unplugin-swc": "1.5.9",
-    "vitest": "4.1.7"
+    "vitest": "4.1.8"
   },
   "packageManager": "yarn@4.14.1"
 }
