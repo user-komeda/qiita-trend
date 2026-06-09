@@ -17,7 +17,7 @@
     "check": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "valibot": "1.4.0"
+    "valibot": "1.4.1"
   },
   "devDependencies": {
     "@qiita-trend/tsconfig": "workspace:*",
