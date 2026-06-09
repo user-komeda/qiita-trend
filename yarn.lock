@@ -963,14 +963,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@darraghor/eslint-plugin-nestjs-typed@npm:7.1.33":
-  version: 7.1.33
-  resolution: "@darraghor/eslint-plugin-nestjs-typed@npm:7.1.33"
+"@darraghor/eslint-plugin-nestjs-typed@npm:7.2.3":
+  version: 7.2.3
+  resolution: "@darraghor/eslint-plugin-nestjs-typed@npm:7.2.3"
   dependencies:
-    "@typescript-eslint/scope-manager": "npm:^8.59.0"
-    "@typescript-eslint/type-utils": "npm:^8.59.0"
-    "@typescript-eslint/utils": "npm:^8.59.0"
-    eslint-module-utils: "npm:2.12.1"
+    "@typescript-eslint/scope-manager": "npm:^8.60.0"
+    "@typescript-eslint/type-utils": "npm:^8.60.0"
+    "@typescript-eslint/utils": "npm:^8.60.0"
+    eslint-module-utils: "npm:2.13.0"
     glob: "npm:13.0.0"
     reflect-metadata: "npm:0.2.2"
     ts-api-utils: "npm:2.5.0"
@@ -978,7 +978,7 @@ __metadata:
     "@typescript-eslint/parser": ^7.0.0 || ^8.0.0
     class-validator: "*"
     eslint: ">=9.18.0"
-  checksum: 10c0/8e65661382b04fd2427718cb047f414c058f30e200c2e02df40815ad6278b7cc6011af03da0a45701511e9a00fcac4eaaf9ee310cc1be8af6c2f253bd5071f57
+  checksum: 10c0/9fece0b6304017972d32c2aa96a9a59fe69d960a52ccc44c7022de8fb4a800120aab918b33bfb4464f90a1c0021a3b044c2a39dbe61469ff963f040dbccf2d13
   languageName: node
   linkType: hard
 
@@ -3989,7 +3989,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/scope-manager@npm:8.60.1, @typescript-eslint/scope-manager@npm:^8.56.0, @typescript-eslint/scope-manager@npm:^8.58.0, @typescript-eslint/scope-manager@npm:^8.59.0":
+"@typescript-eslint/scope-manager@npm:8.60.1, @typescript-eslint/scope-manager@npm:^8.56.0, @typescript-eslint/scope-manager@npm:^8.58.0, @typescript-eslint/scope-manager@npm:^8.60.0":
   version: 8.60.1
   resolution: "@typescript-eslint/scope-manager@npm:8.60.1"
   dependencies:
@@ -4033,7 +4033,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/type-utils@npm:^8.59.0":
+"@typescript-eslint/type-utils@npm:^8.60.0":
   version: 8.60.1
   resolution: "@typescript-eslint/type-utils@npm:8.60.1"
   dependencies:
@@ -4116,7 +4116,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:8.60.1, @typescript-eslint/utils@npm:^8.56.0, @typescript-eslint/utils@npm:^8.58.0, @typescript-eslint/utils@npm:^8.59.0":
+"@typescript-eslint/utils@npm:8.60.1, @typescript-eslint/utils@npm:^8.56.0, @typescript-eslint/utils@npm:^8.58.0, @typescript-eslint/utils@npm:^8.60.0":
   version: 8.60.1
   resolution: "@typescript-eslint/utils@npm:8.60.1"
   dependencies:
@@ -6430,19 +6430,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-module-utils@npm:2.12.1":
-  version: 2.12.1
-  resolution: "eslint-module-utils@npm:2.12.1"
-  dependencies:
-    debug: "npm:^3.2.7"
-  peerDependenciesMeta:
-    eslint:
-      optional: true
-  checksum: 10c0/6f4efbe7a91ae49bf67b4ab3644cb60bc5bd7db4cb5521de1b65be0847ffd3fb6bce0dd68f0995e1b312d137f768e2a1f842ee26fe73621afa05f850628fdc40
-  languageName: node
-  linkType: hard
-
-"eslint-module-utils@npm:^2.12.1":
+"eslint-module-utils@npm:2.13.0, eslint-module-utils@npm:^2.12.1":
   version: 2.13.0
   resolution: "eslint-module-utils@npm:2.13.0"
   dependencies:
@@ -10340,7 +10328,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "qiita-trend-backend@workspace:apps/qiita-trend-backend"
   dependencies:
-    "@darraghor/eslint-plugin-nestjs-typed": "npm:7.1.33"
+    "@darraghor/eslint-plugin-nestjs-typed": "npm:7.2.3"
     "@nestjs/axios": "npm:^4.0.1"
     "@nestjs/cli": "npm:11.0.21"
     "@nestjs/common": "npm:^11.1.23"
