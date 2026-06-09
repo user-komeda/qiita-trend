@@ -2653,7 +2653,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:^1.60.0":
+"@playwright/test@npm:1.60.0":
   version: 1.60.0
   resolution: "@playwright/test@npm:1.60.0"
   dependencies:
@@ -6397,7 +6397,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-playwright@npm:^2.10.4":
+"eslint-plugin-playwright@npm:2.10.4":
   version: 2.10.4
   resolution: "eslint-plugin-playwright@npm:2.10.4"
   dependencies:
@@ -10295,7 +10295,7 @@ __metadata:
     "@mui/material-nextjs": "npm:^9.0.1"
     "@next/env": "npm:^16.2.6"
     "@next/eslint-plugin-next": "npm:16.2.6"
-    "@playwright/test": "npm:^1.60.0"
+    "@playwright/test": "npm:1.60.0"
     "@qiita-trend/eslint": "workspace:*"
     "@qiita-trend/schema": "workspace:*"
     "@qiita-trend/tsconfig": "workspace:*"
@@ -10311,7 +10311,7 @@ __metadata:
     concurrently: "npm:9.2.1"
     eslint: "npm:9.39.4"
     eslint-plugin-no-relative-import-paths: "npm:1.6.1"
-    eslint-plugin-playwright: "npm:^2.10.4"
+    eslint-plugin-playwright: "npm:2.10.4"
     eslint-plugin-react-compiler: "npm:19.1.0-rc.2"
     eslint-plugin-react-refresh: "npm:0.5.2"
     eslint-plugin-testing-library: "npm:7.16.2"

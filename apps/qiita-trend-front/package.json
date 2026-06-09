@@ -42,7 +42,7 @@
   "devDependencies": {
     "@fetch-mock/vitest": "0.2.18",
     "@next/eslint-plugin-next": "16.2.6",
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "1.60.0",
     "@qiita-trend/eslint": "workspace:*",
     "@qiita-trend/tsconfig": "workspace:*",
     "@testing-library/dom": "10.4.1",
@@ -57,7 +57,7 @@
     "concurrently": "9.2.1",
     "eslint": "9.39.4",
     "eslint-plugin-no-relative-import-paths": "1.6.1",
-    "eslint-plugin-playwright": "^2.10.4",
+    "eslint-plugin-playwright": "2.10.4",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "eslint-plugin-react-refresh": "0.5.2",
     "eslint-plugin-testing-library": "7.16.2",
