@@ -40,7 +40,7 @@
     "@darraghor/eslint-plugin-nestjs-typed": "7.1.33",
     "@nestjs/cli": "11.0.21",
     "@nestjs/schematics": "11.1.0",
-    "@nestjs/testing": "11.1.23",
+    "@nestjs/testing": "11.1.24",
     "@qiita-trend/eslint": "workspace:*",
     "@qiita-trend/tsconfig": "workspace:*",
     "@swc/cli": "0.8.1",
