@@ -44,7 +44,7 @@
     "@qiita-trend/eslint": "workspace:*",
     "@qiita-trend/tsconfig": "workspace:*",
     "@swc/cli": "0.8.1",
-    "@swc/core": "1.15.40",
+    "@swc/core": "1.15.41",
     "@types/cookie-parser": "1.4.10",
     "@types/express": "5.0.6",
     "@types/node": "25.9.2",
