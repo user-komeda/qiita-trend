@@ -63,7 +63,7 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.61.0",
     "unplugin-swc": "1.5.9",
-    "vitest": "4.1.8"
+    "vitest": "4.1.11"
   },
   "packageManager": "yarn@4.16.0"
 }
