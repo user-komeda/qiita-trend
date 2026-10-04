@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@fetch-mock/vitest": "0.2.18",
-    "@next/eslint-plugin-next": "16.2.7",
+    "@next/eslint-plugin-next": "16.3.8",
     "@playwright/test": "1.60.0",
     "@qiita-trend/eslint": "workspace:*",
     "@qiita-trend/tsconfig": "workspace:*",
