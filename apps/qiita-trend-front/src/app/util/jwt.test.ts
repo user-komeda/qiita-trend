@@ -6,7 +6,8 @@ vi.mock(import('jose'), () => {
   return {
     SignJWT: class {
       constructor(_payload?: unknown) {
-        void _payload
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        _payload
       }
 
       setProtectedHeader = vi

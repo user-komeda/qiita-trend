@@ -80,12 +80,9 @@ describe(RedisModule, () => {
   test('should log error on redis client error', () => {
     expect.hasAssertions()
 
-    const consoleSpy = vi
-      .spyOn(console, 'error')
-      .mockImplementation((..._args: unknown[]) => {
-        void _args
-      })
-
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {
+      /* empty */
+    })
     const client = module.get<unknown>(REDIS_CLIENT)
 
     expect(client).toBeDefined()

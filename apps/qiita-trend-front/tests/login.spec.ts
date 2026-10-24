@@ -3,10 +3,10 @@ import { test, expect } from '@playwright/test'
 
 // eslint-disable-next-line max-lines-per-function
 test.describe('Login flow', () => {
-  // eslint-disable-next-line max-lines-per-function
   test('should redirect to Qiita login page and set oauth state cookie', async ({
     page,
     context,
+    // eslint-disable-next-line max-lines-per-function
   }) => {
     await page.goto('http://localhost:3000')
 

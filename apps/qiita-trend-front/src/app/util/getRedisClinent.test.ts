@@ -68,11 +68,9 @@ describe('getRedisClient', () => {
     expect.hasAssertions()
 
     const { getRedisClient } = await import('./getRedisClinent')
-    const consoleSpy = vi
-      .spyOn(console, 'error')
-      .mockImplementation((..._args: unknown[]) => {
-        void _args
-      })
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {
+      /* empty */
+    })
     await getRedisClient()
 
     expect(mockClient.on).toHaveBeenCalledWith('error', expect.any(Function))

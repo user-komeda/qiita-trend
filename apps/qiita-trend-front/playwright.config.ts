@@ -42,14 +42,14 @@ export default defineConfig({
 
   webServer: [
     {
-      command: 'yarn next dev',
+      command: 'yarn dev',
       url: 'http://localhost:3000',
       name: 'Frontend',
       timeout: 120 * 1000,
       reuseExistingServer: false,
     },
     {
-      command: 'yarn nest start -b swc --debug --watch',
+      command: 'yarn dev',
       url: 'http://localhost:3200/health',
       name: 'Backend',
       cwd: backendDir,
