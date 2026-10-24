@@ -32,15 +32,15 @@ RUN yarn build
 FROM base AS runner
 WORKDIR /app
 
-RUN groupadd appgroup && useradd -r -g appgroup appuser
-
 COPY --from=installer /app/apps/qiita-trend-front/.next/standalone ./
 COPY --from=installer /app/apps/qiita-trend-front/.next/static ./apps/qiita-trend-front/.next/static
 COPY --from=installer /app/apps/qiita-trend-front/public ./apps/qiita-trend-front/public
 
 COPY --from=installer /app/node_modules/infisicalLauncher/dist/index.cjs /app/infisicalLauncher.cjs
 
-USER appuser
+
+USER 1001:1001
+
 COPY .env* ./
 
 

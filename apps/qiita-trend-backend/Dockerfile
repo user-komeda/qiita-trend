@@ -30,17 +30,17 @@ RUN yarn build
 FROM base AS runner
 WORKDIR /app
 
-RUN corepack enable && \
-    groupadd appgroup && \
-    useradd -r -g appgroup appuser
+RUN corepack enable
 
-USER appuser
 
 COPY --from=installer /app/apps/qiita-trend-backend/package.json /app/package.json
 COPY --from=installer /app/node_modules/ /app/node_modules/
 COPY --from=installer /app/apps/qiita-trend-backend/dist/ /app/dist/
 
 COPY .env* ./
+
+USER 1001:1001
+
 
 
 CMD ["node", "./node_modules/infisicalLauncher/dist/index.cjs", "--path=/qiitaTrend/nest", "--", "node", "dist/main.js"]
