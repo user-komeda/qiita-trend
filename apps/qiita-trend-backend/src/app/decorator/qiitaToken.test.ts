@@ -30,7 +30,7 @@ describe(QiitaToken, () => {
     // そのメタデータから factory を抽出する。
     class TestController {
       test(@QiitaToken() _token: string): void {
-        void _token
+        /* empty */
       }
     }
 
@@ -63,7 +63,7 @@ describe(QiitaToken, () => {
 
     class TestController {
       test(@QiitaToken() _token: string): void {
-        void _token
+        /* empty */
       }
     }
     const ROUTE_ARGS_METADATA = '__routeArguments__'

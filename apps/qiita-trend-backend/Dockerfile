@@ -1,4 +1,4 @@
-FROM ghcr.io/user-komeda/docker_node:sha-0af7530@sha256:ede1e29ccff48c7fe157c876e1db7b59471c93bd572ce20fd98a9ab48efb04c8 AS base
+FROM ghcr.io/user-komeda/docker_node:sha-fefe12b@sha256:bf92ea16fd95f3d02a1726f2c10cec618af4f0d0a67b2ea02c1dcd8f350a971e AS base
 
 FROM base AS builder
 WORKDIR /app
