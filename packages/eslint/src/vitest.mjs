@@ -21,7 +21,7 @@ const vitestConfig = [
             'vitest/no-hooks': [
                 'error',
                 {
-                    allow: ['beforeEach'],
+                    allow: ['beforeEach', 'beforeAll', 'afterAll'],
                 },
             ],
             'max-lines-per-function': ['error', 100],
