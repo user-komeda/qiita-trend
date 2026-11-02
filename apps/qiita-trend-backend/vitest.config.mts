@@ -8,6 +8,8 @@ export default defineConfig({
   oxc: false,
   test: {
     globals: true,
+    testTimeout: 15000,
+    hookTimeout: 15000,
     include: [
       'src/**/*.{test,spec}.{ts,tsx}',
       'test/**/*.{test,spec}.{ts,tsx}',
