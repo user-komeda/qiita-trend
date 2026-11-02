@@ -2,7 +2,7 @@ import { INestApplication, ValidationPipe } from '@nestjs/common'
 import { Test, TestingModule } from '@nestjs/testing'
 import { PaginatedItemsSchemaType } from '@qiita-trend/schema'
 import request, { Response } from 'supertest'
-import { beforeEach, describe, expect, test } from 'vitest'
+import { afterAll, beforeAll, describe, expect, test } from 'vitest'
 
 import createJwt from '../helper/createJwt'
 import { AppModule } from '@/app/module/app/app.module'
@@ -10,7 +10,7 @@ import { AppModule } from '@/app/module/app/app.module'
 describe('commentController (e2e)', () => {
   let app: INestApplication
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile()
@@ -20,6 +20,10 @@ describe('commentController (e2e)', () => {
       new ValidationPipe({ stopAtFirstError: true, forbidUnknownValues: true }),
     )
     await app.init()
+  })
+
+  afterAll(async () => {
+    await app.close()
   })
 
   describe('gET /public/items/:itemsId/comments', () => {
