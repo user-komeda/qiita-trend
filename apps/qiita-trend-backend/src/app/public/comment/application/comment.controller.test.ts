@@ -4,6 +4,7 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { CommentSchemaType } from '@qiita-trend/schema'
 import { describe, test, expect, vi, beforeEach } from 'vitest'
 
+import { ItemsId } from '@/form/itemsId/itemsId'
 import { CommentController } from '@/public/comment/application/comment.controller'
 import { CommentRepository } from '@/public/comment/domain/comment.repository'
 import { CommentService } from '@/public/comment/domain/comment.service'
@@ -14,7 +15,9 @@ const testCase1 = async (
 ): Promise<boolean> => {
   expect.hasAssertions()
 
-  const requestData = { itemsId: 'e37caf50776e00e733be' }
+  const requestData = Object.assign(new ItemsId(), {
+    itemsId: 'e37caf50776e00e733be',
+  })
   const responseData: CommentSchemaType = [
     {
       body: `仕事でよく見かけるから気になってましたが、スッキリ納得しました

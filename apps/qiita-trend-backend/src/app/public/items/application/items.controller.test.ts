@@ -4,6 +4,7 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { ItemsSchemaType, PaginatedItemsSchemaType } from '@qiita-trend/schema'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
+import { ItemsId } from '@/form/itemsId/itemsId'
 import { ItemsController } from '@/public/items/application/items.controller'
 import { ItemsRepository } from '@/public/items/domain/items.repository'
 import { ItemsService } from '@/public/items/domain/items.service'
@@ -170,7 +171,9 @@ const getItemTestCase = async (
 ): Promise<boolean> => {
   expect.hasAssertions()
 
-  const requestData = { itemsId: 'e37caf50776e00e733be' }
+  const requestData = Object.assign(new ItemsId(), {
+    itemsId: 'e37caf50776e00e733be',
+  })
 
   vi.spyOn(itemDetailService, 'getDetailItems').mockResolvedValueOnce(
     mockData[FIRST_MOCK_DATA_INDEX],
