@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { describe, expect, beforeEach, vi, test } from 'vitest'
 
-import { LoginController } from './login.controller'
+import { LoginController, LoginDto } from './login.controller'
 
 import { LoginService } from '@/public/login/domain/login.service'
 
@@ -39,7 +39,8 @@ describe(LoginController, () => {
       const token = 'test_token'
       vi.spyOn(service, 'exchangeCodeForToken').mockResolvedValue(token)
 
-      const result = await controller.login({ code })
+      const loginDto = Object.assign(new LoginDto(), { code })
+      const result = await controller.login(loginDto)
 
       expect(result).toStrictEqual({ token })
       expect(service.exchangeCodeForToken).toHaveBeenCalledWith(code)

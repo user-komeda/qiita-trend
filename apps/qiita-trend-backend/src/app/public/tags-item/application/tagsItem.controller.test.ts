@@ -3,6 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { ItemsSchemaType } from '@qiita-trend/schema'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
+import { TagId } from '@/form/tagId/tagId'
 import { TagsItemController } from '@/public/tags-item/application/tagsItem.controller'
 import { TagsItemRepository } from '@/public/tags-item/domain/tagsItem.repository'
 import { TagsItemService } from '@/public/tags-item/domain/tagsItem.service'
@@ -60,7 +61,7 @@ const testCase = async (
 ): Promise<boolean> => {
   expect.hasAssertions()
 
-  const requestData = { tagId: 'wifi' }
+  const requestData = Object.assign(new TagId(), { tagId: 'wifi' })
   vi.spyOn(service, 'getItemsFromTag').mockResolvedValueOnce(mockData)
   const result = await controller.getItemsFromTag(requestData)
 

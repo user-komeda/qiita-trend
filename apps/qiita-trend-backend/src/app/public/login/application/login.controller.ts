@@ -3,7 +3,7 @@ import { IsString } from 'class-validator'
 
 import { LoginService } from '@/public/login/domain/login.service'
 
-class LoginDto {
+export class LoginDto {
   @IsString()
   code!: string
 }
